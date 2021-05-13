@@ -11,6 +11,8 @@ services:
     command: ./bin/webpack-dev-server
     volumes:
       - .:/bootcamp-app
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: localhost
   app:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
