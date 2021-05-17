@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
-
   def index
     @users = User.all
   end
 
   def show
+    @user = find_user(params[:id])
   end
 
   def new
@@ -13,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = find_user(params[:id])
   end
 
   def create
@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = find_user(params[:id])
+    
     if @user.update(user_params)
       redirect_to @user, notice: "User was successfully updated."
     else
@@ -34,14 +36,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    find_user(params[:id]).destroy
     redirect_to users_url, notice: "User was successfully destroyed."
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
+  def find_user(id)
+    User.find(id)
   end
 
   def user_params
