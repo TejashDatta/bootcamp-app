@@ -1,9 +1,9 @@
-<ul class="errors">
-  <% errors.full_messages_for(attribute).each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-</ul>
 <div class="field">
+  <ul class="errors">
+    <% errors.full_messages_for(attribute).each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
   <%= form.label attribute %>
   <%= form.text_field attribute %>
 </div>

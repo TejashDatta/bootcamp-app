@@ -18,7 +18,7 @@
         <td><%= user.email %></td>
         <td><%= link_to '表示', user %></td>
         <td><%= link_to '編集', edit_user_path(user) %></td>
-        <td><%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '削除', user, method: :delete, data: { confirm: '削除は宜しいですか?' } %></td>
       </tr>
     <% end %>
   </tbody>

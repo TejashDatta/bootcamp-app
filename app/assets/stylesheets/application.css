@@ -3,6 +3,8 @@
  *= require_self
  */
 
- .errors {
+ ul.errors {
    color: red;
+   padding-left: 0;
+   list-style-position: inside;
  }
