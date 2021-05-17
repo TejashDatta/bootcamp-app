@@ -32,6 +32,8 @@ RSpec.describe User, type: :model do
       end
 
       it "is invalid when email is not unique" do
+        create(:user, email: user.email)
+        expect(user).not_to be_valid
       end
     end
   end
