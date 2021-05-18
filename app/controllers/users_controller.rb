@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = find_user(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = find_user(params[:id])
+    @user = User.find(params[:id])
   end
 
   def create
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = find_user(params[:id])
+    @user = User.find(params[:id])
     
     if @user.update(user_params)
       redirect_to @user, notice: "ユーザーの更新が合格しました."
@@ -36,15 +36,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    find_user(params[:id]).destroy
+    User.find(params[:id]).destroy
     redirect_to users_url, notice: "ユーザーの削除が合格しました."
   end
 
   private
-
-  def find_user(id)
-    User.find(id)
-  end
 
   def user_params
     params.require(:user).permit(:name, :email)
