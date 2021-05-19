@@ -1,0 +1,14 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= user.errors.count %> エラーがあって保存が失敗しました。</h2>
+    </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :name, form: form, errors: user.errors %>
+  <%= render "form_item", attribute: :email, form: form, errors: user.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

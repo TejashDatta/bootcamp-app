@@ -2,6 +2,7 @@
   "name": "bootcamp_app",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "5.3.0",
     "@rails/ujs": "^6.0.0",
     "turbolinks": "^5.2.0"
   },
