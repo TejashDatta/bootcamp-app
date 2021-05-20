@@ -1,0 +1,42 @@
+<h1>アクティブレコードのメソッドと実際に生成されたクエリ</h1>
+
+<table border="1">
+  <tr>
+    <th>アクティブレコードのメソッド</th>
+    <th>生成されたクエリ</th>
+  </tr>
+  <tr>
+    <td>User.all</td>
+    <td>SELECT "users".* FROM "users"</td>
+  </tr>
+  <tr>
+    <td>User.find(id)</td>
+    <td>SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2 [["id", 1], ["LIMIT", 1]]</td>
+  </tr>
+  <tr>
+    <td>
+      @user.save
+    </td>
+    <td>
+      SELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2  [["email", "test@gmail.com"], ["LIMIT", 1]] <br/><br/>
+      INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "raj"], ["email", "test@gmail.com"], ["created_at", "2021-05-20 07:31:43.755462"], ["updated_at", "2021-05-20 07:31:43.755462"]]
+    </td>
+  </tr>
+  <tr>
+    <td>
+      @user.update(user_params)
+    </td>
+    <td>
+      SELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3  [["email", "email-1@gmail.co.in"], ["id", 1], ["LIMIT", 1]] <br/><br/>
+      UPDATE "users" SET "email" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["email", "email-1@gmail.co.in"], ["updated_at", "2021-05-20 07:25:09.231687"], ["id", 1]]
+    </td>
+  </tr>
+  <tr>
+    <td>
+      @user.destory
+    </td>
+    <td>
+      DELETE FROM "users" WHERE "users"."id" = $1  [["id", 3]]
+    </td>
+  </tr>
+</table>
