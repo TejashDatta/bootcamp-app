@@ -6,25 +6,16 @@ services:
       - ./tmp/database:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
-  webpacker:
-    build: .
-    command: ./bin/webpack-dev-server
-    volumes:
-      - .:/bootcamp-app
-    environment:
-      WEBPACKER_DEV_SERVER_HOST: localhost
   app:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails webpacker:compile && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/bootcamp-app
     ports:
       - 3000:3000
     depends_on:
       - database
-      - webpacker
     environment:
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: password
       DATABASE_HOST: database
-      WEBPACKER_DEV_SERVER_HOST: webpacker
