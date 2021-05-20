@@ -5,5 +5,5 @@
     <% end %>
   </ul>
   <%= form.label attribute %>
-  <%= form.text_field attribute %>
+  <%= form.send(field_type, attribute) %>
 </div>

@@ -4,14 +4,16 @@ RSpec.describe "/users", type: :request do
   let(:valid_attributes) do
     {
       name: "person",
-      email: "email@address.com"
+      email: "email@address.com",
+      password: "password"
     }
   end
 
   let(:invalid_attributes) do
     {
       name: "",
-      email: "invalid email address"
+      email: "invalid email address",
+      password: ""
     }
   end
 
@@ -57,6 +59,11 @@ RSpec.describe "/users", type: :request do
       it "redirects to the created user" do
         post users_url, params: { user: valid_attributes }
         expect(response).to redirect_to(user_url(User.last))
+      end
+
+      it "stores created user id in session" do
+        post users_url, params: { user: valid_attributes }
+        expect(session[:user_id]).to eq(User.last.id)
       end
     end
 

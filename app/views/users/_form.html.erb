@@ -5,8 +5,9 @@
     </div>
   <% end %>
 
-  <%= render "form_item", attribute: :name, form: form, errors: user.errors %>
-  <%= render "form_item", attribute: :email, form: form, errors: user.errors %>
+  <%= render "form_item", field_type: :text_field, attribute: :name, form: form, errors: user.errors %>
+  <%= render "form_item", field_type: :text_field, attribute: :email, form: form, errors: user.errors %>
+  <%= render "form_item", field_type: :password_field, attribute: :password, form: form, errors: user.errors %>
 
   <div class="actions">
     <%= form.submit %>
