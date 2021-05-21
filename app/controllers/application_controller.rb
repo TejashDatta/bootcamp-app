@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate
+  before_action :authenticate
 
   helper_method :current_user
   helper_method :logged_in?
@@ -12,9 +12,11 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
+  private
+
   def authenticate
     return if logged_in?
 
-    redirect_to action: "static_pages#authentication_required"
+    redirect_to login_path, alert: "このアプリの使用にログインが必要です。"
   end
 end

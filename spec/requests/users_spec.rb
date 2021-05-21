@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/users", type: :request do
+RSpec.describe "/users", type: :request do 
   let(:valid_attributes) do
     {
       name: "person",
