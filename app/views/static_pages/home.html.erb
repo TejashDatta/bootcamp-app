@@ -2,3 +2,8 @@
 <%= link_to "ユーザー一覧", users_path %>
 <%= link_to "ログ説明", log_path %>
 <%= link_to "生成されるSQL", sql_path %>
+<% if logged_in? %>
+  <%= link_to "ログアウト", logout_path, method: :delete, data: { confirm: "ログアウトして宜しいですか?" }  %>
+<% else %>
+  <%= link_to "ログイン", login_path %>
+<% end %>

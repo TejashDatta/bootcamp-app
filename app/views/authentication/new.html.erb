@@ -1,0 +1,12 @@
+<h1>ログイン</h1>
+
+<%= form_with(url: "/login", local: true) do |form| %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+
+  <div class="actions">
+    <%= form.submit "ログイン" %>
+  </div>
+<% end %>

@@ -19,3 +19,7 @@
    padding-left: 0;
    list-style-position: inside;
  }
+
+ #alert {
+  color: red;
+ }
