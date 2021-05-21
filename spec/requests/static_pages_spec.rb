@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "static_pages", type: :request do
+RSpec.describe "StaticPages", type: :request do
   describe "GET / => #home" do
     it "renders a successful response" do
       get "/"
