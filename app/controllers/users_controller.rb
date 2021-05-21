@@ -1,4 +1,4 @@
-class UsersController < ApplicationController  
+class UsersController < ApplicationController
   def index
     @users = User.all
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    
+
     if @user.update(user_params)
       redirect_to @user, notice: "ユーザーの更新が合格しました."
     else
