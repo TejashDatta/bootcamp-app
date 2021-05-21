@@ -1,5 +1,10 @@
 class StaticPagesController < ApplicationController
-  def show
-    render template: "static_pages/#{params[:page]}"
+  def home
+  end
+  
+  def log
+  end
+
+  def sql
   end
 end
