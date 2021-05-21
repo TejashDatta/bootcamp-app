@@ -1,6 +1,4 @@
-class UsersController < ApplicationController
-  # skip_before_action :authenticate, only: %i[new create]
-  
+class UsersController < ApplicationController  
   def index
     @users = User.all
   end
@@ -21,7 +19,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
       redirect_to @user, notice: "ユーザーの作成が合格しました."
     else
       render :new

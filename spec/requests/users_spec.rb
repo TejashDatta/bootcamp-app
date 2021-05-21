@@ -60,11 +60,6 @@ RSpec.describe "/users", type: :request do
         post users_url, params: { user: valid_attributes }
         expect(response).to redirect_to(user_url(User.last))
       end
-
-      it "stores created user id in session" do
-        post users_url, params: { user: valid_attributes }
-        expect(session[:user_id]).to eq(User.last.id)
-      end
     end
 
     context "with invalid parameters" do
