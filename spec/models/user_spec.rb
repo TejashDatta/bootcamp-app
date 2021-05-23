@@ -41,5 +41,10 @@ RSpec.describe User, type: :model do
       user.password = ""
       expect(user).not_to be_valid
     end
+
+    it "is invalid when role is unknown string" do
+      user.role = "invalid"
+      expect(user).not_to be_valid
+    end
   end
 end

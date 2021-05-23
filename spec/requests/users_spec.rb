@@ -5,7 +5,8 @@ RSpec.describe "/users", type: :request do
     {
       name: "person",
       email: "email@address.com",
-      password: "password"
+      password: "password",
+      role: "general"
     }
   end
 
@@ -13,7 +14,8 @@ RSpec.describe "/users", type: :request do
     {
       name: "",
       email: "invalid email address",
-      password: ""
+      password: "",
+      role: "invalid"
     }
   end
 
