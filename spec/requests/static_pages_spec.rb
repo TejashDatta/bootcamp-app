@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "StaticPages", type: :request do
+  include_context "uses authorized user"
+
   describe "GET / => #home" do
     it "renders a successful response" do
       get "/"

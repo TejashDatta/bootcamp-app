@@ -43,6 +43,8 @@ RSpec.describe "Authentication", type: :request do
   end
 
   describe "DELETE /logout" do
+    include_context "uses authorized user"
+
     it "unsets user id in session" do
       delete logout_path
       expect(session[:user_id]).to be_nil
