@@ -36,5 +36,10 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
       end
     end
+
+    it "is invalid when password is empty" do
+      user.password = ""
+      expect(user).not_to be_valid
+    end
   end
 end

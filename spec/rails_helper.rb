@@ -64,3 +64,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+RSpec.shared_context "uses authorized user" do
+  before do
+    authorized_user = create(:user)
+    post "/login", params: { email: authorized_user.email, password: authorized_user.password }
+  end
+end

@@ -7,6 +7,7 @@
 
   <%= render "form_item", attribute: :name, form: form, errors: user.errors %>
   <%= render "form_item", attribute: :email, form: form, errors: user.errors %>
+  <%= render "form_item", attribute: :password, form: form, errors: user.errors %>
 
   <div class="actions">
     <%= form.submit %>

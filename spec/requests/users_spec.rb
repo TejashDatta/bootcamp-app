@@ -1,17 +1,21 @@
 require "rails_helper"
 
-RSpec.describe "/users", type: :request do
+RSpec.describe "/users", type: :request do 
+  include_context "uses authorized user"
+  
   let(:valid_attributes) do
     {
       name: "person",
-      email: "email@address.com"
+      email: "email@address.com",
+      password: "password"
     }
   end
 
   let(:invalid_attributes) do
     {
       name: "",
-      email: "invalid email address"
+      email: "invalid email address",
+      password: ""
     }
   end
 
