@@ -3,7 +3,7 @@
 RSpec.describe "Permissions", type: :request do
   include_context "uses authorized user with all permissions"
 
-  let(:valid_attributes) { { action: "user#create" } }
+  let(:valid_attributes) { { action: "users#new" } }
 
   let(:invalid_attributes) { { action: "" } }
 

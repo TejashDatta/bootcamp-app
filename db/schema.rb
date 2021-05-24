@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.belongs_to :user, foreign_key: true
     t.string "action", null: false
     t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index %i[user_id action], name: "index_permissions_on_user_action", unique: true
   end
 end

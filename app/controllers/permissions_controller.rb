@@ -13,7 +13,7 @@ class PermissionsController < ApplicationController
 
   def create
     authenticate_action("permissions#create")
-    
+
     @user = User.find(params[:user_id])
     @permission = @user.permissions.build(permission_params)
 
@@ -26,7 +26,7 @@ class PermissionsController < ApplicationController
 
   def destroy
     Permission.find(params[:id]).destroy
-    redirect_to user_permissions_path, notice: "権限追加が失敗しました。"
+    redirect_to user_permissions_path, notice: "権限の削除が合格しました。"
   end
 
   private

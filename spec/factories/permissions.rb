@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :permission do
     user
-    action { "user#new" }
+    action { "users#new" }
   end
 end
