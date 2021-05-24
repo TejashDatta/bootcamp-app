@@ -1,0 +1,23 @@
+<h1><%= @user.email %>の権限</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>アクション</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @permissions.each do |permission| %>
+      <tr>
+        <td><%= permission.action %></td>
+        <td><%= link_to "削除", user_permission_path(@user, permission), method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "権限追加", new_user_permission_path(@user) %>
