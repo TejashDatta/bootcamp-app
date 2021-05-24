@@ -13,7 +13,12 @@
 
   <div class="field">
     <%= form.label :action %>
-    <%= form.text_field :action %>
+    <%= form.select :action,
+      {
+        "Users Controller" => %w[users#new users#create],
+        "Permissions Controller" => %w[permissions#new permissions#create]
+      }
+    %>
   </div>
 
   <div class="actions">

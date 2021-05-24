@@ -1,7 +1,7 @@
  require 'rails_helper'
 
 RSpec.describe "Permissions", type: :request do
-  include_context "uses authorized user"
+  include_context "uses authorized user with all permissions"
 
   let(:valid_attributes) { { action: "user#create" } }
 

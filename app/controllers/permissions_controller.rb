@@ -5,11 +5,13 @@ class PermissionsController < ApplicationController
   end
 
   def new
+    authenticate_action("permissions#new")
     @user = User.find(params[:user_id])
     @permission = @user.permissions.build
   end
 
   def create
+    authenticate_action("permissions#create")
     @user = User.find(params[:user_id])
     @permission = @user.permissions.build(permission_params)
 

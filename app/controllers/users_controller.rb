@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    authenticate_action("users#new")
     @user = User.new
   end
 
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    authenticate_action("users#create")
     @user = User.new(user_params)
 
     if @user.save
