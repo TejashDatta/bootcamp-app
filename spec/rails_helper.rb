@@ -68,6 +68,6 @@ end
 RSpec.shared_context "uses authorized user" do
   before do
     authorized_user = create(:user)
-    post "/login", params: { email: authorized_user.email, password: authorized_user.password }
+    post login_path, params: { email: authorized_user.email, password: authorized_user.password }
   end
 end
