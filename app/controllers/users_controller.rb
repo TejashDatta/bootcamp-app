@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin, only: %i[new create destroy]
-  before_action :authenticate_manager_or_admin, only: %i[edit update]
-
   def index
     @users = User.all
   end

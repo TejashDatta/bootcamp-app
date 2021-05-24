@@ -5,25 +5,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= render "form_label_and_errors", attribute: :name, form: form, errors: user.errors %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= render "form_label_and_errors", attribute: :email, form: form, errors: user.errors %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= render "form_label_and_errors", attribute: :password, form: form, errors: user.errors %>
-    <%= form.text_field :password %>
-  </div>
-
-  <div class="field">
-    <%= render "form_label_and_errors", attribute: :role, form: form, errors: user.errors %>
-    <%= form.select :role, %w[general manager admin] %>
-  </div>
+  <%= render "form_item", attribute: :name, form: form, errors: user.errors %>
+  <%= render "form_item", attribute: :email, form: form, errors: user.errors %>
+  <%= render "form_item", attribute: :password, form: form, errors: user.errors %>
 
   <div class="actions">
     <%= form.submit %>

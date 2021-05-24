@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password", null: false
-    t.string "role", null: false, default: "general"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
