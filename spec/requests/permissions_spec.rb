@@ -1,6 +1,6 @@
  require 'rails_helper'
 
-RSpec.describe "Permissions", type: :request do
+RSpec.describe "/users/:user_id/permissions", type: :request do
   include_context "uses authorized user with all permissions"
 
   let(:valid_attributes) { { action: "users#new" } }
@@ -10,21 +10,21 @@ RSpec.describe "Permissions", type: :request do
   let(:permission) { create(:permission) }
   let(:user) { create(:user) }
 
-  describe "GET /users/:user_id/permissions" do
+  describe "GET /" do
     it "renders a successful response" do
       get user_permissions_url(permission.user)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /users/:user_id/permissions/new" do
+  describe "GET /new" do
     it "renders a successful response" do
       get new_user_permission_url(user)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /users/:user_id/permissions/new" do
+  describe "POST /new" do
     context "with valid parameters" do
       it "creates a new Permission" do
         expect {
