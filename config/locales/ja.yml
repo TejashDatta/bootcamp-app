@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       permission: 権限
+      health_information: 健康情報
     attributes:
       user:
         name: 名前
@@ -10,3 +11,7 @@ ja:
         password: パスワード
       permission:
         action: アクション
+      health_information:
+        user_id: ユーザー
+        height_in_cm: cmで身長
+        weight_in_kg: kgで体重

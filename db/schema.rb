@@ -25,9 +25,17 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
   end
 
   create_table "permissions", force: :cascade do |t|
-    t.references :user, foreign_key: true
+    t.references :user, null: false, foreign_key: true
     t.string "action", null: false
     t.datetime "created_at", precision: 6, null: false
     t.index %i[user_id action], name: "index_permissions_on_user_action", unique: true
+  end
+
+  create_table "health_information", force: :cascade do |t|
+    t.references :user, null: false, index: { unique: true }, foreign_key: true
+    t.float "height_in_cm"
+    t.float "weight_in_kg"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 end

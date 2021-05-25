@@ -1,0 +1,29 @@
+<h1>健康情報一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー</th>
+      <th>cmで身長</th>
+      <th>kgで体重</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @health_information.each do |health_information| %>
+      <tr>
+        <td><%= link_to health_information.user.email, health_information.user %></td>
+        <td><%= health_information.height_in_cm %></td>
+        <td><%= health_information.weight_in_kg %></td>
+        <td><%= link_to "表示", health_information %></td>
+        <td><%= link_to "編集", edit_health_information_path(health_information) %></td>
+        <td><%= link_to "削除", health_information, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "新健康情報", new_health_information_path %>
