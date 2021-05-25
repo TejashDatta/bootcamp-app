@@ -3,8 +3,8 @@ ja:
     models:
       user: ユーザー
       permission: 権限
-      health_information: 健康情報
-      international_traveler: 国際旅行者
+      traveler: 国際旅行者
+      passport: パスポート
     attributes:
       user:
         name: 名前
@@ -12,11 +12,10 @@ ja:
         password: パスワード
       permission:
         action: アクション
-      health_information:
-        user_id: ユーザー
-        height_in_cm: cmで身長
-        weight_in_kg: kgで体重
-      international_traveler:
+      traveler:
         name: 名前
         departure_country: 出発国
         arrival_country: 到着国
+      passport:
+        passport_number: パスポート番号
+        nationality: 国籍

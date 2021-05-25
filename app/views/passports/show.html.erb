@@ -1,0 +1,16 @@
+<p>
+  <strong>国際旅行者:</strong>
+  <%= link_to @passport.traveler.name, @passport.traveler %>
+</p>
+
+<p>
+  <strong>パスポート番号:</strong>
+  <%= @passport.passport_number %>
+</p>
+
+<p>
+  <strong>国籍:</strong>
+  <%= @passport.nationality %>
+</p>
+
+<%= link_to "編集", edit_traveler_passport_path %>

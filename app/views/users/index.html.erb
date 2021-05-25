@@ -5,7 +5,7 @@
     <tr>
       <th>名前</th>
       <th>メール</th>
-      <th colspan="5"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -18,11 +18,6 @@
         <td><%= link_to "編集", edit_user_path(user) %></td>
         <td><%= link_to "権限", user_permissions_path(user) %></td>
         <td><%= link_to "削除", user, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
-        <td>
-          <% if user.health_information %>
-            <%= link_to "健康情報", user.health_information %>
-          <% end %>
-        </td>
       </tr>
     <% end %>
   </tbody>

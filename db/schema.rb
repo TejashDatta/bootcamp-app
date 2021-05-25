@@ -31,18 +31,18 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.index %i[user_id action], name: "index_permissions_on_user_action", unique: true
   end
 
-  create_table "health_information", force: :cascade do |t|
-    t.references :user, null: false, index: { unique: true }, foreign_key: true
-    t.float "height_in_cm"
-    t.float "weight_in_kg"
+  create_table "travelers" do |t|
+    t.string "name", null: false
+    t.string "departure_country", null: false
+    t.string "arrival_country", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "international_travelers" do |t|
-    t.string "name", null: false
-    t.string "departure_country", null: false
-    t.string "arrival_country", null: false
+  create_table "passports" do |t|
+    t.references "traveler", null: false, index: { unique: true }, foreign_key: true
+    t.string "passport_number"
+    t.string "nationality"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

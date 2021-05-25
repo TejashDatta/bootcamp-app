@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :permissions
   end
-  resources :health_information
-  resources :international_travelers
+  resources :travelers do
+    resource :passport
+  end
 end
