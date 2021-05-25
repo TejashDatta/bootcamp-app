@@ -1,0 +1,29 @@
+<h1>国際旅行者</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>出発国</th>
+      <th>到着国</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @international_travelers.each do |international_traveler| %>
+      <tr>
+        <td><%= international_traveler.name %></td>
+        <td><%= international_traveler.departure_country %></td>
+        <td><%= international_traveler.arrival_country %></td>
+        <td><%= link_to "表示", international_traveler %></td>
+        <td><%= link_to "編集", edit_international_traveler_path(international_traveler) %></td>
+        <td><%= link_to "削除", international_traveler, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "新国際旅行者", new_international_traveler_path %>

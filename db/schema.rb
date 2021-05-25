@@ -38,4 +38,12 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
+  create_table "international_travelers" do |t|
+    t.string "name", null: false
+    t.string "departure_country", null: false
+    t.string "arrival_country", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 end

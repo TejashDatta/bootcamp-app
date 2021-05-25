@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     resources :permissions
   end
   resources :health_information
+  resources :international_travelers
 end

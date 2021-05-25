@@ -1,0 +1,15 @@
+<%= form_with(model: international_traveler, local: true) do |form| %>
+  <% if international_traveler.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(international_traveler.errors.count, "error") %> prohibited this international_traveler from being saved:</h2>
+    </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :name, form: form, errors: international_traveler.errors %>
+  <%= render "form_item", attribute: :departure_country, form: form, errors: international_traveler.errors %>
+  <%= render "form_item", attribute: :arrival_country, form: form, errors: international_traveler.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
