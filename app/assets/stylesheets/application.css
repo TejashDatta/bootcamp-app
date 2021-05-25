@@ -13,13 +13,37 @@
  *= require_tree .
  *= require_self
  */
+body {
+  margin: 0;
+}
 
- ul.errors {
-   color: red;
-   padding-left: 0;
-   list-style-position: inside;
- }
+ul {
+  padding-left: 0;
+  list-style-position: inside;
+}
 
- #alert {
-  color: red;
- }
+.errors, #alert {
+ color: red;
+}
+
+.header {
+  padding: 10px;
+  text-align: center;
+  background-color: #eee;
+}
+
+.navigation {
+  float: left;
+  padding: 10px 30px;
+}
+.navigation ul {
+  list-style: none;
+}
+.navigation ul li{
+  padding: 15px 0;
+}
+
+.content-area {
+  float: left;
+  padding: 10px;
+}

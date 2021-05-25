@@ -10,8 +10,24 @@
   </head>
 
   <body>
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="header">
+      <h1>Bootcamp App</h1>
+    </div>
+
+    <div class="navigation">
+      <h3>メニュー</h3>
+      <ul>
+        <li><%= link_to "ユーザー一覧", users_path %></li>
+        <li><%= link_to "ログ説明", log_path %></li>
+        <li><%= link_to "生成されるSQL", sql_path %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete, data: { confirm: "ログアウトして宜しいですか?" }  %></li>
+      </ul>
+    </div>
+    
+    <div class="content-area">
+      <p id="notice"><%= notice %></p>
+      <p id="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>
