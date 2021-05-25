@@ -1,0 +1,69 @@
+<h1>ログフォマット説明</h1>
+<table border="1">
+  <tr>
+    <th>要素英語名</th>
+    <th>日本語翻訳</th>
+    <th>要素例</th>
+    <th>要素説明</th>
+  </tr>
+  <tr>
+    <td>Time</td>
+    <td>時間</td>
+    <td>2021-05-20 06:24:39 +0000</td>
+    <td>ログが登録された時間</td>
+  </tr>
+  <tr>
+    <td>Severity</td>
+    <td>重要度</td>
+    <td>INFO</td>
+    <td>
+      Logging levelを記述します。これで環境やLogger objectに登録されたログを篩をかけることができます。
+      例えばdevelopment環境でサーバー動作をよく説明する記述的なログを登録し、
+      productionログでは問題が発生したというログのみを登録するようにできます。
+    </td>
+  </tr>
+  <tr>
+    <td>Message</td>
+    <td>メッセージ</td>
+    <td>Started GET "/users" for 172.20.0.1 at 2021-05-20 06:24:39 +0000</td>
+    <td>ログの内容</td>
+  </tr>
+  <tr>
+    <td>Program Name</td>
+    <td>プログラム名</td>
+    <td></td>
+    <td>ログを記述したプログラム名。logger を呼び出す際に引数で提供されるプログラム名。</td>
+  </tr>
+</table>
+
+<h1>Logger levelsの説明</h1>
+<table border='1'>
+  <tr>
+    <th>レベル名</th>
+    <th>説明</th>
+  </tr>
+  <tr>
+    <td>DEBUG</td>
+    <td>最も記述的なログレベルで、動作の詳細を表す。</td>
+  </tr>
+  <tr>
+    <td>INFO</td>
+    <td>サーバーがやったことの記録に使われる。</td>
+  </tr>
+  <tr>
+    <td>WARN</td>
+    <td>エラーが発生してないが、何かが違う際に使われる。</td>
+  </tr>
+  <tr>
+    <td>ERROR</td>
+    <td>エラーが発生したが、アプリ全体に対しての影響は限られて、アプリはまだ動作してる。</td>
+  </tr>
+  <tr>
+    <td>FATAL</td>
+    <td>アプリをcrashさせる程度のエラーが発生した際に使われる。</td>
+  </tr>
+  <tr>
+    <td>Unknown</td>
+    <td>上記のレベルに当たらないログのために使われる。</td>
+  </tr>
+</table>

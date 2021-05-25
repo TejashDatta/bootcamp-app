@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ ul.errors {
+   color: red;
+   padding-left: 0;
+   list-style-position: inside;
+ }
+
+ #alert {
+  color: red;
+ }

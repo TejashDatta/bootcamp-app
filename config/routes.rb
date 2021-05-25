@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root "static_pages#home"
+  get "/log", to: "static_pages#log", as: :log
+  get "/sql", to: "static_pages#sql", as: :sql
+
+  get "/login", to: "authentication#new", as: :login
+  post "/login", to: "authentication#create"
+  delete "/logout", to: "authentication#destroy", as: :logout
+
+  resources :users
 end
