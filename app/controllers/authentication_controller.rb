@@ -1,5 +1,6 @@
 class AuthenticationController < ApplicationController
   skip_before_action :authenticate, only: %i[new create]
+  skip_before_action :authenticate_action
 
   def new
   end

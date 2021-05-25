@@ -5,9 +5,6 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   def permission?(action)
-    permissions.each do |permission|
-      return true if permission.action == action
-    end
-    false
+    permissions.find_by(action: action)
   end
 end

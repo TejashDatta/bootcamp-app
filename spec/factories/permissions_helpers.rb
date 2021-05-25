@@ -1,7 +1,8 @@
+include PermissionsHelper
+
 def assign_all_permissions(user)
-  FactoryBot.create(:permission, user: user, action: "users#new")
-  FactoryBot.create(:permission, user: user, action: "users#create")
-  FactoryBot.create(:permission, user: user, action: "permissions#new")
-  FactoryBot.create(:permission, user: user, action: "permissions#create")
+  all_actions.each do |action|
+    FactoryBot.create(:permission, user: user, action: action)
+  end
   user
 end
