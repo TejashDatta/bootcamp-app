@@ -1,7 +1,7 @@
 class PermissionsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @permissions = @user.permissions
+    @permissions = @user.permissions.order("action")
   end
 
   def new
