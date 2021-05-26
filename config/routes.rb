@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :travelers do
     resource :passport
   end
+  resources :investors
 end

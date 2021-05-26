@@ -1,0 +1,14 @@
+<%= form_with(model: investor, local: true) do |form| %>
+  <% if investor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(investor.errors.count, "error") %> エラーがあって保存が失敗しました。</h2>
+    </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :account_number, form: form, errors: investor.errors %>
+  <%= render "form_item", attribute: :balance_in_yen, form: form, errors: investor.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

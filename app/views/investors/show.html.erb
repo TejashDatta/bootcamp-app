@@ -1,0 +1,12 @@
+<p>
+  <strong>アカウント番号:</strong>
+  <%= @investor.account_number %>
+</p>
+
+<p>
+  <strong>円で残高:</strong>
+  <%= @investor.balance_in_yen %>
+</p>
+
+<%= link_to "編集", edit_investor_path(@investor) %> |
+<%= link_to "戻り", investors_path %>

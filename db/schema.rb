@@ -46,4 +46,12 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
+  create_table "investors" do |t|
+    t.string "account_number", null: false, index: { unique: true }
+    t.integer "balance_in_yen", null: false, default: 0
+
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 end
