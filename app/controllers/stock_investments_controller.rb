@@ -17,10 +17,14 @@ class StockInvestmentsController < ApplicationController
   end
 
   def create
-    @stock_investment = Investor.find(params[:investor_id]).stock_investments.build(stock_investment_params)
+    @stock_investment = 
+      Investor.find(params[:investor_id]).stock_investments.build(stock_investment_params)
 
     if @stock_investment.save
-      redirect_to investor_stock_investment_path(@stock_investment.investor, @stock_investment), notice: "株式投資の作成が合格しました。"
+      redirect_to(
+        investor_stock_investment_path(@stock_investment.investor, @stock_investment), 
+        notice: "株式投資の作成が合格しました。"
+      )
     else
       render :new
     end
@@ -30,7 +34,10 @@ class StockInvestmentsController < ApplicationController
     @stock_investment = StockInvestment.find(params[:id])
 
     if @stock_investment.update(stock_investment_params)
-      redirect_to investor_stock_investment_path(@stock_investment.investor, @stock_investment), notice: "株式投資の作成が合格しました。"
+      redirect_to(
+        investor_stock_investment_path(@stock_investment.investor, @stock_investment), 
+        notice: "株式投資の作成が合格しました。"
+      )
     else
       render :edit
     end

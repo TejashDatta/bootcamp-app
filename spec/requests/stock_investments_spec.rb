@@ -57,25 +57,39 @@ RSpec.describe "/investors/:investor_id/stock_investments", type: :request do
     context "with valid parameters" do
       it "creates a new StockInvestment" do
         expect {
-          post investor_stock_investments_url(investor), params: { stock_investment: valid_attributes }
+          post(
+            investor_stock_investments_url(investor), 
+            params: { stock_investment: valid_attributes }
+          )
         }.to change(StockInvestment, :count).by(1)
       end
 
       it "redirects to the created stock_investment" do
-        post investor_stock_investments_url(investor), params: { stock_investment: valid_attributes }
-        expect(response).to redirect_to(investor_stock_investment_url(StockInvestment.last.investor, StockInvestment.last))
+        post(
+          investor_stock_investments_url(investor), 
+          params: { stock_investment: valid_attributes }
+        )
+        expect(response).to redirect_to(
+          investor_stock_investment_url(StockInvestment.last.investor, StockInvestment.last)
+        )
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new StockInvestment" do
         expect {
-          post investor_stock_investments_url(investor), params: { stock_investment: invalid_attributes }
+          post(
+            investor_stock_investments_url(investor),
+            params: { stock_investment: invalid_attributes }
+          )
         }.to change(StockInvestment, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post investor_stock_investments_url(investor), params: { stock_investment: invalid_attributes }
+        post(
+          investor_stock_investments_url(investor), 
+          params: { stock_investment: invalid_attributes }
+        )
         expect(response).to be_successful
       end
     end
@@ -86,21 +100,32 @@ RSpec.describe "/investors/:investor_id/stock_investments", type: :request do
       let(:new_attributes) { { stock_name: "APPL" } }
 
       it "updates the requested stock_investment" do
-        patch investor_stock_investment_url(stock_investment.investor, stock_investment), params: { stock_investment: new_attributes }
+        patch(
+          investor_stock_investment_url(stock_investment.investor, stock_investment), 
+          params: { stock_investment: new_attributes }
+        )
         stock_investment.reload
         expect(stock_investment.stock_name).to eq("APPL")
       end
 
       it "redirects to the stock_investment" do
-        patch investor_stock_investment_url(stock_investment.investor, stock_investment), params: { stock_investment: new_attributes }
+        patch(
+          investor_stock_investment_url(stock_investment.investor, stock_investment), 
+          params: { stock_investment: new_attributes }
+        )
         stock_investment.reload
-        expect(response).to redirect_to(investor_stock_investment_url(stock_investment.investor, stock_investment))
+        expect(response).to redirect_to(
+          investor_stock_investment_url(stock_investment.investor, stock_investment)
+        )
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        patch investor_stock_investment_url(stock_investment.investor, stock_investment), params: { stock_investment: invalid_attributes }
+        patch(
+          investor_stock_investment_url(stock_investment.investor, stock_investment), 
+          params: { stock_investment: invalid_attributes }
+        )
         expect(response).to be_successful
       end
     end
