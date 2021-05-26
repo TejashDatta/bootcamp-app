@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "authentication#destroy", as: :logout
 
   resources :users do
-    resources :permissions
+    resource :permissions, only: %i[show update]
   end
   resources :travelers do
     resource :passport
