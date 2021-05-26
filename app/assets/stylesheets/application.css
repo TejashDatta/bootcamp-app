@@ -31,19 +31,30 @@ ul {
   text-align: center;
   background-color: #eee;
 }
+.header a {
+  text-decoration: none;
+}
 
 .navigation {
   float: left;
   padding: 10px 30px;
+  width: 15%;
+  box-sizing: border-box;
 }
 .navigation ul {
   list-style: none;
 }
-.navigation ul li{
-  padding: 15px 0;
+.navigation ul li, .navigation ul h4 {
+  padding: 5px 0;
+  margin: 0;
+}
+.navigation ul .nested {
+  margin-left: 10px;
 }
 
 .content-area {
   float: left;
   padding: 10px;
+  width: 85%;
+  box-sizing: border-box;
 }
