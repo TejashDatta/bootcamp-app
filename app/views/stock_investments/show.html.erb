@@ -13,5 +13,10 @@
   <%= @stock_investment.shares_owned %>
 </p>
 
-<%= link_to "編集", edit_investor_stock_investment_path(@stock_investment.investor , @stock_investment) %> |
+<%=
+  link_to(
+    "編集", 
+    edit_investor_stock_investment_path(@stock_investment.investor , @stock_investment) 
+  )
+%> |
 <%= link_to "戻り", investor_stock_investments_path %>
