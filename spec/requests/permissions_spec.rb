@@ -3,66 +3,22 @@
 RSpec.describe "/users/:user_id/permissions", type: :request do
   include_context "uses authorized user with all permissions"
 
-  let(:valid_attributes) { { action: "users#new" } }
-
-  let(:invalid_attributes) { { action: "" } }
-
-  let(:permission) { create(:permission) }
   let(:user) { create(:user) }
 
   describe "GET /" do
     it "renders a successful response" do
-      get user_permissions_url(permission.user)
+      get user_permissions_url(user)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_user_permission_url(user)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "POST /new" do
-    context "with valid parameters" do
-      it "creates a new Permission" do
-        expect {
-          post user_permissions_url(user), params: { permission: valid_attributes }
-        }.to change(Permission, :count).by(1)
+  describe "PATCH /" do
+    context "with array of actions as parameter" do
+      it "sets users permissions to actions given in array" do
+        patch user_permissions_url(user), params: { actions: ["users#index"] }
+        expect(user.permissions.size).to eq(1)
+        expect(user.permissions.first.action).to eq("users#index")
       end
-
-      it "redirects to user permissions" do
-        post user_permissions_url(user), params: { permission: valid_attributes }
-        expect(response).to redirect_to(user_permissions_url)
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new Permission" do
-        expect {
-          post user_permissions_url(user), params: { permission: invalid_attributes }
-        }.to change(Permission, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post user_permissions_url(user), params: { permission: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested permission" do
-      permission
-      expect {
-        delete user_permission_url(permission.user, permission)
-      }.to change(Permission, :count).by(-1)
-    end
-
-    it "redirects to the user permissions list" do
-      delete user_permission_url(permission.user, permission)
-      expect(response).to redirect_to(user_permissions_url(permission.user))
     end
   end
 end
