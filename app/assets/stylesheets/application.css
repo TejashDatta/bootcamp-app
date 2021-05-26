@@ -58,3 +58,7 @@ ul {
   width: 85%;
   box-sizing: border-box;
 }
+
+.checkbox-label {
+  display: inline;
+}

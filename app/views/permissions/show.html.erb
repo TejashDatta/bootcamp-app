@@ -1,0 +1,14 @@
+<h1><%= @user.email %>の権限</h1>
+
+<%= form_with(url: user_permissions_path, method: "patch", local: true) do |form| %>
+  <% Permission.all_actions.each do |action| %>
+    <div class="field">
+       <%= check_box_tag "actions[]", action, @user.permission?(action) %>
+       <%= form.label action, class: "checkbox-label" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
