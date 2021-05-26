@@ -1,0 +1,26 @@
+<h1><%= @investor.account_number %>の株式投資</h1>
+<p>
+  <%= link_to "新株式投資", new_investor_stock_investment_path %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>銘柄</th>
+      <th>持ち株</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stock_investments.each do |stock_investment| %>
+      <tr>
+        <td><%= stock_investment.stock_name %></td>
+        <td><%= stock_investment.shares_owned %></td>
+        <td><%= link_to "表示", investor_stock_investment_path(@investor, stock_investment) %></td>
+        <td><%= link_to "編集", edit_investor_stock_investment_path(@investor, stock_investment) %></td>
+        <td><%= link_to "削除", investor_stock_investment_path(@investor, stock_investment), method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

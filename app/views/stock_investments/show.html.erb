@@ -1,0 +1,17 @@
+<p>
+  <strong>投資家アカウント番号:</strong>
+  <%= @stock_investment.investor.account_number %>
+</p>
+
+<p>
+  <strong>銘柄:</strong>
+  <%= @stock_investment.stock_name %>
+</p>
+
+<p>
+  <strong>持ち株:</strong>
+  <%= @stock_investment.shares_owned %>
+</p>
+
+<%= link_to "編集", edit_investor_stock_investment_path(@stock_investment.investor , @stock_investment) %> |
+<%= link_to "戻り", investor_stock_investments_path %>

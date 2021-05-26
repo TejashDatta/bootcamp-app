@@ -1,0 +1,6 @@
+<h1>株式投資編集</h1>
+
+<%= render "form", stock_investment: @stock_investment, url: investor_stock_investment_path(@stock_investment.investor, @stock_investment) %>
+
+<%= link_to "表示", investor_stock_investments_path(@stock_investment.investor, @stock_investment) %> |
+<%= link_to "戻り", investor_stock_investments_path %>
