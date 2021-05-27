@@ -1,0 +1,20 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> エラーがあって保存が失敗しました。</h2>
+    </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :name, form: form, errors: project.errors %>
+  <%= render "form_item", attribute: :description, form: form, errors: project.errors %>
+
+  <h4>使用される技術:</h4>
+
+  <%= form.collection_check_boxes :technology_ids, Technology.all, :id, :name %>
+
+  <br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

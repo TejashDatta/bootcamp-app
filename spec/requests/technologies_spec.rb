@@ -3,6 +3,8 @@
 RSpec.describe "/technologies", type: :request do
   include_context "uses authorized user with all permissions"
 
+  let(:technology) { create(:technology) }
+  
   let(:valid_attributes) do
     {
       name: "Ruby"
@@ -14,8 +16,6 @@ RSpec.describe "/technologies", type: :request do
       name: ""
     }
   end
-
-  let(:technology) { create(:technology) }
 
   describe "GET /index" do
     it "renders a successful response" do
