@@ -7,6 +7,7 @@ ja:
       passport: パスポート
       investor: 投資家
       stock_investment: 株式投資
+      technology: 技術
     attributes:
       user:
         name: 名前
@@ -27,3 +28,5 @@ ja:
       stock_investment:
         stock_name: 銘柄
         shares_owned: 持ち株
+      technology:
+        name: 名前

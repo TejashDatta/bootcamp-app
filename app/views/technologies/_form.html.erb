@@ -1,0 +1,13 @@
+<%= form_with(model: technology, local: true) do |form| %>
+  <% if technology.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(technology.errors.count, "error") %> エラーがあって保存が失敗しました。</h2>
+    </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :name, form: form, errors: technology.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
