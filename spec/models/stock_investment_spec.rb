@@ -8,6 +8,11 @@ RSpec.describe StockInvestment, type: :model do
       expect(stock_investment).to be_valid
     end
 
+    it "is invalid without investor" do
+      stock_investment.investor = nil
+      expect(stock_investment).not_to be_valid
+    end
+
     it "is invalid without stock_name" do
       stock_investment.stock_name = nil
       expect(stock_investment).not_to be_valid
@@ -15,6 +20,11 @@ RSpec.describe StockInvestment, type: :model do
 
     it "is invalid without shares_owned" do
       stock_investment.shares_owned = nil
+      expect(stock_investment).not_to be_valid
+    end
+
+    it "is invalid with negative shares_owned" do
+      stock_investment.shares_owned = -1
       expect(stock_investment).not_to be_valid
     end
   end
