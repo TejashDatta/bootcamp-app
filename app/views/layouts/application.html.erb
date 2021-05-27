@@ -18,20 +18,8 @@
       <div class="navigation">
         <h3>メニュー</h3>
         <ul>
-          <li>
-            <h4>ユーザー</h4>
-            <ul class="nested">
-              <li><%= link_to "ユーザー一覧", users_path %></li>
-              <li><%= link_to "新ユーザー", new_user_path %></li>
-            </ul>
-          </li>
-          <li>
-            <h4>旅行者</h4>
-            <ul class="nested">
-              <li><%= link_to "旅行者一覧", travelers_path %></li>
-              <li><%= link_to "新旅行者", new_traveler_path %></li>
-            </ul>
-          </li>
+          <li><%= link_to "ユーザー", users_path %></li>
+          <li><%= link_to "旅行者", travelers_path %></li>
           <li><%= link_to "ログ説明", log_path %></li>
           <li><%= link_to "生成されるSQL", sql_path %></li>
           <li><%= link_to "ログアウト", logout_path, method: :delete, data: { confirm: "ログアウトして宜しいですか?" }  %></li>
