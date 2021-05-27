@@ -18,6 +18,17 @@ RSpec.describe StockInvestment, type: :model do
       expect(stock_investment).not_to be_valid
     end
 
+    it "is invalid when investor already has same stock" do
+      stock_investment.save
+      expect(
+        build(
+          :stock_investment, 
+          investor: stock_investment.investor, 
+          stock_name: stock_investment.stock_name
+        )
+      ).not_to be_valid
+    end
+
     it "is invalid without shares_owned" do
       stock_investment.shares_owned = nil
       expect(stock_investment).not_to be_valid
