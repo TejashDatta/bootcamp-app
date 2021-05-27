@@ -6,3 +6,6 @@ assign_all_permissions(
 FactoryBot.create_list(:user, 10)
 
 FactoryBot.create(:investor)
+FactoryBot.create(:technology, name: "ruby")
+FactoryBot.create(:technology, name: "rails")
+FactoryBot.create(:technology, name: "python")

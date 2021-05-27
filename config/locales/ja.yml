@@ -8,6 +8,7 @@ ja:
       investor: 投資家
       stock_investment: 株式投資
       technology: 技術
+      project: プロジェクト
     attributes:
       user:
         name: 名前
@@ -30,3 +31,6 @@ ja:
         shares_owned: 持ち株
       technology:
         name: 名前
+      project:
+        name: 名前
+        description: 内容

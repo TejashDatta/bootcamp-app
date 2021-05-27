@@ -1,0 +1,26 @@
+<h1>プロジェクト</h1>
+<p>
+  <%= link_to "新プロジェクト", new_project_path %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+        <td><%= link_to "表示", project %></td>
+        <td><%= link_to "編集", edit_project_path(project) %></td>
+        <td><%= link_to "削除", project, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
