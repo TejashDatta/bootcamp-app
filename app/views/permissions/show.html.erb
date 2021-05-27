@@ -3,8 +3,14 @@
 <%= form_with(url: user_permissions_path, method: "patch", local: true) do |form| %>
   <% Permission.all_actions.each do |action| %>
     <div class="field">
-       <%= check_box_tag "actions[]", action, @user.permission?(action) %>
-       <%= form.label action, class: "checkbox-label" %>
+      <%= 
+        form.check_box(
+          :actions, 
+          { multiple: true, id: action, checked: @user.permission?(action) ? "checked" : "" }, 
+          action
+        )
+      %>
+      <%= form.label action, class: "checkbox-label" %>
     </div>
   <% end %>
 
