@@ -9,7 +9,7 @@ RSpec.describe Technology, type: :model do
     end
 
     it "is invalid without name" do
-      technology.name = nil
+      technology.name = ""
       expect(technology).not_to be_valid
     end
   end
