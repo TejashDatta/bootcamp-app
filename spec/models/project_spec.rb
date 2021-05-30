@@ -9,7 +9,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "is invalid without name" do
-      project.name = nil
+      project.name = ""
       expect(project).not_to be_valid
     end
   end

@@ -14,7 +14,7 @@ RSpec.describe StockInvestment, type: :model do
     end
 
     it "is invalid without stock_name" do
-      stock_investment.stock_name = nil
+      stock_investment.stock_name = ""
       expect(stock_investment).not_to be_valid
     end
 
