@@ -1,7 +1,7 @@
 <%= form_with(model: project, local: true) do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> エラーがあって保存が失敗しました。</h2>
+      <h2><%= project.errors.count %> エラーがあって保存が失敗しました。</h2>
     </div>
   <% end %>
 
