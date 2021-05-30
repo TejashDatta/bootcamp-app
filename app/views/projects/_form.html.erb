@@ -10,8 +10,12 @@
 
   <h4>使用される技術:</h4>
 
-  <%= form.collection_check_boxes :technology_ids, Technology.all, :id, :name %>
-
+  <%= form.collection_check_boxes :technology_ids, Technology.all, :id, :name  do |technology| %>
+    <%= technology.check_box %>
+    <%= technology.label class: "checkbox-label" %> 
+    <br>
+  <% end %>
+  
   <br>
 
   <div class="actions">
