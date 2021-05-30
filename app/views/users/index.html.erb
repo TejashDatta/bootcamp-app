@@ -25,3 +25,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= render "paginator", path: :users_path, current_page: @page %>

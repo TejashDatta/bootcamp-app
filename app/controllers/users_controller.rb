@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    per_page = 10
+    @page = params[:page].nil? ? 1 : params[:page].to_i
+    @last_page = User.count.zero? ? 1 : (User.count - 1) / per_page + 1
+    @users = User.all.limit(per_page).offset((@page - 1) * per_page)
   end
 
   def show
