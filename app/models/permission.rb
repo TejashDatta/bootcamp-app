@@ -1,7 +1,4 @@
 class Permission < ApplicationRecord
-  belongs_to :user
-  validates :action, presence: true, uniqueness: { scope: :user_id }
-
   def self.all_actions
     Rails.application.eager_load!
     ApplicationController
@@ -12,4 +9,7 @@ class Permission < ApplicationRecord
       .flatten
       .sort
   end
+  
+  belongs_to :user
+  validates :action, presence: true, uniqueness: { scope: :user_id }, inclusion: all_actions
 end

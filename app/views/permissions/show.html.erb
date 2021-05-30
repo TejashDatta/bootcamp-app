@@ -1,12 +1,30 @@
 <h1><%= @user.email %>の権限</h1>
 
+<%= link_to "ユーザー表示", @user %> |
+<%= link_to "ユーザー編集", edit_user_path(@user) %> |
+<%= link_to "戻る", users_path %>
+
+<br>
+<br>
+
+<button class="check-all">Check All</button>
+<button class="uncheck-all">Uncheck All</button>
+
+<br>
+<br>
+
 <%= form_with(url: user_permissions_path, method: "patch", local: true) do |form| %>
   <% Permission.all_actions.each do |action| %>
     <div class="field">
       <%= 
         form.check_box(
           :actions, 
-          { multiple: true, id: action, checked: @user.permission?(action) ? "checked" : "" }, 
+          { 
+            multiple: true, 
+            id: action, 
+            class: "bulk-check", 
+            checked: @user.permission?(action) ? "checked" : "" 
+          }, 
           action
         )
       %>
