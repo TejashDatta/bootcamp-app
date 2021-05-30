@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :technology do
-    name { "Ruby" }
+    name { "ruby" }
   end
 end
