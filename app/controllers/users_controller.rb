@@ -1,9 +1,11 @@
+require_relative "../paginator"
+
 class UsersController < ApplicationController
   def index
-    per_page = 10
-    @page = params[:page].nil? ? 1 : params[:page].to_i
-    @last_page = User.count.zero? ? 1 : (User.count - 1) / per_page + 1
-    @users = User.all.limit(per_page).offset((@page - 1) * per_page)
+    paginator = Paginator.new(User, params[:page])
+    @page = paginator.page
+    @last_page = paginator.last_page
+    @users = paginator.items
   end
 
   def show
