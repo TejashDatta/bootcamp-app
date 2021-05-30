@@ -43,7 +43,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    # params[:project][:technology_ids].delete("")
     params.require(:project).permit(:name, :description, technology_ids: [])
   end
 end

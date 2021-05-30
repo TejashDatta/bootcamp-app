@@ -18,7 +18,7 @@ RSpec.describe "/projects", type: :request do
     {
       name: "",
       description: "",
-      technology_ids: ["ruby"]
+      technology_ids: []
     }
   end
 
@@ -51,58 +51,58 @@ RSpec.describe "/projects", type: :request do
     end
   end
 
-  # describe "POST /create" do
-  #   context "with valid parameters" do
-  #     it "creates a new Project" do
-  #       expect {
-  #         post projects_url, params: { project: valid_attributes }
-  #       }.to change(Project, :count).by(1)
-  #     end
+  describe "POST /create" do
+    context "with valid parameters" do
+      it "creates a new Project" do
+        expect {
+          post projects_url, params: { project: valid_attributes }
+        }.to change(Project, :count).by(1)
+      end
 
-  #     it "redirects to the created project" do
-  #       post projects_url, params: { project: valid_attributes }
-  #       expect(response).to redirect_to(project_url(Project.last))
-  #     end
-  #   end
+      it "redirects to the created project" do
+        post projects_url, params: { project: valid_attributes }
+        expect(response).to redirect_to(project_url(Project.last))
+      end
+    end
 
-  #   context "with invalid parameters" do
-  #     it "does not create a new Project" do
-  #       expect {
-  #         post projects_url, params: { project: invalid_attributes }
-  #       }.to change(Project, :count).by(0)
-  #     end
+    context "with invalid parameters" do
+      it "does not create a new Project" do
+        expect {
+          post projects_url, params: { project: invalid_attributes }
+        }.to change(Project, :count).by(0)
+      end
 
-  #     it "renders a successful response (i.e. to display the 'new' template)" do
-  #       post projects_url, params: { project: invalid_attributes }
-  #       expect(response).to be_successful
-  #     end
-  #   end
-  # end
+      it "renders a successful response (i.e. to display the 'new' template)" do
+        post projects_url, params: { project: invalid_attributes }
+        expect(response).to be_successful
+      end
+    end
+  end
 
-  # describe "PATCH /update" do
-  #   context "with valid parameters" do
-  #     let(:new_attributes) { { description: "patch project" } }
+  describe "PATCH /update" do
+    context "with valid parameters" do
+      let(:new_attributes) { { description: "patch project" } }
 
-  #     it "updates the requested project" do
-  #       patch project_url(project), params: { project: new_attributes }
-  #       project.reload
-  #       expect(project.description).to eq("patch project")
-  #     end
+      it "updates the requested project" do
+        patch project_url(project), params: { project: new_attributes }
+        project.reload
+        expect(project.description).to eq("patch project")
+      end
 
-  #     it "redirects to the project" do
-  #       patch project_url(project), params: { project: new_attributes }
-  #       project.reload
-  #       expect(response).to redirect_to(project_url(project))
-  #     end
-  #   end
+      it "redirects to the project" do
+        patch project_url(project), params: { project: new_attributes }
+        project.reload
+        expect(response).to redirect_to(project_url(project))
+      end
+    end
 
-  #   context "with invalid parameters" do
-  #     it "renders a successful response (i.e. to display the 'edit' template)" do
-  #       patch project_url(project), params: { project: invalid_attributes }
-  #       expect(response).to be_successful
-  #     end
-  #   end
-  # end
+    context "with invalid parameters" do
+      it "renders a successful response (i.e. to display the 'edit' template)" do
+        patch project_url(project), params: { project: invalid_attributes }
+        expect(response).to be_successful
+      end
+    end
+  end
 
   describe "DELETE /destroy" do
     it "destroys the requested project" do
