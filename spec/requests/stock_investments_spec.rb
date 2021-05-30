@@ -1,7 +1,8 @@
  require 'rails_helper'
 
 RSpec.describe "/investors/:investor_id/stock_investments", type: :request do
-  include_context "uses authorized user with all permissions"
+  include_context "uses authorized user with controller permissions"
+  let(:controller) { StockInvestmentsController }
 
   let(:investor) { create(:investor) }
   let(:stock_investment) { create(:stock_investment) }
