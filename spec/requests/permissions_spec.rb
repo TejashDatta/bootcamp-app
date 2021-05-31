@@ -1,8 +1,8 @@
  require 'rails_helper'
 
 RSpec.describe "/users/:user_id/permissions", type: :request do
-  include_context "uses authorized user with controller permissions"
-  let(:controller) { PermissionsController }
+  include_context "uses authorized user with permissions"
+  let(:permitted_actions_filter) { /permissions/ }
 
   let(:user) { create(:user) }
 

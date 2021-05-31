@@ -1,8 +1,8 @@
  require 'rails_helper'
 
 RSpec.describe "/technologies", type: :request do
-  include_context "uses authorized user with controller permissions"
-  let(:controller) { TechnologiesController }
+  include_context "uses authorized user with permissions"
+  let(:permitted_actions_filter) { /technologies/ }
 
   let(:technology) { create(:technology) }
   
