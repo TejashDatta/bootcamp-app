@@ -2,7 +2,7 @@
 
 RSpec.describe "/investors", type: :request do
   include_context "uses authorized user with permissions"
-  let(:controller_name) { "investors" }
+  let(:permitted_actions_filter) { /investors/ }
   
   let(:valid_attributes) do
     {

@@ -67,7 +67,7 @@ end
 
 RSpec.shared_context "uses authorized user with permissions" do
   before do
-    authorized_user = assign_permissions(create(:user), action_filter: Regexp.new(controller_name))
+    authorized_user = assign_permissions(create(:user), actions_filter: permitted_actions_filter)
     post login_path, params: { email: authorized_user.email, password: authorized_user.password }
   end
 end
