@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "/users", type: :request do 
-  include_context "uses authorized user with controller permissions"
-  let(:controller) { UsersController }
+  include_context "uses authorized user with permissions"
+  let(:controller_name) { "users" }
   
   let(:valid_attributes) do
     {

@@ -10,8 +10,9 @@
 
 <p>
   <strong>使用される技術:</strong>
-  <%  @project.technologies.each do |technology| %>
-    <%= link_to technology.name, technology %> |
+  <%  @project.technologies.each_with_index do |technology, index| %>
+    <% if index > 0 %> | <% end %>
+    <%= link_to technology.name, technology %>
   <% end %>
 </p>
 
