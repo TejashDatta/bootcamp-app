@@ -1,8 +1,8 @@
  require 'rails_helper'
 
 RSpec.describe "/travelers/:traveler_id/passport", type: :request do
-  include_context "uses authorized user with controller permissions"
-  let(:controller) { PassportsController }
+  include_context "uses authorized user with permissions"
+  let(:controller_name) { "passports" }
 
   let(:valid_attributes) do
     {

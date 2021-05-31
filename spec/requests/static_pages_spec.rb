@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "StaticPages", type: :request do
-  include_context "uses authorized user with controller permissions"
-  let(:controller) { StaticPagesController }
+  include_context "uses authorized user with permissions"
+  let(:controller_name) { "static_pages" }
 
   describe "GET / => #home" do
     it "renders a successful response" do

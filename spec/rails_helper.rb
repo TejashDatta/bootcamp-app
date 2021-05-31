@@ -65,9 +65,9 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-RSpec.shared_context "uses authorized user with controller permissions" do
+RSpec.shared_context "uses authorized user with permissions" do
   before do
-    authorized_user = assign_controller_permissions(create(:user), controller)
+    authorized_user = assign_permissions(create(:user), action_filter: Regexp.new(controller_name))
     post login_path, params: { email: authorized_user.email, password: authorized_user.password }
   end
 end
