@@ -1,5 +1,3 @@
-require_relative "../paginator"
-
 class UsersController < ApplicationController
   def index
     paginator = Paginator.new(User, params[:page])
