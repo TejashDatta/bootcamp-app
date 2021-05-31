@@ -1,8 +1,8 @@
  require 'rails_helper'
 
 RSpec.describe "/projects", type: :request do
-  include_context "uses authorized user with controller permissions"
-  let(:controller) { ProjectsController }
+  include_context "uses authorized user with permissions"
+  let(:permitted_actions_filter) { /projects/ }
 
   let(:project) { create(:project) }
   
