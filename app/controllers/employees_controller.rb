@@ -1,6 +1,8 @@
 class EmployeesController < ApplicationController
   def index
     @employees = Employee.all
+    @employees = @employees.filter_by_name(search_params[:name]) if search_params[:name].present?
+    @employees = @employees.filter_by_department(search_params[:department]) if search_params[:department].present?
   end
 
   def show
@@ -44,5 +46,9 @@ class EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:name, :date_of_joining, :department)
+  end
+
+  def search_params
+    params.permit(:name, :department)
   end
 end
