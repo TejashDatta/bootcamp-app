@@ -2,7 +2,7 @@
 
 RSpec.describe "/employees", type: :request do
   include_context "uses authorized user with permissions"
-  let(:controller_name) { "employees" }
+  let(:permitted_actions_filter) { /employees/ }
   
   let(:valid_attributes) do
     {
