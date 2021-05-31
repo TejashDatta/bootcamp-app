@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "/travelers", type: :request do
   include_context "uses authorized user with permissions"
-  let(:controller_name) { "travelers" }
+  let(:permitted_actions_filter) { /travelers/ }
   
   let(:valid_attributes) do
     {
