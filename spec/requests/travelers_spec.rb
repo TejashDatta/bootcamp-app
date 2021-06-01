@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "/travelers", type: :request do
   include_context "uses authorized user with permissions"
-<<<<<<< HEAD
   let(:permitted_actions_filter) { "travelers" }
-=======
-  let(:permitted_actions_filter) { /travelers/ }
->>>>>>> bdac26f7cdad409b2c738972522be054b04c8385
   
   let(:valid_attributes) do
     {

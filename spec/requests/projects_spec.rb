@@ -2,11 +2,7 @@
 
 RSpec.describe "/projects", type: :request do
   include_context "uses authorized user with permissions"
-<<<<<<< HEAD
   let(:permitted_actions_filter) { "projects" }
-=======
-  let(:permitted_actions_filter) { /projects/ }
->>>>>>> bdac26f7cdad409b2c738972522be054b04c8385
 
   let(:project) { create(:project) }
   

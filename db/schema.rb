@@ -79,8 +79,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.references "project", null: false, foreign_key: true
     t.references "technology", null: false, foreign_key: true
   end
-<<<<<<< HEAD
-=======
 
   create_table "employees" do |t|
     t.string "name", null: false
@@ -89,5 +87,4 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
->>>>>>> bdac26f7cdad409b2c738972522be054b04c8385
 end

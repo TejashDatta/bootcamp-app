@@ -2,11 +2,7 @@
 
 RSpec.describe "/travelers/:traveler_id/passport", type: :request do
   include_context "uses authorized user with permissions"
-<<<<<<< HEAD
   let(:permitted_actions_filter) { "passports" }
-=======
-  let(:permitted_actions_filter) { /passports/ }
->>>>>>> bdac26f7cdad409b2c738972522be054b04c8385
 
   let(:valid_attributes) do
     {
