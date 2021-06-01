@@ -1,5 +1,19 @@
 class User < ApplicationRecord
+  has_many :permissions, dependent: :destroy
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :password, presence: true
+
+  def permission?(action)
+    permissions.find_by(action: action)
+  end
+
+  def permit_actions(actions)
+    transaction do
+      permissions.clear
+      actions.each do |action|
+        permissions.create(action: action)
+      end
+    end
+  end
 end

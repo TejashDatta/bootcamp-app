@@ -24,4 +24,10 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.references :user, null: false, foreign_key: true
+    t.string "action", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.index %i[user_id action], name: "index_permissions_on_user_action", unique: true
+  end
 end

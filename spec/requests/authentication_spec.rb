@@ -15,12 +15,12 @@ RSpec.describe "Authentication", type: :request do
       let(:post_params) { { email: user.email, password: user.password } }
 
       it "sets user id in session" do
-        post "/login", params: post_params
+        post login_path, params: post_params
         expect(session[:user_id]).to eq(user.id)
       end
 
       it "redirects to the logged in user" do
-        post "/login", params: post_params
+        post login_path, params: post_params
         expect(response).to redirect_to(user_url(user))
       end
     end
@@ -28,14 +28,14 @@ RSpec.describe "Authentication", type: :request do
     context "when login is invalid" do
       context "when password is wrong" do
         it "renders a successful response (i.e. to display the 'new' login template)" do
-          post "/login", params: { email: user.email, password: "wrong password" }
+          post login_path, params: { email: user.email, password: "wrong password" }
           expect(response).to be_successful
         end
       end
 
       context "when user with email doesn't exist" do
         it "renders a successful response (i.e. to display the 'new' login template)" do
-          post "/login", params: { email: "non-existing@user.com", password: "wrong password" }
+          post login_path, params: { email: "non-existing@user.com", password: "wrong password" }
           expect(response).to be_successful
         end
       end
@@ -43,7 +43,7 @@ RSpec.describe "Authentication", type: :request do
   end
 
   describe "DELETE /logout" do
-    include_context "uses authorized user"
+    include_context "uses authorized user with all permissions"
 
     it "unsets user id in session" do
       delete logout_path

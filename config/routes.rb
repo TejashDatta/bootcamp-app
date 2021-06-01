@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   post "/login", to: "authentication#create"
   delete "/logout", to: "authentication#destroy", as: :logout
 
-  resources :users
+  resources :users do
+    resource :permissions, only: %i[show update]
+  end
 end

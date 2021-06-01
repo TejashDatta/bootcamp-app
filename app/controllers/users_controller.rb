@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: "ユーザーの作成が合格しました."
+      redirect_to @user, notice: "ユーザーの作成が合格しました。"
     else
       render :new
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to @user, notice: "ユーザーの更新が合格しました."
+      redirect_to @user, notice: "ユーザーの更新が合格しました。"
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_url, notice: "ユーザーの削除が合格しました."
+    redirect_to users_url, notice: "ユーザーの削除が合格しました。"
   end
 
   private

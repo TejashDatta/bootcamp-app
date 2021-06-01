@@ -42,4 +42,25 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
   end
+
+  describe "permission association" do
+    describe "#permission?" do
+      it "returns permission of action for user" do
+        user.save
+        permission = create(:permission, user: user)
+        expect(user.permission?(permission.action)).to be_truthy
+      end
+    end
+
+    describe "#permit_actions" do
+      it "sets permitted actions of user to actions in array" do
+        user.save
+        create(:permission, user: user, action: "users#edit")
+        user.permit_actions(["users#new", "users#create"])
+        expect(user.permissions.find_by(action: "users#edit")).to be_falsy
+        expect(user.permissions.find_by(action: "users#new")).to be_truthy
+        expect(user.permissions.find_by(action: "users#create")).to be_truthy
+      end
+    end
+  end
 end
