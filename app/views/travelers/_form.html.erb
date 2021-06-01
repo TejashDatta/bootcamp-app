@@ -1,0 +1,15 @@
+<%= form_with(model: traveler, local: true) do |form| %>
+  <% if traveler.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= traveler.errors.count %> エラーがあって保存が失敗しました。</h2>
+    </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :name, form: form, errors: traveler.errors %>
+  <%= render "form_item", attribute: :departure_country, form: form, errors: traveler.errors %>
+  <%= render "form_item", attribute: :arrival_country, form: form, errors: traveler.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

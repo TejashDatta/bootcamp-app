@@ -1,0 +1,14 @@
+<%= form_with(model: stock_investment, url: url, local: true) do |form| %>
+  <% if stock_investment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= stock_investment.errors.count %> エラーがあって保存が失敗しました。</h2>
+   </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :stock_name, form: form, errors: stock_investment.errors %>
+  <%= render "form_item", attribute: :shares_owned, form: form, errors: stock_investment.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

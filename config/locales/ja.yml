@@ -3,6 +3,10 @@ ja:
     models:
       user: ユーザー
       permission: 権限
+      traveler: 国際旅行者
+      passport: パスポート
+      investor: 投資家
+      stock_investment: 株式投資
     attributes:
       user:
         name: 名前
@@ -10,3 +14,16 @@ ja:
         password: パスワード
       permission:
         action: アクション
+      traveler:
+        name: 名前
+        departure_country: 出発国
+        arrival_country: 到着国
+      passport:
+        passport_number: パスポート番号
+        nationality: 国籍
+      investor:
+        account_number: アカウント番号
+        balance_in_yen: 円で残高
+      stock_investment:
+        stock_name: 銘柄
+        shares_owned: 持ち株

@@ -1,0 +1,17 @@
+<p>
+  <strong>名前:</strong>
+  <%= @traveler.name %>
+</p>
+
+<p>
+  <strong>出発国:</strong>
+  <%= @traveler.departure_country %>
+</p>
+
+<p>
+  <strong>到着国:</strong>
+  <%= @traveler.arrival_country %>
+</p>
+
+<%= link_to "編集", edit_traveler_path(@traveler) %> |
+<%= link_to "戻り", travelers_path %>

@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   resources :users do
     resource :permissions, only: %i[show update]
   end
+  resources :travelers do
+    resource :passport
+  end
+  resources :investors do
+    resources :stock_investments
+  end
 end

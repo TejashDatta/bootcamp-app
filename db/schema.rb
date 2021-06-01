@@ -30,4 +30,35 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.datetime "created_at", precision: 6, null: false
     t.index %i[user_id action], name: "index_permissions_on_user_action", unique: true
   end
+
+  create_table "travelers" do |t|
+    t.string "name", null: false
+    t.string "departure_country", null: false
+    t.string "arrival_country", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "passports" do |t|
+    t.references "traveler", null: false, index: { unique: true }, foreign_key: true
+    t.string "passport_number"
+    t.string "nationality"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "investors" do |t|
+    t.string "account_number", null: false, index: { unique: true }
+    t.integer "balance_in_yen", null: false, default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stock_investments" do |t|
+    t.references "investor", null: false, foreign_key: true
+    t.string "stock_name", null: false
+    t.float "shares_owned", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 end
