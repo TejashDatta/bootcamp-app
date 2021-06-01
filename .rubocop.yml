@@ -1,9 +1,8 @@
 AllCops:
   NewCops: enable
 
-# Commonly used screens these days easily fit more than 80 characters.
-# Metrics/LineLength:
-#   Max: 120
+Layout/LineLength:
+  Max: 100
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
