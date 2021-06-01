@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :projects
-  resources :technologies
   root "static_pages#home"
   get "/log", to: "static_pages#log", as: :log
   get "/sql", to: "static_pages#sql", as: :sql
@@ -18,4 +16,6 @@ Rails.application.routes.draw do
   resources :investors do
     resources :stock_investments
   end
+  resources :projects
+  resources :technologies
 end
