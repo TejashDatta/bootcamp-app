@@ -2,7 +2,7 @@
 
 RSpec.describe "/technologies", type: :request do
   include_context "uses authorized user with permissions"
-  let(:permitted_actions_filter) { /technologies/ }
+  let(:permitted_actions_filter) { "technologies" }
 
   let(:technology) { create(:technology) }
   
