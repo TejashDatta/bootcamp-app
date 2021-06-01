@@ -2,7 +2,11 @@
 
 RSpec.describe "/investors/:investor_id/stock_investments", type: :request do
   include_context "uses authorized user with permissions"
+<<<<<<< HEAD
   let(:permitted_actions_filter) { "stock_investments" }
+=======
+  let(:permitted_actions_filter) { /stock_investments/ }
+>>>>>>> bdac26f7cdad409b2c738972522be054b04c8385
 
   let(:investor) { create(:investor) }
   let(:stock_investment) { create(:stock_investment) }

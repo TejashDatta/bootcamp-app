@@ -44,7 +44,11 @@ RSpec.describe "Authentication", type: :request do
 
   describe "DELETE /logout" do
     include_context "uses authorized user with permissions"
+<<<<<<< HEAD
     let(:permitted_actions_filter) { "authentication" }
+=======
+    let(:permitted_actions_filter) { /authentication/ }
+>>>>>>> bdac26f7cdad409b2c738972522be054b04c8385
 
     it "unsets user id in session" do
       delete logout_path
