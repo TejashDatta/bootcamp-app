@@ -1,7 +1,10 @@
 class EmployeesController < ApplicationController
   def index
     @employee_search = EmployeeSearch.new(search_params)
-    @employees = @employee_search.search
+    paginator = Paginator.new(@employee_search.search, params[:page])
+    @page = paginator.page
+    @last_page = paginator.last_page
+    @employees = paginator.items
   end
 
   def show

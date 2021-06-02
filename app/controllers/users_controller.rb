@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    paginator = Paginator.new(User, params[:page])
+    paginator = Paginator.new(User.all, params[:page])
     @page = paginator.page
     @last_page = paginator.last_page
     @users = paginator.items

@@ -1,6 +1,6 @@
 class TravelersController < ApplicationController
   def index
-    paginator = Paginator.new(Traveler, params[:page])
+    paginator = Paginator.new(Traveler.all, params[:page])
     @page = paginator.page
     @last_page = paginator.last_page
     @travelers = paginator.items
