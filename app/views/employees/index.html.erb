@@ -1,20 +1,8 @@
 <h1>社員</h1>
 
 <h3>社員検索</h3>
-<%= form_with(url: employees_path, method: "get", local: true) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  <div class="field">
-    <%= form.label :department %>
-    <%= form.text_field :department %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit "検索" %>
-  </div>
-<% end %>
+<%= render "search_form", employee_search: @employee_search %>
 
 <p>
   <%= link_to "社員作成", new_employee_path %>

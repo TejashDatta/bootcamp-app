@@ -3,10 +3,10 @@ document.addEventListener("turbolinks:load", () => {
   let uncheckAllButton = document.querySelector(".uncheck-all");
 
   if (checkAllButton)
-    addCheckboxControlListener(checkAllButton, true)
+    addCheckboxControlListener(checkAllButton, true);
 
   if (uncheckAllButton)
-    addCheckboxControlListener(uncheckAllButton, false)
+    addCheckboxControlListener(uncheckAllButton, false);
 });
 
 function addCheckboxControlListener(button, checkboxValue) {
