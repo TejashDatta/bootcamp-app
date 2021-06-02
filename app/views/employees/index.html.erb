@@ -42,6 +42,6 @@
     path: :employees_path,
     current_page: @page,
     last_page: @last_page,
-    params: { employee_search: @employee_search_params } 
+    params: { employee_search: @employee_search.attributes } 
   )
 %>
