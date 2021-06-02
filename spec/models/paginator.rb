@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Paginator, type: :model do
   let(:paginator) do
     create_list(:user, 25)
-    Paginator.new(User, "2", per_page: 10)
+    Paginator.new(User.all, "2", per_page: 10)
   end
   
   describe "#page_from_param" do
