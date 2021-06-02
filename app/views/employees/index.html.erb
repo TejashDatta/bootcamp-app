@@ -36,4 +36,12 @@
   <p>社員が見つかりません。</p> 
 <% end %>
 
-<%= render "paginator", path: :employees_path, current_page: @page, last_page: @last_page %>
+<%= 
+  render(
+    "paginator",
+    path: :employees_path,
+    current_page: @page,
+    last_page: @last_page,
+    params: { employee_search: @employee_search_params } 
+  )
+%>
