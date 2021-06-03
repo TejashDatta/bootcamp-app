@@ -40,8 +40,7 @@
   render(
     "paginator",
     path: :employees_path,
-    current_page: @page,
-    last_page: @last_page,
+    paginator: @paginator,
     params: { employee_search: @employee_search.attributes } 
   )
 %>
