@@ -1,0 +1,21 @@
+<p>
+  <strong>プロジェクト名:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>使用される技術:</strong>
+  <%  @project.technologies.each_with_index do |technology, index| %>
+    <% if index > 0 %> | <% end %>
+    <%= link_to technology.name, technology %>
+  <% end %>
+</p>
+
+
+<%= link_to "編集", edit_project_path(@project) %> |
+<%= link_to "戻り", projects_path %>

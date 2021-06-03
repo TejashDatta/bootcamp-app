@@ -1,0 +1,15 @@
+<p>
+  <strong>技術名:</strong>
+  <%= @technology.name %>
+</p>
+<p>
+  <strong>配置プロジェクト:</strong>
+  <br>
+  <% @technology.projects.each do |project| %>
+    <%= link_to project.name, project %>
+    <br>
+  <% end %>
+</p>
+
+<%= link_to "編集", edit_technology_path(@technology) %> |
+<%= link_to "戻り", technologies_path %>

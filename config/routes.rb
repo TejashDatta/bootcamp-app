@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :investors do
     resources :stock_investments
   end
+  resources :projects
+  resources :technologies
 end
