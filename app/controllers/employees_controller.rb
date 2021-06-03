@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
   def index
-    @employee_search = EmployeeSearch.new(employee_search_params)
-    @paginator = Paginator.new(@employee_search.search, params[:page])
+    @paginator = Paginator.new(Employee.search(search_params), params[:page])
+    @search_params = search_params.to_h.symbolize_keys
     @employees = @paginator.items
   end
 
@@ -48,9 +48,7 @@ class EmployeesController < ApplicationController
     params.require(:employee).permit(:name, :date_of_joining, :department)
   end
 
-  def employee_search_params
-    params
-      .fetch(:employee_search, {})
-      .permit(:name, :department, :date_of_joining_lower_limit, :date_of_joining_upper_limit)
+  def search_params
+    params.permit(:name, :department, :date_of_joining)
   end
 end

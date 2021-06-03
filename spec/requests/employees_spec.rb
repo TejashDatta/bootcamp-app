@@ -37,12 +37,9 @@ RSpec.describe "/employees", type: :request do
         get(
           employees_url,
           params: {
-            employee_search: {
-              name: "john",
-              department: "sales",
-              date_of_joining_lower_limit: "2020-05-01",
-              date_of_joining_upper_limit: "2020-07-01"
-            }
+            name: "John",
+            date_of_joining: "2020-06-20",
+            department: "Sales"
           }
         )
         expect(response).to be_successful

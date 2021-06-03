@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :employee do
-    name { "John" }
-    date_of_joining { "2020-06-20" }
-    department { "Sales" }
+    name { ["Rose", "Mary Jane", "James Parker", "Peter"].sample }
+    date_of_joining { rand(500).days.from_now }
+    department { %w[Marketing Sales Development].sample }
   end
 end

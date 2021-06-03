@@ -2,7 +2,7 @@
 
 <h3>社員検索</h3>
 
-<%= render "search_form", employee_search: @employee_search %>
+<%= render "search_form", model: Employee, url: employees_path, search_params: @search_params %>
 
 <p>
   <%= link_to "社員作成", new_employee_path %>
@@ -41,6 +41,6 @@
     "paginator",
     path: :employees_path,
     paginator: @paginator,
-    params: { employee_search: @employee_search.attributes } 
+    params: @search_params
   )
 %>

@@ -39,12 +39,3 @@ ja:
         name: 名前
         date_of_joining: 入社日
         department: 部署
-  activemodel:
-    models:
-      employee_search: 社員検索
-    attributes:
-      employee_search:
-        name: 名前
-        department: 部署
-        date_of_joining_lower_limit: 入社日下限
-        date_of_joining_upper_limit: 入社日上限

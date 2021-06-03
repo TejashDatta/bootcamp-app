@@ -24,40 +24,16 @@ RSpec.describe Employee, type: :model do
     end
   end
 
-  describe "scopes" do
-    describe "filter_by_name" do
-      it "selects records with name like" do
-        create(:employee, name: "Steve")
-        create(:employee, name: "John Smith")
-        expect(Employee.filter_by_name("john").count).to eq(1)
-      end
+  describe "::search" do
+    it "returns of list employees that meet where conditions on columns exactly" do
+      create(:employee, name: "John", department: "Sales")
+      expect(Employee.search({ "name" => "John", "department" => "Sales" }).count).to eq 1
     end
+  end
 
-    describe "filter_by_department" do
-      it "selects records with department equal to (case insensitive)" do
-        create(:employee, department: "Marketing")
-        create(:employee, department: "Sales")
-        expect(Employee.filter_by_department("sales").count).to eq(1)
-      end
-    end
-
-    context "date_of_joining scopes" do
-      before do
-        create(:employee, date_of_joining: "2020-04-20")
-        create(:employee, date_of_joining: "2020-06-20")
-      end
-
-      describe "filter_by_date_of_joining_lower_limit" do
-        it "selects records with date_of_joining after given date" do
-          expect(Employee.filter_by_date_of_joining_lower_limit("2020-05-20").count).to eq(1)
-        end
-      end
-
-      describe "filter_by_date_of_joining_upper_limit" do
-        it "selects records with date_of_joining before given date" do
-          expect(Employee.filter_by_date_of_joining_upper_limit("2020-05-20").count).to eq(1)
-        end
-      end
+  describe "::searchable_columns" do
+    it "returns names of columns exluding automatic id and timestamps" do
+      expect(Employee.searchable_columns).to eq(%w[name date_of_joining department])
     end
   end
 end
