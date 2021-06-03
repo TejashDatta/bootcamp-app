@@ -1,0 +1,17 @@
+<p>
+  <strong>名前:</strong>
+  <%= @employee.name %>
+</p>
+
+<p>
+  <strong>入社の日:</strong>
+  <%= @employee.date_of_joining %>
+</p>
+
+<p>
+  <strong>部署:</strong>
+  <%= @employee.department %>
+</p>
+
+<%= link_to "編集", edit_employee_path(@employee) %> |
+<%= link_to "戻る", employees_path %>

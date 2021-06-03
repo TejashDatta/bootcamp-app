@@ -9,6 +9,7 @@ ja:
       stock_investment: 株式投資
       technology: 技術
       project: プロジェクト
+      employee: 社員
     attributes:
       user:
         name: 名前
@@ -34,3 +35,7 @@ ja:
       project:
         name: 名前
         description: 内容
+      employee:
+        name: 名前
+        date_of_joining: 入社の日
+        department: 部署

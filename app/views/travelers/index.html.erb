@@ -1,6 +1,6 @@
 <h1>旅行者</h1>
 <p>
-  <%= link_to "新旅行者", new_traveler_path %>
+  <%= link_to "旅行者作成", new_traveler_path %>
 </p>
 
 <table>
@@ -38,3 +38,4 @@
 
 <br>
 
+<%= render "paginator", path: :travelers_path, current_page: @page %>
