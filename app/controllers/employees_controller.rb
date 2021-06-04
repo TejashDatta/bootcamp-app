@@ -49,6 +49,14 @@ class EmployeesController < ApplicationController
   end
 
   def search_params
+    validate_date_of_joining
     params.permit(:name, :department, :date_of_joining)
+  end
+
+  def validate_date_of_joining
+    return if params[:date_of_joining] =~ /\d{4}-\d{2}-\d{2}/
+
+    flash.alert = "Incorrect date format yyyy-mm-dd"
+    params[:date_of_joining] = nil
   end
 end
