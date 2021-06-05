@@ -54,7 +54,7 @@ class EmployeesController < ApplicationController
   end
 
   def validate_date_of_joining
-    return if params[:date_of_joining] =~ /\d{4}-\d{2}-\d{2}/
+    return if params[:date_of_joining].blank? || params[:date_of_joining] =~ /\d{4}-\d{2}-\d{2}/
 
     flash.alert = "Incorrect date format yyyy-mm-dd"
     params[:date_of_joining] = nil
