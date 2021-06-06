@@ -50,7 +50,7 @@ class EmployeesController < ApplicationController
 
   def search_params
     validate_date_of_joining
-    params.permit(:name, :department, :date_of_joining)
+    params.except(:page).permit(:name, :department, :date_of_joining)
   end
 
   def validate_date_of_joining
