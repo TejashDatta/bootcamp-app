@@ -26,4 +26,10 @@ class ApplicationController < ActionController::Base
 
     redirect_back fallback_location: login_path, alert: "この操作を行う権限を持っていません。"
   end
+
+  def authenticate_same_user(user_id)
+    return if user_id.to_i == current_user.id
+
+    redirect_back fallback_location: login_path, alert: "該当のユーザーのみがこの操作をできます。"
+  end
 end

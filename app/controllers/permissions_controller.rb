@@ -1,4 +1,6 @@
 class PermissionsController < ApplicationController
+  before_action -> { authenticate_same_user params[:user_id] }
+  
   def show
     @user = User.find(params[:user_id])
   end

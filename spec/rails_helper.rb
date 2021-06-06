@@ -66,8 +66,11 @@ RSpec.configure do |config|
 end
 
 RSpec.shared_context "uses authorized user with permissions" do
+  let(:authorized_user) do
+    assign_permissions(create(:user), actions_filter: permitted_actions_filter)
+  end
+  
   before do
-    authorized_user = assign_permissions(create(:user), actions_filter: permitted_actions_filter)
     post login_path, params: { email: authorized_user.email, password: authorized_user.password }
   end
 end
