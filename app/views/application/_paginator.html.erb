@@ -2,7 +2,7 @@
 <div class="paginator">
   <%= link_to_if paginator.page > 1, "最初", send(path, **params) %>
   <%= link_to_if paginator.page > 1,  "前", send(path, page: paginator.page - 1, **params) %>
-  <% if paginator.page > 1%>
+  <% if paginator.page > 1 %>
     ...
   <% end %>
   <% (paginator.page..paginator.end_page).each do |page| %>
