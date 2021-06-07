@@ -11,5 +11,4 @@ FactoryBot.create(:technology, name: "ruby")
 FactoryBot.create(:technology, name: "rails")
 FactoryBot.create(:technology, name: "python")
 
-FactoryBot.create_list(:employee, 1_000_000)
-# FactoryBot.create_list(:employee, 100)
+FactoryBot.create_list(:employee, 100)
