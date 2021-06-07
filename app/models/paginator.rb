@@ -1,11 +1,11 @@
 class Paginator
   attr_reader :page, :end_page
   
-  def initialize(items, page_param, per_page: 10)
+  def initialize(items, page_param, per_page: 10, page_links_limit: 10)
     @items = items
     @page = page_from_param(page_param)
     @per_page = per_page
-    @end_page = @page + 9
+    @end_page = @page + (page_links_limit - 1)
     @end_page = last_page if @end_page > last_page
   end
 
