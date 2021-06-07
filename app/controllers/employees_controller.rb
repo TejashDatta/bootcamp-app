@@ -1,7 +1,11 @@
 class EmployeesController < ApplicationController
   def index
-    @paginator = Paginator.new(Employee.search(search_params), params[:page])
     @search_params = search_params.to_h.symbolize_keys
+    @search_errors = Employee.validate_search_params(search_params)
+    @paginator = Paginator.new(
+      @search_errors.empty? ? Employee.search(search_params) : Employee.all,
+      params[:page]
+    )
     @employees = @paginator.items
   end
 
@@ -49,14 +53,6 @@ class EmployeesController < ApplicationController
   end
 
   def search_params
-    validate_date_of_joining
     params.except(:page).permit(:name, :department, :date_of_joining)
-  end
-
-  def validate_date_of_joining
-    return if params[:date_of_joining].blank? || params[:date_of_joining] =~ /\d{4}-\d{2}-\d{2}/
-
-    flash.alert = "Incorrect date format yyyy-mm-dd"
-    params[:date_of_joining] = nil
   end
 end

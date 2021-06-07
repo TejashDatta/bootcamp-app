@@ -1,6 +1,11 @@
 <%= form_with(url: url, method: "get", local: true, class: "clearable-form") do |form| %>
   <% model.searchable_columns.map(&:to_sym).each do |column| %>
     <div class="field">
+      <ul class="errors">
+        <% errors.fetch(column, []).each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
       <%= form.label(model.human_attribute_name(column)) %>
       <%= form.send(field_for_column_type(model, column), column, value: search_params[column]) %>
     </div>

@@ -2,7 +2,15 @@
 
 <h3>社員検索</h3>
 
-<%= render "search_form", model: Employee, url: employees_path, search_params: @search_params %>
+<%= 
+  render(
+    "search_form", 
+    model: Employee, 
+    url: employees_path, 
+    search_params: @search_params, 
+    errors: @search_errors
+  )
+%>
 
 <p>
   <%= link_to "社員作成", new_employee_path %>
