@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   resources :investors do
     resources :stock_investments
+    post :login, on: :member
   end
   resources :technologies
   resources :projects
