@@ -16,14 +16,6 @@
   検索実行時間： <%= @query_execution_time.round(3) %> ms
 <% end %>
 
-<% if @search_params[:date_of_joining].present? %>
-  検索実行時間： <%= @query_execution_time.round(3) %> ms
-<% end %>
-
-<% if @search_params[:date_of_joining].present? %>
-  検索実行時間： <%= @query_execution_time.round(3) %> ms
-<% end %>
-
 <p>
   <%= link_to "社員作成", new_employee_path %>
 </p>
