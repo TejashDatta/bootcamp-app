@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
     @search_params = search_params.to_h.symbolize_keys
     @search_errors = Employee.validate_search_params(search_params)
     @paginator = Paginator.new(
-      @search_errors.empty? ? Employee.search(search_params) : Employee.all,
+      @search_errors.empty? ? Employee.search(search_params) : Employee.none,
       params[:page]
     )
     @employees = @paginator.items
