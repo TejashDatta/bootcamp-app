@@ -1,4 +1,8 @@
 class TravelersController < ApplicationController
+  include TravelerAuthentication
+  
+  before_action -> { authenticate_same_traveler params[:id] }, only: %i[show edit update destroy]
+  
   def index
     @paginator = Paginator.new(Traveler.all, params[:page])
     @travelers = @paginator.items
@@ -20,6 +24,7 @@ class TravelersController < ApplicationController
     @traveler = Traveler.new(traveler_params)
 
     if @traveler.save
+      session[:traveler_id] = @traveler.id
       redirect_to @traveler, notice: "国際旅行者の作成が合格しました。"
     else
       render :new
@@ -39,6 +44,12 @@ class TravelersController < ApplicationController
   def destroy
     Traveler.find(params[:id]).destroy
     redirect_to travelers_url, notice: "国際旅行者の削除が合格しました。"
+  end
+
+  def login
+    traveler = Traveler.find(params[:id])
+    session[:traveler_id] = traveler.id
+    redirect_to travelers_url, notice: "#{traveler.name}としてログインしました。"
   end
 
   private

@@ -22,6 +22,10 @@ RSpec.describe "/travelers", type: :request do
 
   let(:traveler) { create(:traveler) }
 
+  shared_context "traveler logged in" do
+    before { post login_traveler_url(traveler) }
+  end
+
   describe "GET /index" do
     it "renders a successful response" do
       traveler
@@ -31,6 +35,8 @@ RSpec.describe "/travelers", type: :request do
   end
 
   describe "GET /show" do
+    include_context "traveler logged in"
+
     it "renders a successful response" do
       get traveler_url(traveler)
       expect(response).to be_successful
@@ -45,6 +51,8 @@ RSpec.describe "/travelers", type: :request do
   end
 
   describe "GET /edit" do
+    include_context "traveler logged in"
+
     it "render a successful response" do
       get edit_traveler_url(traveler)
       expect(response).to be_successful
@@ -80,6 +88,8 @@ RSpec.describe "/travelers", type: :request do
   end
 
   describe "PATCH /update" do
+    include_context "traveler logged in"
+
     context "with valid parameters" do
       let(:new_attributes) { { arrival_country: "China" } }
 
@@ -105,6 +115,8 @@ RSpec.describe "/travelers", type: :request do
   end
 
   describe "DELETE /destroy" do
+    include_context "traveler logged in"
+    
     it "destroys the requested traveler" do
       traveler
       expect {
@@ -115,6 +127,13 @@ RSpec.describe "/travelers", type: :request do
     it "redirects to the travelers list" do
       delete traveler_url(traveler)
       expect(response).to redirect_to(travelers_url)
+    end
+  end
+
+  describe "POST /login" do
+    it "sets traveler_id in session" do
+      post login_traveler_url(traveler)
+      expect(session[:traveler_id]).to eq(traveler.id)
     end
   end
 end
