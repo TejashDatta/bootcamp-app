@@ -6,7 +6,12 @@ class EmployeesController < ApplicationController
       @search_errors.empty? ? Employee.search(search_params) : Employee.none,
       params[:page]
     )
-    @employees = @paginator.items
+
+    before_query_execution = Time.now
+    @employees = @paginator.items.load
+    after_query_execution = Time.now
+    
+    @query_execution_time = (after_query_execution - before_query_execution) * 1000
   end
 
   def show
