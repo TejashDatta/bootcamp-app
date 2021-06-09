@@ -2,7 +2,7 @@
 
 RSpec.describe "/travelers/:traveler_id/passport", type: :request do
   include_context "uses authorized user with permissions"
-  let(:permitted_actions_filter) { "(passports|travelers)" }
+  let(:permitted_actions_filter) { "passports" }
 
   let(:valid_attributes) do
     {
@@ -18,10 +18,8 @@ RSpec.describe "/travelers/:traveler_id/passport", type: :request do
     }
   end
 
-  let(:traveler) { create(:traveler) }
+  let(:traveler) { create(:traveler, account_user: authorized_user) }
   let(:passport) { create(:passport, traveler: traveler) }
-
-  before { post login_traveler_url(traveler) }
 
   describe "GET /" do
     it "renders a successful response" do

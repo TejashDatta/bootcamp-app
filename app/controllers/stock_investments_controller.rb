@@ -1,7 +1,7 @@
 class StockInvestmentsController < ApplicationController
   include InvestorAuthentication
   
-  before_action -> { authenticate_same_investor params[:investor_id] }
+  before_action -> { authenticate_investor_account_user params[:investor_id] }
   
   def index
     @investor = Investor.find(params[:investor_id])

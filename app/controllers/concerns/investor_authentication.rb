@@ -1,9 +1,9 @@
 module InvestorAuthentication
   private
 
-  def authenticate_same_investor(investor_id)
-    return if investor_id.to_i == session[:investor_id]
-    
-    redirect_to investors_path, alert: "該当の投資家のみがこの操作をできます。"
+  def authenticate_investor_account_user(investor_id)
+    return if Investor.find(investor_id).account_user == current_user
+
+    redirect_to investors_path, alert: "アカウント連携のユーザーのみがこの操作をできます。"
   end
 end

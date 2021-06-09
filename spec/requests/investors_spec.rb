@@ -18,11 +18,7 @@ RSpec.describe "/investors", type: :request do
     }
   end
 
-  let(:investor) { create(:investor) }
-
-  shared_context "investor logged in" do
-    before { post login_investor_url(investor) }
-  end
+  let(:investor) { create(:investor, account_user: authorized_user) }
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -33,8 +29,6 @@ RSpec.describe "/investors", type: :request do
   end
 
   describe "GET /show" do
-    include_context "investor logged in"
-    
     it "renders a successful response" do
       get investor_url(investor)
       expect(response).to be_successful
@@ -49,8 +43,6 @@ RSpec.describe "/investors", type: :request do
   end
 
   describe "GET /edit" do
-    include_context "investor logged in"
-    
     it "render a successful response" do
       get edit_investor_url(investor)
       expect(response).to be_successful
@@ -86,8 +78,6 @@ RSpec.describe "/investors", type: :request do
   end
 
   describe "PATCH /update" do
-    include_context "investor logged in"
-
     context "with valid parameters" do
       let(:new_attributes) { { balance_in_yen: 20 } }
 
@@ -113,8 +103,6 @@ RSpec.describe "/investors", type: :request do
   end
 
   describe "DELETE /destroy" do
-    include_context "investor logged in"
-    
     it "destroys the requested investor" do
       investor
       expect {

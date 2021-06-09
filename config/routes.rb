@@ -12,11 +12,9 @@ Rails.application.routes.draw do
   end
   resources :travelers do
     resource :passport
-    post :login, on: :member
   end
   resources :investors do
     resources :stock_investments
-    post :login, on: :member
   end
   resources :technologies
   resources :projects
