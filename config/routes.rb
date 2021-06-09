@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :technologies
   resources :projects
   resources :employees
+  resources :citizens
 end

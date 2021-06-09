@@ -10,6 +10,7 @@ ja:
       technology: 技術
       project: プロジェクト
       employee: 社員
+      citizen: 市民
     attributes:
       user:
         name: 名前
@@ -39,3 +40,6 @@ ja:
         name: 名前
         date_of_joining: 入社日
         department: 部署
+      citizen:
+        name: 名前
+        city: 都市
