@@ -1,4 +1,4 @@
- require 'rails_helper'
+require 'rails_helper'
 
 RSpec.describe "/travelers/:traveler_id/passport", type: :request do
   include_context "uses authorized user with permissions"
