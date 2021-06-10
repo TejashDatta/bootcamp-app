@@ -1,4 +1,8 @@
 class PassportsController < ApplicationController
+  include TravelerAuthentication
+  
+  before_action -> { authenticate_traveler_account_user params[:traveler_id] }
+
   def show
     @passport = Passport.find_by(traveler_id: params[:traveler_id])
   end

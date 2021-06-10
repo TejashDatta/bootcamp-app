@@ -20,7 +20,7 @@ RSpec.describe "/travelers", type: :request do
     }
   end
 
-  let(:traveler) { create(:traveler) }
+  let(:traveler) { create(:traveler, account_user: authorized_user) }
 
   describe "GET /index" do
     it "renders a successful response" do

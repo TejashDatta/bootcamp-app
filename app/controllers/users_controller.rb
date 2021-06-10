@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action -> { authenticate_same_user params[:id] }, only: %i[show edit update destroy]
+
   def index
     @paginator = Paginator.new(User.all, params[:page])
     @users = @paginator.items

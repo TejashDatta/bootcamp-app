@@ -1,4 +1,8 @@
 class TravelersController < ApplicationController
+  include TravelerAuthentication
+  
+  before_action -> { authenticate_traveler_account_user params[:id] }, only: %i[show edit update destroy]
+  
   def index
     @paginator = Paginator.new(Traveler.all, params[:page])
     @travelers = @paginator.items
@@ -9,7 +13,7 @@ class TravelersController < ApplicationController
   end
 
   def new
-    @traveler = Traveler.new
+    @traveler = current_user.traveler_accounts.build
   end
 
   def edit
@@ -17,9 +21,10 @@ class TravelersController < ApplicationController
   end
 
   def create
-    @traveler = Traveler.new(traveler_params)
+    @traveler = current_user.traveler_accounts.build(traveler_params)
 
     if @traveler.save
+      session[:traveler_id] = @traveler.id
       redirect_to @traveler, notice: "国際旅行者の作成が合格しました。"
     else
       render :new

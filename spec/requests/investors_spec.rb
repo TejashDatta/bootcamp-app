@@ -18,7 +18,7 @@ RSpec.describe "/investors", type: :request do
     }
   end
 
-  let(:investor) { create(:investor) }
+  let(:investor) { create(:investor, account_user: authorized_user) }
 
   describe "GET /index" do
     it "renders a successful response" do

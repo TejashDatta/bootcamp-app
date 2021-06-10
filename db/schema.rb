@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
   end
 
   create_table "travelers" do |t|
+    t.references "user", null: false, foreign_key: true
     t.string "name", null: false
     t.string "departure_country", null: false
     t.string "arrival_country", null: false
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
   end
 
   create_table "investors" do |t|
+    t.references "user", null: false, foreign_key: true
     t.string "account_number", null: false, index: { unique: true }
     t.integer "balance_in_yen", null: false, default: 0
     t.datetime "created_at", precision: 6, null: false

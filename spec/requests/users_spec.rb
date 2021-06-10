@@ -32,7 +32,7 @@ RSpec.describe "/users", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
-      get user_url(user)
+      get user_url(authorized_user)
       expect(response).to be_successful
     end
   end
@@ -46,7 +46,7 @@ RSpec.describe "/users", type: :request do
 
   describe "GET /edit" do
     it "render a successful response" do
-      get edit_user_url(user)
+      get edit_user_url(authorized_user)
       expect(response).to be_successful
     end
   end
@@ -84,21 +84,21 @@ RSpec.describe "/users", type: :request do
       let(:new_attributes) { { name: "new name" } }
 
       it "updates the requested user" do
-        patch user_url(user), params: { user: new_attributes }
-        user.reload
-        expect(user.name).to eq("new name")
+        patch user_url(authorized_user), params: { user: new_attributes }
+        authorized_user.reload
+        expect(authorized_user.name).to eq("new name")
       end
 
       it "redirects to the user" do
-        patch user_url(user), params: { user: new_attributes }
-        user.reload
-        expect(response).to redirect_to(user_url(user))
+        patch user_url(authorized_user), params: { user: new_attributes }
+        authorized_user.reload
+        expect(response).to redirect_to(user_url(authorized_user))
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        patch user_url(user), params: { user: invalid_attributes }
+        patch user_url(authorized_user), params: { user: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -106,12 +106,11 @@ RSpec.describe "/users", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested user" do
-      created_user = user
-      expect { delete user_url(created_user) }.to change(User, :count).by(-1)
+      expect { delete user_url(authorized_user) }.to change(User, :count).by(-1)
     end
 
     it "redirects to the users list" do
-      delete user_url(user)
+      delete user_url(authorized_user)
       expect(response).to redirect_to(users_url)
     end
   end

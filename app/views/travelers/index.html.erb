@@ -6,6 +6,7 @@
 <table>
   <thead>
     <tr>
+      <th>アカウントユーザー</th>
       <th>名前</th>
       <th>出発国</th>
       <th>到着国</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @travelers.each do |traveler| %>
       <tr>
+        <td><%= traveler.account_user.email %></td>
         <td><%= traveler.name %></td>
         <td><%= traveler.departure_country %></td>
         <td><%= traveler.arrival_country %></td>

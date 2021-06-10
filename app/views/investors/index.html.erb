@@ -6,6 +6,7 @@
 <table>
   <thead>
     <tr>
+      <th>アカウントユーザー</th>
       <th>アカウント番号</th>
       <th>円で残高</th>
       <th colspan="4"></th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @investors.each do |investor| %>
       <tr>
+        <td><%= investor.account_user.email %></td>
         <td><%= investor.account_number %></td>
         <td><%= investor.balance_in_yen %></td>
         <td><%= link_to "表示", investor %></td>

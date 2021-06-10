@@ -1,11 +1,15 @@
 class StockInvestmentsController < ApplicationController
+  include InvestorAuthentication
+  
+  before_action -> { authenticate_investor_account_user params[:investor_id] }
+  
   def index
     @investor = Investor.find(params[:investor_id])
     @stock_investments = @investor.stock_investments
   end
 
   def show
-    @stock_investment = StockInvestment.find(params[:id])
+    @stock_investment = Investor.find(params[:investor_id]).stock_investments.find(params[:id])
   end
 
   def new
@@ -13,7 +17,7 @@ class StockInvestmentsController < ApplicationController
   end
 
   def edit
-    @stock_investment = StockInvestment.find(params[:id])
+    @stock_investment = Investor.find(params[:investor_id]).stock_investments.find(params[:id])
   end
 
   def create
@@ -31,7 +35,7 @@ class StockInvestmentsController < ApplicationController
   end
 
   def update
-    @stock_investment = StockInvestment.find(params[:id])
+    @stock_investment = Investor.find(params[:investor_id]).stock_investments.find(params[:id])
 
     if @stock_investment.update(stock_investment_params)
       redirect_to(
@@ -44,7 +48,7 @@ class StockInvestmentsController < ApplicationController
   end
 
   def destroy
-    StockInvestment.find(params[:id]).destroy
+    Investor.find(params[:investor_id]).stock_investments.find(params[:id]).destroy
     redirect_to investor_stock_investments_url, notice: "株式投資の作成が合格しました。"
   end
 

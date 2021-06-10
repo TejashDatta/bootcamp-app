@@ -4,11 +4,9 @@ RSpec.describe "/users/:user_id/permissions", type: :request do
   include_context "uses authorized user with permissions"
   let(:permitted_actions_filter) { "permissions" }
 
-  let(:user) { create(:user) }
-
   describe "GET /" do
     it "renders a successful response" do
-      get user_permissions_url(user)
+      get user_permissions_url(authorized_user)
       expect(response).to be_successful
     end
   end
@@ -16,9 +14,9 @@ RSpec.describe "/users/:user_id/permissions", type: :request do
   describe "PATCH /" do
     context "with array of actions as parameter" do
       it "sets users permissions to actions given in array" do
-        patch user_permissions_url(user), params: { actions: ["users#index"] }
-        expect(user.permissions.size).to eq(1)
-        expect(user.permissions.first.action).to eq("users#index")
+        patch user_permissions_url(authorized_user), params: { actions: ["users#index"] }
+        expect(authorized_user.permissions.size).to eq(1)
+        expect(authorized_user.permissions.first.action).to eq("users#index")
       end
     end
   end
