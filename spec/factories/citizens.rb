@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :citizen do
-    name { "Tejash" }
-    city { "Kolkata" }
+    sequence(:name) { |index| "Name-#{index}" }
+    city { %w[Nagoya Tokyo Sapporo Osaka].sample }
   end
 end
