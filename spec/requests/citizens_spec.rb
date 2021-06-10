@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "/citizens", type: :request do
   include_context "uses authorized user with permissions"
@@ -26,11 +26,35 @@ RSpec.describe "/citizens", type: :request do
       get citizens_url
       expect(response).to be_successful
     end
+
+    context "with search" do
+      it "renders a successful response" do
+        citizen
+        get citizens_url, params: { city: "Tokyo" }
+        expect(response).to be_successful
+      end
+    end
+  end
+
+  describe "GET /index_vulnerable" do
+    it "renders a successful response for sql injection search" do
+      citizen
+      get citizens_url, params: { city: "') OR 1=1--" }
+      expect(response).to be_successful
+    end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
       get citizen_url(citizen)
+      expect(response).to be_successful
+    end
+  end
+
+  describe "GET /show_vulnerable" do
+    it "renders a successful response when sql injection in id" do
+      citizen
+      get show_vulnerable_citizen_url("#{citizen.id + 1}' OR name='#{citizen.name}")
       expect(response).to be_successful
     end
   end
@@ -45,6 +69,13 @@ RSpec.describe "/citizens", type: :request do
   describe "GET /edit" do
     it "render a successful response" do
       get edit_citizen_url(citizen)
+      expect(response).to be_successful
+    end
+  end
+
+  describe "GET /edit_vulnerable" do
+    it "render a successful response" do
+      get edit_vulnerable_citizen_url(citizen)
       expect(response).to be_successful
     end
   end
@@ -99,6 +130,17 @@ RSpec.describe "/citizens", type: :request do
         patch citizen_url(citizen), params: { citizen: invalid_attributes }
         expect(response).to be_successful
       end
+    end
+  end
+
+  describe "PATCH /update_vulnerable" do
+    it "can update columns not in permitted params" do
+      expect {
+        patch(
+          update_vulnerable_citizen_url(citizen),
+          params: { citizen: { name: "name', id='#{citizen.id + 1}" } }
+        )
+      }.to raise_error ActiveRecord::RecordNotFound
     end
   end
 

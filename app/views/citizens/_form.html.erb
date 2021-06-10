@@ -1,4 +1,4 @@
-<%= form_with(model: citizen, local: true) do |form| %>
+<%= form_with(model: citizen, url: url, local: true) do |form| %>
   <% if citizen.errors.any? %>
     <div id="error_explanation">
       <h2><%= citizen.errors.count %> エラーがあって保存が失敗しました。</h2>

@@ -19,5 +19,11 @@ Rails.application.routes.draw do
   resources :technologies
   resources :projects
   resources :employees
-  resources :citizens
+  resources :citizens do
+    get :index_vulnerable, on: :collection
+    get :show_vulnerable, on: :member
+    get :edit_vulnerable, on: :member
+    patch :update_vulnerable, on: :member
+    put :update_vulnerable, on: :member
+  end
 end
