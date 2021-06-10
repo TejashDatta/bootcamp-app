@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Employee, type: :model do
   let(:employee) { build(:employee) }
-  
+
   describe "validations" do
     it "is valid when all attributes are valid" do
       expect(employee).to be_valid
@@ -21,6 +21,27 @@ RSpec.describe Employee, type: :model do
     it "is invalid without department" do
       employee.department = ""
       expect(employee).not_to be_valid
+    end
+  end
+
+  describe "::search" do
+    it "returns of list employees that meet where conditions on columns exactly" do
+      create(:employee, name: "John", department: "Sales")
+      expect(Employee.search({ "name" => "John", "department" => "Sales" }).count).to eq 1
+    end
+  end
+
+  describe "::searchable_columns" do
+    it "returns names of columns exluding automatic id and timestamps" do
+      expect(Employee.searchable_columns).to eq(%w[name date_of_joining department])
+    end
+  end
+
+  describe "::validate_search_params" do
+    it "validates that date_of_joining is in proper format" do
+      expect(
+        Employee.validate_search_params({ date_of_joining: "12 Jan 2021" })[:date_of_joining].length
+      ).to eq 1
     end
   end
 end

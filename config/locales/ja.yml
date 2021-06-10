@@ -37,5 +37,5 @@ ja:
         description: 内容
       employee:
         name: 名前
-        date_of_joining: 入社の日
+        date_of_joining: 入社日
         department: 部署

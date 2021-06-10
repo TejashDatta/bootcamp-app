@@ -1,6 +1,16 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Employee.all
+    @search_params = search_params.to_h.symbolize_keys
+    @search_errors = Employee.validate_search_params(search_params)
+    return unless @search_errors.empty?
+
+    @paginator = Paginator.new(Employee.search(search_params), params[:page])
+
+    before_query_execution = Time.now
+    @employees = @paginator.items.load
+    after_query_execution = Time.now
+    
+    @query_execution_time = (after_query_execution - before_query_execution) * 1000
   end
 
   def show
@@ -44,5 +54,9 @@ class EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:name, :date_of_joining, :department)
+  end
+
+  def search_params
+    params.except(:page).permit(:name, :department, :date_of_joining)
   end
 end

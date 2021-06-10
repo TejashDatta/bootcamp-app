@@ -10,3 +10,5 @@ FactoryBot.create(:investor)
 FactoryBot.create(:technology, name: "ruby")
 FactoryBot.create(:technology, name: "rails")
 FactoryBot.create(:technology, name: "python")
+
+FactoryBot.create_list(:employee, 100)

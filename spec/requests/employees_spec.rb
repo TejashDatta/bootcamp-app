@@ -1,9 +1,9 @@
- require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "/employees", type: :request do
   include_context "uses authorized user with permissions"
-  let(:permitted_actions_filter) { /employees/ }
-  
+  let(:permitted_actions_filter) { "employees" }
+
   let(:valid_attributes) do
     {
       name: "John",
@@ -23,10 +23,27 @@ RSpec.describe "/employees", type: :request do
   let(:employee) { create(:employee) }
 
   describe "GET /index" do
-    it "renders a successful response" do
-      employee
-      get employees_url
-      expect(response).to be_successful
+    context "without search" do
+      it "renders a successful response" do
+        employee
+        get employees_url
+        expect(response).to be_successful
+      end
+    end
+
+    context "with search" do
+      it "renders a successful response" do
+        employee
+        get(
+          employees_url,
+          params: {
+            name: "John",
+            date_of_joining: "2020-06-20",
+            department: "Sales"
+          }
+        )
+        expect(response).to be_successful
+      end
     end
   end
 

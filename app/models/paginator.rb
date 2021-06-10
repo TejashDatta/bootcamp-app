@@ -1,8 +1,8 @@
 class Paginator
   attr_reader :page
   
-  def initialize(model, page_param, per_page: 10)
-    @model = model
+  def initialize(items, page_param, per_page: 10)
+    @items = items
     @page = page_from_param(page_param)
     @per_page = per_page
   end
@@ -12,10 +12,10 @@ class Paginator
   end
 
   def last_page
-    @model.count.zero? ? 1 : (@model.count - 1) / @per_page + 1
+    @items.count.zero? ? 1 : (@items.count - 1) / @per_page + 1
   end
 
   def items
-    @model.all.limit(@per_page).offset((@page - 1) * @per_page)
+    @items.limit(@per_page).offset((@page - 1) * @per_page)
   end
 end
