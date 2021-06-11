@@ -1,6 +1,5 @@
 class CitizensController < ApplicationController
   def index
-    @path = citizens_path
     @search_params = search_params
     @citizens = Citizen.all
     @search_params.each do |column, value|
@@ -9,7 +8,6 @@ class CitizensController < ApplicationController
   end
 
   def index_vulnerable
-    @path = index_vulnerable_citizens_path
     @search_params = search_params
     @citizens = Citizen.all
     @search_params.each do |column, value|

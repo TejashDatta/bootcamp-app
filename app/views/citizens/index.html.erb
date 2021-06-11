@@ -1,17 +1,25 @@
 <h1>市民</h1>
 
-<%= link_to "強靭な検索", citizens_path%> |
-<%= link_to "脆弱な検索", index_vulnerable_citizens_path%>
-
 <p>
   <%= link_to "市民作成", new_citizen_path %>
 </p>
 
+<h3>強靭な検索</h3>
 <%= 
   render(
     "search_form", 
     model: Citizen, 
-    url: @path, 
+    url: citizens_path, 
+    search_params: @search_params
+  )
+%>
+
+<h3>脆弱な検索</h3>
+<%= 
+  render(
+    "search_form", 
+    model: Citizen, 
+    url: index_vulnerable_citizens_path, 
     search_params: @search_params
   )
 %>
