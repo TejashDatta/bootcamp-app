@@ -1,0 +1,93 @@
+<h2>非正規化テーブル</h2>
+
+<table border='1'>
+  <caption>サイト訪問者</caption>
+  <tr>
+    <th>ID番号</th>
+    <th>名前</th>
+    <th>国</th>
+    <th>ブラウザ</th>
+    <th>ブラウザ開発者</th>
+    <th>ブラウザプラットホーム</th>
+  </tr>
+  <% @unnormalized_site_visitors.each do |site_visitor| %>
+    <tr>
+      <td><%= site_visitor.id %></td>
+      <td><%= site_visitor.name %></td>
+      <td><%= site_visitor.country %></td>
+      <td><%= site_visitor.browser %></td>
+      <td><%= site_visitor.browser_developer %></td>
+      <td><%= site_visitor.browser_platforms %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>正規化テーブル</h2>
+
+<table border='1'>
+  <caption>サイト訪問者</caption>
+  <tr>
+    <th>ID番号</th>
+    <th>名前</th>
+    <th>国</th>
+    <th>ブラウザID番号</th>
+  </tr>
+  <% @site_visitors.each do |site_visitor| %>
+    <tr>
+      <td><%= site_visitor.id %></td>
+      <td><%= site_visitor.name %></td>
+      <td><%= site_visitor.country %></td>
+      <td><%= site_visitor.browser.id %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<table border='1'>
+  <caption>ブラウザ</caption>
+  <tr>
+    <th>ID番号</th>
+    <th>名前</th>
+    <th>開発者</th>
+  </tr>
+  <% @browsers.each do |browser| %>
+    <tr>
+      <td><%= browser.id %></td>
+      <td><%= browser.name %></td>
+      <td><%= browser.developer %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<table border='1'>
+  <caption>プラットホーム</caption>
+  <tr>
+    <th>ID番号</th>
+    <th>名前</th>
+  </tr>
+  <% @platforms.each do |platform| %>
+    <tr>
+      <td><%= platform.id %></td>
+      <td><%= platform.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<table border='1'>
+  <caption>ブラウザ互換性</caption>
+  <tr>
+    <th>ブラウザID番号</th>
+    <th>プラットホームID番号</th>
+  </tr>
+  <% @browser_compatibilities.each do |compatibility| %>
+    <tr>
+      <td><%= compatibility.browser.id %></td>
+      <td><%= compatibility.platform.id %></td>
+    </tr>
+  <% end %>
+</table>

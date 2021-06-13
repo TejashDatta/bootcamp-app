@@ -11,6 +11,11 @@ ja:
       project: プロジェクト
       employee: 社員
       citizen: 市民
+      unnormalized_site_visitor: 非正規化サイト訪問者
+      site_visitor: サイト訪問者
+      browser: ブラウザ
+      platform: プラットホーム
+      browser_compatibility: ブラウザ互換性
     attributes:
       user:
         name: 名前
@@ -43,3 +48,21 @@ ja:
       citizen:
         name: 名前
         city: 都市
+      unnormalized_site_visitor:
+        name: 名前
+        country: 国
+        browser: ブラウザ
+        browser_developer: ブラウザ開発者
+        browser_platforms: ブラウザプラットホーム
+      site_visitor:
+        name: 名前
+        country: 国
+        browser: ブラウザ
+      browser:
+        name: 名前
+        developer: 開発者
+      platform:
+        name: 名前
+      browser_compatibility:
+        browser: ブラウザ
+        platform: プラットホーム

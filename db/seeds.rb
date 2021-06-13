@@ -18,3 +18,16 @@ FactoryBot.create(:technology, name: "python")
 
 FactoryBot.create_list(:employee, 100)
 FactoryBot.create_list(:citizen, 10)
+
+FactoryBot.create_list(:unnormalized_site_visitor, 5)
+
+browsers = FactoryBot.create_list(:browser, 2)
+platforms = FactoryBot.create_list(:platform, 2)
+
+browsers.each do |browser|
+  platforms.each do |platform|
+    FactoryBot.create(:browser_compatibility, browser: browser, platform: platform)
+  end
+end
+
+FactoryBot.create_list(:site_visitor, 6, browser: browsers.sample)
