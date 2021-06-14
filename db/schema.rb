@@ -96,4 +96,40 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
+  create_table "unnormalized_site_visitors" do |t|
+    t.string "name", null: false
+    t.string "country", null: false
+    t.string "browser", null: false
+    t.string "browser_developer", null: false
+    t.string "browser_platforms", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "site_visitors" do |t|
+    t.string "name", null: false
+    t.string "country", null: false
+    t.references "browser", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "browsers" do |t|
+    t.string "name", null: false
+    t.string "developer", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "platforms" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "browser_compatibilities" do |t|
+    t.references "browser"
+    t.references "platform"
+  end
 end
