@@ -24,4 +24,11 @@ RSpec.describe "StaticPages", type: :request do
       expect(response).to be_successful
     end
   end
+
+  describe "GET /technology_summary" do
+    it "renders a successful response" do
+      get "/technology_summary"
+      expect(response).to be_successful
+    end
+  end
 end

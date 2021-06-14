@@ -1,0 +1,18 @@
+<h1>技術のまとめ</h1>
+
+<table border='1'>
+  <tr>
+    <th>ファイル</th>
+    <th>変数</th>
+    <th>メッソド</th>
+  </tr>
+  <% @technology_summary.each do |file, file_summary| %>
+    <% unless file_summary["variables"].length.zero? && file_summary["methods"].length.zero? %>
+      <tr>
+        <td><%= file %></td>
+        <td><%= file_summary["variables"].join(" <br> ").html_safe %></td>
+        <td><%= file_summary["methods"].join(" <br> ").html_safe %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

@@ -7,4 +7,8 @@ class StaticPagesController < ApplicationController
 
   def sql
   end
+
+  def technology_summary
+    @technology_summary = TechnologySummarizer.new.summarize
+  end
 end
