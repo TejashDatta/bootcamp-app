@@ -1,0 +1,12 @@
+<p>
+  <strong>名前:</strong>
+  <%= @citizen.name %>
+</p>
+
+<p>
+  <strong>都市:</strong>
+  <%= @citizen.city %>
+</p>
+
+<%= link_to "編集", edit_citizen_path(@citizen) %> |
+<%= link_to "戻る", citizens_path %>

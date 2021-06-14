@@ -1,0 +1,49 @@
+<h1>市民</h1>
+
+<p>
+  <%= link_to "市民作成", new_citizen_path %>
+</p>
+
+<h3>強靭な検索</h3>
+<%= 
+  render(
+    "search_form", 
+    model: Citizen, 
+    url: citizens_path, 
+    search_params: @search_params
+  )
+%>
+
+<h3>脆弱な検索</h3>
+<%= 
+  render(
+    "search_form", 
+    model: Citizen, 
+    url: index_vulnerable_citizens_path, 
+    search_params: @search_params
+  )
+%>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>都市</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @citizens.each do |citizen| %>
+      <tr>
+        <td><%= citizen.name %></td>
+        <td><%= citizen.city %></td>
+        <td><%= link_to "強靭な表示", citizen %></td>
+        <td><%= link_to "脆弱な表示", show_vulnerable_citizen_path(citizen) %></td>
+        <td><%= link_to "強靭な編集", edit_citizen_path(citizen) %></td>
+        <td><%= link_to "脆弱な編集", edit_vulnerable_citizen_path(citizen) %></td>
+        <td><%= link_to "削除", citizen, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -2,8 +2,10 @@
   <% model.searchable_columns.map(&:to_sym).each do |column| %>
     <div class="field">
       <ul class="errors">
-        <% errors.fetch(column, []).each do |message| %>
-          <li><%= message %></li>
+        <% if local_assigns[:errors] %>
+          <% errors.fetch(column, []).each do |message| %>
+            <li><%= message %></li>
+          <% end %>
         <% end %>
       </ul>
       <%= form.label(model.human_attribute_name(column)) %>
