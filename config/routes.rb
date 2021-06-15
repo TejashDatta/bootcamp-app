@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root "static_pages#home"
   get "/log", to: "static_pages#log", as: :log
   get "/sql", to: "static_pages#sql", as: :sql
-  get "/technology_summary", to: "static_pages#technology_summary", as: :technology_summary
   get "/normalization", to: "normalization#show", as: :normalization
+  get "/source_code_search", to: "source_code_search#show", as: :source_code_search
 
   get "/login", to: "authentication#new", as: :login
   post "/login", to: "authentication#create"

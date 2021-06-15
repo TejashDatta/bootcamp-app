@@ -1,0 +1,32 @@
+<h1>ソースコード検索</h1>
+
+<%= form_with(url: source_code_search_path, method: "get", local: true, class: "clearable-form") do |form| %>
+  <div class="field">
+    <%= form.label :expression, "検索表現" %>
+    <%= form.text_field :expression, value: @expression, required: "required" %>
+  </div>
+  <div class="actions">
+    <%= form.submit "検索", name: nil %>
+    <button class="clear-form">リセット</button>
+  </div>
+<% end %>
+
+<% if @results %>
+  <h2>検索結果</h2>
+  <% @results.each do |file, file_results| %>
+    <table border='1'>
+      <caption><%= file %></caption>
+      <tr>
+        <th>行番号</th>
+        <th>行内容</th>
+      </tr>
+      <% file_results.each do |result| %>
+        <tr>
+          <td><%= result[:line_number] %></td>
+          <td><%= highlight_identifier(result[:content], @expression) %></td>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+  <% end %>
+<% end %>
