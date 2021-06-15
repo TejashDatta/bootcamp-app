@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/log", to: "static_pages#log", as: :log
   get "/sql", to: "static_pages#sql", as: :sql
   get "/normalization", to: "normalization#show", as: :normalization
+  post "/toggle_pink_mode", to: "pink_mode#toggle", as: :toggle_pink_mode
 
   get "/login", to: "authentication#new", as: :login
   post "/login", to: "authentication#create"
