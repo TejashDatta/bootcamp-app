@@ -6,6 +6,9 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% if session[:pink_mode] %>
+      <%= stylesheet_link_tag 'pink_theme', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -30,6 +33,7 @@
           <li><%= link_to "データベース正規化", normalization_path %></li>
           <li><%= link_to "ソースコード検索", source_code_search_path %></li>
           <li><%= link_to "ログアウト", logout_path, method: :delete, data: { confirm: "ログアウトして宜しいですか?" }  %></li>
+          <li><%= link_to "ピンクモード #{session[:pink_mode] ? "OFF" : "ON"}", toggle_pink_mode_path, method: :post %></li>
         </ul>
       </div>
     <% end %>

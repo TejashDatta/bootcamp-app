@@ -1,0 +1,9 @@
+body {
+  background-color: lightpink;
+}
+a, a:visited {
+  color: deeppink;
+}
+.paginator {
+  color: brown;
+}
