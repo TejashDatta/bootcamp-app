@@ -5,6 +5,8 @@ module Searchable
     def search(params)
       results = all
       params.each do |key, value|
+        return unless searchable_columns.include? key
+
         results = results.where("#{key} = ?", value) if value.present?
       end
       results

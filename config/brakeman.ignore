@@ -1,0 +1,26 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "8dbe2849a0d9ecddd74281fd9c8a4d4c076848c85d6aba864d09efab239f9e87",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/concerns/searchable.rb",
+      "line": 10,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "all.where(\"#{key} = ?\", value)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Searchable",
+        "method": "search"
+      },
+      "user_input": "key",
+      "confidence": "Weak",
+      "note": ""
+    }
+  ],
+  "updated": "2021-06-16 15:47:46 +0000",
+  "brakeman_version": "5.0.4"
+}
