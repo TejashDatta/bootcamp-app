@@ -29,4 +29,5 @@ Rails.application.routes.draw do
     patch :update_vulnerable, on: :member
     put :update_vulnerable, on: :member
   end
+  resources :meetings
 end

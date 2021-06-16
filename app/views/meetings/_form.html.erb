@@ -1,0 +1,14 @@
+<%= form_with(model: meeting, local: true) do |form| %>
+  <% if meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= meeting.errors.count %> エラーがあって保存が失敗しました。</h2>
+    </div>
+  <% end %>
+
+  <%= render "form_item", attribute: :name, form: form, errors: meeting.errors %>
+  <%= render "form_item", attribute: :description, form: form, errors: meeting.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

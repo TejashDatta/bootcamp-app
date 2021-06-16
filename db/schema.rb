@@ -132,4 +132,21 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.references "browser"
     t.references "platform"
   end
+
+  create_table "meetings" do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "meeting_participations" do |t|
+    t.references "meeting", foreign_key: true, null: false
+    t.references "user", foreign_key: true, null: false
+    t.boolean "manager", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 end
