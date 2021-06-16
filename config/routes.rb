@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/sql", to: "static_pages#sql", as: :sql
   get "/normalization", to: "normalization#show", as: :normalization
   post "/toggle_pink_mode", to: "pink_mode#toggle", as: :toggle_pink_mode
+  get "/source_code_search", to: "source_code_search#show", as: :source_code_search
 
   get "/login", to: "authentication#new", as: :login
   post "/login", to: "authentication#create"
