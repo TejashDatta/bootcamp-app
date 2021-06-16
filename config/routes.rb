@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/log", to: "static_pages#log", as: :log
   get "/sql", to: "static_pages#sql", as: :sql
   get "/normalization", to: "normalization#show", as: :normalization
+  get "/source_code_search", to: "source_code_search#show", as: :source_code_search
 
   get "/login", to: "authentication#new", as: :login
   post "/login", to: "authentication#create"
