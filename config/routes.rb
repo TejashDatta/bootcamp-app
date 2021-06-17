@@ -29,4 +29,8 @@ Rails.application.routes.draw do
     patch :update_vulnerable, on: :member
     put :update_vulnerable, on: :member
   end
+  resources :messages, only: %i[show new create] do
+    get :sent, on: :collection
+    get :received, on: :collection
+  end
 end

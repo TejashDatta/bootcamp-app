@@ -1,0 +1,29 @@
+<h1>メッセージを送る</h1>
+
+<%= form_with(model: @message, local: true) do |form| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @message.errors.count %> エラーがあってメッセージ送信が失敗しました。</h2>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <ul class="errors">
+      <% @message.errors.full_messages_for(:receiver_id).each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <%= form.label :receiver %>
+    <%= form.collection_select :receiver_id, User.all, :id, :email, prompt: true %>
+  </div>
+
+  <%= render "form_item", attribute: :subject, form: form, errors: @message.errors %>
+  <%= render "form_item", attribute: :content, form: form, errors: @message.errors %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to "戻る", received_messages_path %>

@@ -1,0 +1,26 @@
+<h1>送信済みのメッセージ</h1>
+
+<p>
+  <%= link_to "メッセージを送る", new_message_path %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>宛先</th>
+      <th>件名</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= link_to message.receiver.email, message.receiver %></td>
+        <td><%= message.subject %></td>
+        <td><%= link_to "開く", message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
