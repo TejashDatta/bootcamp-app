@@ -41,6 +41,12 @@ RSpec.describe "/messages", type: :request do
       get message_url(message)
       expect(response).to be_successful
     end
+
+    it "changes message status to read" do
+      get message_url(message)
+      message.reload
+      expect(message.read).to be true
+    end
   end
 
   describe "GET /new" do

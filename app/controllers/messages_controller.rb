@@ -2,15 +2,21 @@ class MessagesController < ApplicationController
   before_action :authenticate_party, only: :show
   
   def sent
-    @messages = current_user.sent_messages
+    @paginator = Paginator.new(current_user.sent_messages, params[:page])
+    @messages = @paginator.items
   end
 
   def received
-    @messages = current_user.received_messages
+    @paginator = Paginator.new(current_user.received_messages, params[:page])
+    @messages = @paginator.items
   end
 
   def show
     @message = Message.find(params[:id])
+    return unless @message.receiver == current_user
+
+    @message.read = true
+    @message.save
   end
 
   def new
@@ -26,7 +32,6 @@ class MessagesController < ApplicationController
       render :new
     end
   end
-
 
   private
 

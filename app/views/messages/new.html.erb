@@ -8,22 +8,23 @@
   <% end %>
 
   <div class="field">
-    <ul class="errors">
-      <% @message.errors.full_messages_for(:receiver_id).each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+    <%= render "form_item_errors", errors: @message.errors, attribute: :receiver_id %>
     <%= form.label :receiver %>
     <%= form.collection_select :receiver_id, User.all, :id, :email, prompt: true %>
   </div>
 
   <%= render "form_item", attribute: :subject, form: form, errors: @message.errors %>
-  <%= render "form_item", attribute: :content, form: form, errors: @message.errors %>
+
+  <div class="field">
+    <%= render "form_item_errors", errors: @message.errors, attribute: :content %>
+    <%= form.label :content %>
+    <%= form.text_area :content, size: "50x10" %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
 
-
-<%= link_to "戻る", received_messages_path %>
+<%= link_to "受信トレイメッセージ", received_messages_path %>  | 
+<%= link_to "送信済みメッセージ", sent_messages_path %>

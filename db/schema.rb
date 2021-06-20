@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_145857) do
     t.references "receiver", foreign_key: { to_table: "users" }, null: false
     t.string "subject", null: false
     t.text "content", null: false
+    t.boolean "read", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

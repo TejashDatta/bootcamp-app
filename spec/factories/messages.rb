@@ -4,5 +4,6 @@ FactoryBot.define do
     receiver { association :user }
     sequence(:subject) { |index| "Subject-#{index}" }
     sequence(:content) { |index| "Messsage content #{index}" }
+    read { false }
   end
 end

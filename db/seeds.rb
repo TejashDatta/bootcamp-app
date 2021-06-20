@@ -12,8 +12,8 @@ user_1 = FactoryBot.create_list(:user, 75)[0]
   FactoryBot.create(:stock_investment, investor: FactoryBot.create(:investor, account_user: user))
 end
 
-FactoryBot.create_list(:message, 2, sender: a_endo)
-FactoryBot.create_list(:message, 2, receiver: a_endo)
+FactoryBot.create_list(:message, 15, sender: a_endo)
+FactoryBot.create_list(:message, 15, receiver: a_endo)
 
 FactoryBot.create(:technology, name: "ruby")
 FactoryBot.create(:technology, name: "rails")

@@ -8,19 +8,24 @@
   <thead>
     <tr>
       <th>宛先</th>
-      <th>件名</th>
-      <th></th>
+      <%= render "common_column_names" %>
     </tr>
   </thead>
 
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= link_to message.receiver.email, message.receiver %></td>
-        <td><%= message.subject %></td>
-        <td><%= link_to "開く", message %></td>
+        <td><%= message.receiver.email %></td>
+        <%= render "common_column_values", message: message %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= 
+  render(
+    "paginator",
+    path: :sent_messages_path,
+    paginator: @paginator
+  )
+%>
