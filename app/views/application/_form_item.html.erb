@@ -1,5 +1,5 @@
 <div class="field">
-  <%= render "form_item_errors", errors: errors, attribute: attribute %>
+  <%= render "form_item_errors", attribute: attribute, errors: errors %>
   <%= form.label attribute %>
   <% field ||= :text_field %>
   <%= form.send(field, attribute) %>

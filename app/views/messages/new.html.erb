@@ -8,7 +8,7 @@
   <% end %>
 
   <div class="field">
-    <%= render "form_item_errors", errors: @message.errors, attribute: :receiver_id %>
+    <%= render "form_item_errors", attribute: :receiver_id, errors: @message.errors %>
     <%= form.label :receiver %>
     <%= form.collection_select :receiver_id, User.all, :id, :email, prompt: true %>
   </div>
@@ -16,7 +16,7 @@
   <%= render "form_item", attribute: :subject, form: form, errors: @message.errors %>
 
   <div class="field">
-    <%= render "form_item_errors", errors: @message.errors, attribute: :content %>
+    <%= render "form_item_errors", attribute: :content, errors: @message.errors %>
     <%= form.label :content %>
     <%= form.text_area :content, size: "50x10" %>
   </div>
