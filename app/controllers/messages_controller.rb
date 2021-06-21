@@ -2,11 +2,13 @@ class MessagesController < ApplicationController
   before_action :authenticate_party, only: :show
   
   def sent
+    @message_search_form = MessageSearchForm.new
     @paginator = Paginator.new(current_user.sent_messages, params[:page])
     @messages = @paginator.items
   end
 
   def received
+    @message_search_form = MessageSearchForm.new
     @paginator = Paginator.new(current_user.received_messages, params[:page])
     @messages = @paginator.items
   end
@@ -33,10 +35,21 @@ class MessagesController < ApplicationController
     end
   end
 
+  def search
+    @message_search_params = { message_search_form: search_params }
+    @message_search_form = MessageSearchForm.new(user: current_user, params: search_params)
+    @paginator = Paginator.new(@message_search_form.search, params[:page])
+    @messages = @paginator.items
+  end
+
   private
 
   def message_params
     params.require(:message).permit(:receiver_id, :subject, :content)
+  end
+
+  def search_params
+    params.require(:message_search_form).permit(:sender_email, :receiver_email, :subject, :content)
   end
 
   def authenticate_party

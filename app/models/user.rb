@@ -21,4 +21,8 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def sent_and_received_messages
+    sent_messages.or(received_messages)
+  end
 end

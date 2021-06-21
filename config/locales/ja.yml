@@ -72,3 +72,10 @@ ja:
         receiver: 宛先
         subject: 件名
         content: 内容
+  activemodel:
+    attributes:
+      message_search_form:
+        sender_email: 送信者メール
+        receiver_email: 宛先メール
+        subject: 件名
+        content: 内容

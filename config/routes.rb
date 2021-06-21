@@ -32,5 +32,6 @@ Rails.application.routes.draw do
   resources :messages, only: %i[show new create] do
     get :sent, on: :collection
     get :received, on: :collection
+    get :search, on: :collection
   end
 end

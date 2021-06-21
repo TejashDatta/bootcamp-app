@@ -63,4 +63,12 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "#sent_and_received_messages" do
+    it "collects all messages the user is involved in" do
+      create(:message, sender: user)
+      create(:message, receiver: user)
+      expect(user.sent_and_received_messages.size).to eq 2
+    end
+  end
 end

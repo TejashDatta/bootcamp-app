@@ -83,4 +83,12 @@ RSpec.describe "/messages", type: :request do
       end
     end
   end
+
+  describe "GET /search" do
+    it "renders a successful response" do
+      message
+      get search_messages_url, params: { message_search_form: { content: "example" } }
+      expect(response).to be_successful
+    end
+  end
 end
