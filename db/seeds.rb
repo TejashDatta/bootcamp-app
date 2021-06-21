@@ -1,9 +1,11 @@
 require "factory_bot_rails"
 
-a_endo = FactoryBot.create(:user, name: "a endo", email: "a_endo@ga-tech.co.jp", password: "a_endo@ga-tech.co.jp")
-user_1 = FactoryBot.create_list(:user, 75)[0]
+assign_permissions(
+  FactoryBot.create(:user, name: "a endo", email: "a_endo@ga-tech.co.jp", password: "a_endo@ga-tech.co.jp")
+)
+user_1, user_2 = FactoryBot.create_list(:user, 75)[0..1]
 
-[a_endo, user_1].each do |user|
+[user_1, user_2].each do |user|
   assign_permissions(user)
 
   FactoryBot.create(:traveler, account_user: user)
@@ -12,8 +14,8 @@ user_1 = FactoryBot.create_list(:user, 75)[0]
   FactoryBot.create(:stock_investment, investor: FactoryBot.create(:investor, account_user: user))
 end
 
-FactoryBot.create_list(:message, 15, sender: a_endo)
-FactoryBot.create_list(:message, 15, receiver: a_endo)
+FactoryBot.create_list(:message, 15, sender: user_1)
+FactoryBot.create_list(:message, 15, receiver: user_1)
 
 FactoryBot.create(:technology, name: "ruby")
 FactoryBot.create(:technology, name: "rails")
