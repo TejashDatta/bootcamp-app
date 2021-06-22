@@ -6,11 +6,7 @@ RSpec.describe User, type: :model do
   describe "validations" do
     include_examples "all attributes valid", :user
     include_examples "attributes present validations", :user, %i[name email password]
-
-    it "is invalid when name is longer than 15 characters" do
-      user.name = "a" * 16
-      expect(user).not_to be_valid
-    end
+    include_examples "attribute length validation", :user, :name, 15
 
     context "email validations" do
       it "is invalid when email is improper format" do

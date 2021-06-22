@@ -91,3 +91,12 @@ RSpec.shared_examples "all attributes valid" do |model_name|
     expect(build(model_name)).to be_valid
   end
 end
+
+RSpec.shared_examples "attribute length validation" do |model_name, attribute, length|
+  let(:model_instance) { build(model_name) }
+  
+  it "is invalid when #{attribute} is longer than #{length} characters" do
+    model_instance.send("#{attribute}=".to_sym, "a" * (length + 1))
+    expect(model_instance).not_to be_valid
+  end
+end
