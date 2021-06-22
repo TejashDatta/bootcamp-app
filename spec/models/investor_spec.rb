@@ -6,6 +6,6 @@ RSpec.describe Investor, type: :model do
   describe "validations" do
     include_examples "all attributes valid", :investor
     include_examples "attributes present validations", :investor, %i[account_number]
-    include_examples "attribute positive validation", :investor, :balance_in_yen
+    include_examples "attribute non-negative validation", :investor, :balance_in_yen
   end
 end

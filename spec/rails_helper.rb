@@ -108,7 +108,7 @@ RSpec.shared_examples "attribute length validation" do |model_name, attribute, l
   end
 end
 
-RSpec.shared_examples "attribute positive validation" do |model_name, attribute|
+RSpec.shared_examples "attribute non-negative validation" do |model_name, attribute|
   let(:model_instance) { build(model_name) }
   
   it "is invalid when #{attribute} is negative" do
