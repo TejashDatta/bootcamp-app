@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Investor, type: :model do
   let(:investor) { build(:investor) }
@@ -8,10 +8,7 @@ RSpec.describe Investor, type: :model do
       expect(investor).to be_valid
     end
 
-    it "is invalid without account_number" do
-      investor.account_number = nil
-      expect(investor).not_to be_valid
-    end
+    include_examples "attributes present validations", :investor, %i[account_number]
 
     it "is invalid with negative balance_in_yen" do
       investor.balance_in_yen = -1

@@ -8,14 +8,6 @@ RSpec.describe Browser, type: :model do
       expect(browser).to be_valid
     end
 
-    it "is invalid without name" do
-      browser.name = ""
-      expect(browser).not_to be_valid
-    end
-
-    it "is invalid without developer" do
-      browser.developer = ""
-      expect(browser).not_to be_valid
-    end
+    include_examples "attributes present validations", :browser, %i[name developer]
   end
 end

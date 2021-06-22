@@ -8,14 +8,6 @@ RSpec.describe SiteVisitor, type: :model do
       expect(site_visitor).to be_valid
     end
 
-    it "is invalid without name" do
-      site_visitor.name = ""
-      expect(site_visitor).not_to be_valid
-    end
-
-    it "is invalid without country" do
-      site_visitor.country = ""
-      expect(site_visitor).not_to be_valid
-    end
+    include_examples "attributes present validations", :site_visitor, %i[name country]
   end
 end

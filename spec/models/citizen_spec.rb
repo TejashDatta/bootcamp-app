@@ -8,14 +8,6 @@ RSpec.describe Citizen, type: :model do
       expect(citizen).to be_valid
     end
 
-    it "is invalid without name" do
-      citizen.name = ""
-      expect(citizen).not_to be_valid
-    end
-
-    it "is invalid without city" do
-      citizen.city = ""
-      expect(citizen).not_to be_valid
-    end
+    include_examples "attributes present validations", :citizen, %i[name city]
   end
 end

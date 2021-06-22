@@ -8,19 +8,7 @@ RSpec.describe Traveler, type: :model do
       expect(traveler).to be_valid
     end
 
-    it "is invalid without name" do
-      traveler.name = ""
-      expect(traveler).not_to be_valid
-    end
-
-    it "is invalid without departure_country" do
-      traveler.departure_country = ""
-      expect(traveler).not_to be_valid
-    end
-
-    it "is invalid without arrival_country" do
-      traveler.arrival_country = ""
-      expect(traveler).not_to be_valid
-    end
+    include_examples "attributes present validations", :traveler,
+                     %i[name departure_country arrival_country]
   end
 end

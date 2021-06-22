@@ -8,20 +8,7 @@ RSpec.describe Employee, type: :model do
       expect(employee).to be_valid
     end
 
-    it "is invalid without name" do
-      employee.name = ""
-      expect(employee).not_to be_valid
-    end
-
-    it "is invalid without date_of_joining" do
-      employee.date_of_joining = ""
-      expect(employee).not_to be_valid
-    end
-
-    it "is invalid without department" do
-      employee.department = ""
-      expect(employee).not_to be_valid
-    end
+    include_examples "attributes present validations", :employee, %i[name date_of_joining department]
   end
 
   describe "::search" do

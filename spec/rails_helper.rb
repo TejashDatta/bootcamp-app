@@ -74,3 +74,14 @@ RSpec.shared_context "uses authorized user with permissions" do
     post login_path, params: { email: authorized_user.email, password: authorized_user.password }
   end
 end
+
+RSpec.shared_examples "attributes present validations" do |model_name, attributes|
+  let(:model_instance) { build(model_name) }
+
+  attributes.each do |attribute|
+    it "is invalid without #{attribute}" do
+      model_instance.send("#{attribute}=".to_sym, nil)
+      expect(model_instance).not_to be_valid
+    end
+  end
+end

@@ -8,28 +8,10 @@ RSpec.describe Message, type: :model do
       expect(message).to be_valid
     end
 
-    it "is invalid without sender" do
-      message.sender = nil
-      expect(message).not_to be_valid
-    end
-
-    it "is invalid without receiver" do
-      message.receiver = nil
-      expect(message).not_to be_valid
-    end
-
-    it "is invalid without subject" do
-      message.subject = nil
-      expect(message).not_to be_valid
-    end
+    include_examples "attributes present validations", :message, %i[sender receiver subject content]
 
     it "is invalid when subject is longer than 250 characters" do
       message.subject = "a" * 251
-      expect(message).not_to be_valid
-    end
-
-    it "is invalid without content" do
-      message.content = nil
       expect(message).not_to be_valid
     end
 

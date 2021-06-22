@@ -8,16 +8,11 @@ RSpec.describe Permission, type: :model do
       expect(permission).to be_valid
     end
 
-    context "action validations" do
-      it "is invalid without action name" do
-        permission.action = ""
-        expect(permission).not_to be_valid
-      end
+    include_examples "attributes present validations", :permission, %i[action]
 
-      it "is invalid if action not in application" do
-        permission.action = "invalid action"
-        expect(permission).not_to be_valid
-      end
+    it "is invalid if action not in application" do
+      permission.action = "invalid action"
+      expect(permission).not_to be_valid
     end
 
     it "is invalid if user already has the permission" do

@@ -8,9 +8,6 @@ RSpec.describe Technology, type: :model do
       expect(technology).to be_valid
     end
 
-    it "is invalid without name" do
-      technology.name = ""
-      expect(technology).not_to be_valid
-    end
+    include_examples "attributes present validations", :technology, %i[name]
   end
 end

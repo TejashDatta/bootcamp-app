@@ -8,24 +8,14 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-    context "name validations" do
-      it "is invalid when name is empty" do
-        user.name = ""
-        expect(user).not_to be_valid
-      end
+    include_examples "attributes present validations", :user, %i[name email password]
 
-      it "is invalid when name is longer than 15 characters" do
-        user.name = "a" * 16
-        expect(user).not_to be_valid
-      end
+    it "is invalid when name is longer than 15 characters" do
+      user.name = "a" * 16
+      expect(user).not_to be_valid
     end
 
     context "email validations" do
-      it "is invalid when email is empty" do
-        user.email = ""
-        expect(user).not_to be_valid
-      end
-
       it "is invalid when email is improper format" do
         user.email = "invalid-email.com"
         expect(user).not_to be_valid
@@ -35,11 +25,6 @@ RSpec.describe User, type: :model do
         create(:user, email: user.email)
         expect(user).not_to be_valid
       end
-    end
-
-    it "is invalid when password is empty" do
-      user.password = ""
-      expect(user).not_to be_valid
     end
   end
 

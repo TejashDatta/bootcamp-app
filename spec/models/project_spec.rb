@@ -8,9 +8,6 @@ RSpec.describe Project, type: :model do
       expect(project).to be_valid
     end
 
-    it "is invalid without name" do
-      project.name = ""
-      expect(project).not_to be_valid
-    end
+    include_examples "attributes present validations", :project, %i[name]
   end
 end

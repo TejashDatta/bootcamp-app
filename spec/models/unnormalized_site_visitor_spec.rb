@@ -8,29 +8,7 @@ RSpec.describe UnnormalizedSiteVisitor, type: :model do
       expect(unnormalized_site_visitor).to be_valid
     end
 
-    it "is invalid without name" do
-      unnormalized_site_visitor.name = ""
-      expect(unnormalized_site_visitor).not_to be_valid
-    end
-
-    it "is invalid without country" do
-      unnormalized_site_visitor.country = ""
-      expect(unnormalized_site_visitor).not_to be_valid
-    end
-
-    it "is invalid without browser" do
-      unnormalized_site_visitor.browser = ""
-      expect(unnormalized_site_visitor).not_to be_valid
-    end
-
-    it "is invalid without browser_developer" do
-      unnormalized_site_visitor.browser_developer = ""
-      expect(unnormalized_site_visitor).not_to be_valid
-    end
-
-    it "is invalid without browser_platforms" do
-      unnormalized_site_visitor.browser_platforms = ""
-      expect(unnormalized_site_visitor).not_to be_valid
-    end
+    include_examples "attributes present validations", :unnormalized_site_visitor,
+                     %i[name country browser browser_developer browser_platforms]
   end
 end
