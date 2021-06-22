@@ -1,0 +1,34 @@
+<h1>送信済みのメッセージ</h1>
+
+<h3>メッセージ検索</h3>
+<%= render "message_search_form", message_search_form: @message_search_form %>
+
+<p>
+  <%= link_to "メッセージを送る", new_message_path %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>宛先</th>
+      <%= render "common_column_names" %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.receiver.email %></td>
+        <%= render "common_column_values", message: message %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= 
+  render(
+    "paginator",
+    path: :sent_messages_path,
+    paginator: @paginator
+  )
+%>

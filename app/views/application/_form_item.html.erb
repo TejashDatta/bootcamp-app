@@ -1,9 +1,5 @@
 <div class="field">
-  <ul class="errors">
-    <% errors.full_messages_for(attribute).each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <%= render "form_item_errors", attribute: attribute, errors: errors %>
   <%= form.label attribute %>
   <% field ||= :text_field %>
   <%= form.send(field, attribute) %>

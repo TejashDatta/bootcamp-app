@@ -21,6 +21,14 @@
       <div class="navigation">
         <h3>メニュー</h3>
         <ul>
+          <li>
+            <h4>メッセージ</h4>
+            <ul>
+              <li><%= link_to "受信トレイ", received_messages_path %></li>
+              <li><%= link_to "送信済み", sent_messages_path %></li>
+            </ul>
+          </li>
+          <br>
           <li><%= link_to "ユーザー", users_path %></li>
           <li><%= link_to "旅行者", travelers_path %></li>
           <li><%= link_to "投資家", investors_path %></li>

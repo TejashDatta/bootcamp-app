@@ -16,6 +16,7 @@ ja:
       browser: ブラウザ
       platform: プラットホーム
       browser_compatibility: ブラウザ互換性
+      message: メッセージ
     attributes:
       user:
         name: 名前
@@ -66,3 +67,15 @@ ja:
       browser_compatibility:
         browser: ブラウザ
         platform: プラットホーム
+      message:
+        sender: 送信者
+        receiver: 宛先
+        subject: 件名
+        content: 内容
+  activemodel:
+    attributes:
+      message_search_form:
+        sender_email: 送信者メール
+        receiver_email: 宛先メール
+        subject: 件名
+        content: 内容

@@ -63,3 +63,6 @@ ul {
 .paginator {
   color: lightgrey;
 }
+.unread {
+  font-weight: bold;
+}

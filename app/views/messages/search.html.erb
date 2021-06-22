@@ -1,0 +1,32 @@
+<h1>メッセージ検索結果</h1>
+
+<%= render "message_search_form", message_search_form: @message_search_form %>
+
+<table>
+  <thead>
+    <tr>
+      <th>送信者</th>
+      <th>宛先</th>
+      <%= render "common_column_names" %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.sender.email %></td>
+        <td><%= message.receiver.email %></td>
+        <%= render "common_column_values", message: message %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= 
+  render(
+    "paginator",
+    path: :search_messages_path,
+    paginator: @paginator,
+    params: @message_search_params
+  )
+%> 
