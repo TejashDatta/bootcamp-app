@@ -7,6 +7,7 @@ RSpec.describe StockInvestment, type: :model do
     include_examples "all attributes valid", :stock_investment
     include_examples "attributes present validations", :stock_investment,
                      %i[investor stock_name shares_owned]
+    include_examples "attribute positive validation", :stock_investment, :shares_owned
 
     it "is invalid when investor already has same stock" do
       stock_investment.save
@@ -17,11 +18,6 @@ RSpec.describe StockInvestment, type: :model do
           stock_name: stock_investment.stock_name
         )
       ).not_to be_valid
-    end
-
-    it "is invalid with negative shares_owned" do
-      stock_investment.shares_owned = -1
-      expect(stock_investment).not_to be_valid
     end
   end
 end

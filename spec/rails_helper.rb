@@ -75,20 +75,26 @@ RSpec.shared_context "uses authorized user with permissions" do
   end
 end
 
+def assignment_method(attribute)
+  "#{attribute}=".to_sym
+end
+
+RSpec.shared_examples "all attributes valid" do |model_name|
+  let(:model_instance) { build(model_name) }
+  
+  it "is valid when all attributes are valid" do
+    expect(model_instance).to be_valid
+  end
+end
+
 RSpec.shared_examples "attributes present validations" do |model_name, attributes|
   let(:model_instance) { build(model_name) }
 
   attributes.each do |attribute|
     it "is invalid without #{attribute}" do
-      model_instance.send("#{attribute}=".to_sym, nil)
+      model_instance.send(assignment_method(attribute), nil)
       expect(model_instance).not_to be_valid
     end
-  end
-end
-
-RSpec.shared_examples "all attributes valid" do |model_name|
-  it "is valid when all attributes are valid" do
-    expect(build(model_name)).to be_valid
   end
 end
 
@@ -96,7 +102,17 @@ RSpec.shared_examples "attribute length validation" do |model_name, attribute, l
   let(:model_instance) { build(model_name) }
   
   it "is invalid when #{attribute} is longer than #{length} characters" do
-    model_instance.send("#{attribute}=".to_sym, "a" * (length + 1))
+    model_instance.send(assignment_method(attribute), "a" * (length + 1))
+
+    expect(model_instance).not_to be_valid
+  end
+end
+
+RSpec.shared_examples "attribute positive validation" do |model_name, attribute|
+  let(:model_instance) { build(model_name) }
+  
+  it "is invalid when #{attribute} is negative" do
+    model_instance.send(assignment_method(attribute), -1)
     expect(model_instance).not_to be_valid
   end
 end
