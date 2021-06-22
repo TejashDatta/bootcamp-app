@@ -1,13 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Employee, type: :model do
-  let(:employee) { build(:employee) }
-
   describe "validations" do
-    it "is valid when all attributes are valid" do
-      expect(employee).to be_valid
-    end
-
+    include_examples "all attributes valid", :employee
     include_examples "attributes present validations", :employee, %i[name date_of_joining department]
   end
 

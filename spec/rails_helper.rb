@@ -85,3 +85,9 @@ RSpec.shared_examples "attributes present validations" do |model_name, attribute
     end
   end
 end
+
+RSpec.shared_examples "all attributes valid" do |model_name|
+  it "is valid when all attributes are valid" do
+    expect(build(model_name)).to be_valid
+  end
+end

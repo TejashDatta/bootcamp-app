@@ -4,10 +4,7 @@ RSpec.describe Message, type: :model do
   let(:message) { build(:message) }
 
   describe "validations" do
-    it "is valid when all attributes are valid" do
-      expect(message).to be_valid
-    end
-
+    include_examples "all attributes valid", :message
     include_examples "attributes present validations", :message, %i[sender receiver subject content]
 
     it "is invalid when subject is longer than 250 characters" do

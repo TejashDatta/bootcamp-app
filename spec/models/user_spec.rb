@@ -4,10 +4,7 @@ RSpec.describe User, type: :model do
   let(:user) { build(:user) }
 
   describe "validations" do
-    it "is valid when all attributes are valid" do
-      expect(user).to be_valid
-    end
-
+    include_examples "all attributes valid", :user
     include_examples "attributes present validations", :user, %i[name email password]
 
     it "is invalid when name is longer than 15 characters" do

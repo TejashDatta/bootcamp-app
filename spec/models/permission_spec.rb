@@ -4,10 +4,7 @@ RSpec.describe Permission, type: :model do
   let(:permission) { build(:permission) }
 
   describe "validations" do
-    it "is valid when all attributes are valid" do
-      expect(permission).to be_valid
-    end
-
+    include_examples "all attributes valid", :permission
     include_examples "attributes present validations", :permission, %i[action]
 
     it "is invalid if action not in application" do

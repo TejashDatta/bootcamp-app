@@ -4,10 +4,7 @@ RSpec.describe StockInvestment, type: :model do
   let(:stock_investment) { build(:stock_investment) }
 
   describe "validations" do
-    it "is valid when all attributes are valid" do
-      expect(stock_investment).to be_valid
-    end
-
+    include_examples "all attributes valid", :stock_investment
     include_examples "attributes present validations", :stock_investment,
                      %i[investor stock_name shares_owned]
 
