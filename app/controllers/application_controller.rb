@@ -18,18 +18,21 @@ class ApplicationController < ActionController::Base
   def authenticate
     return if logged_in?
 
-    redirect_to login_path, alert: "このアプリの使用にログインが必要です。"
+    redirect_to login_path,
+                alert: t("flash_messages.authenticate_failure")
   end
 
   def authenticate_action
     return if current_user.permission? "#{controller_name}##{action_name}"
 
-    redirect_back fallback_location: login_path, alert: "この操作を行う権限を持っていません。"
+    redirect_back fallback_location: login_path,
+                  alert: t("flash_messages.authenticate_action_failure")
   end
 
   def authenticate_same_user(user_id)
     return if user_id.to_i == current_user.id
 
-    redirect_back fallback_location: login_path, alert: "該当のユーザーのみがこの操作をできます。"
+    redirect_back fallback_location: login_path,
+                  alert: t("flash_messages.authenticate_same_user_failure")
   end
 end

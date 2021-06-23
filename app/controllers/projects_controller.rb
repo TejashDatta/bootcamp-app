@@ -17,9 +17,10 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
- 
+
     if @project.save
-      redirect_to @project, notice: "プロジェクトの作成が合格しました。"
+      redirect_to @project,
+                  notice: t("flash_messages.create_success", model: Project.model_name.human)
     else
       render :new
     end
@@ -29,7 +30,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update(project_params)
-      redirect_to @project, notice: "プロジェクトの更新が合格しました。"
+      redirect_to @project,
+                  notice: t("flash_messages.update_success", model: Project.model_name.human)
     else
       render :edit
     end
@@ -37,7 +39,8 @@ class ProjectsController < ApplicationController
 
   def destroy
     Project.find(params[:id]).destroy
-    redirect_to projects_url, notice: "プロジェクトの削除が合格しました。"
+    redirect_to projects_url,
+                notice: t("flash_messages.delete_success", model: Project.model_name.human)
   end
 
   private

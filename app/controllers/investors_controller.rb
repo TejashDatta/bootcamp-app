@@ -24,7 +24,8 @@ class InvestorsController < ApplicationController
 
     if @investor.save
       session[:investor_id] = @investor.id
-      redirect_to @investor, notice: "投資家の作成が合格しました。"
+      redirect_to @investor,
+                  notice: t("flash_messages.create_success", model: Investor.model_name.human)
     else
       render :new
     end
@@ -34,7 +35,8 @@ class InvestorsController < ApplicationController
     @investor = Investor.find(params[:id])
 
     if @investor.update(investor_params)
-      redirect_to @investor, notice: "投資家の更新が合格しました。"
+      redirect_to @investor,
+                  notice: t("flash_messages.update_success", model: Investor.model_name.human)
     else
       render :edit
     end
@@ -42,7 +44,8 @@ class InvestorsController < ApplicationController
 
   def destroy
     Investor.find(params[:id]).destroy
-    redirect_to investors_url, notice: "投資家の削除が合格しました。"
+    redirect_to investors_url,
+                notice: t("flash_messages.destroy_success", model: Investor.model_name.human)
   end
 
   private

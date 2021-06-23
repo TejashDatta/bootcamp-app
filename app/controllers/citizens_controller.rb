@@ -44,7 +44,8 @@ class CitizensController < ApplicationController
     @citizen = Citizen.new(citizen_params)
 
     if @citizen.save
-      redirect_to @citizen, notice: "市民の作成が合格しました。"
+      redirect_to @citizen,
+                  notice: t("flash_messages.create_success", model: Citizen.model_name.human)
     else
       render :new
     end
@@ -54,7 +55,8 @@ class CitizensController < ApplicationController
     @citizen = Citizen.find(params[:id])
 
     if @citizen.update(citizen_params)
-      redirect_to @citizen, notice: "市民の更新が合格しました。"
+      redirect_to @citizen,
+                  notice: t("flash_messages.update_success", model: Citizen.model_name.human)
     else
       render :edit
     end
@@ -64,12 +66,14 @@ class CitizensController < ApplicationController
     Citizen.update_all(
       "name='#{citizen_params[:name]}', city='#{citizen_params[:city]}' WHERE id='#{params[:id]}'"
     )
-    redirect_to Citizen.find(params[:id]), notice: "市民の更新が合格しました。"
+    redirect_to Citizen.find(params[:id]),
+                notice: t("flash_messages.update_success", model: Citizen.model_name.human)
   end
 
   def destroy
     Citizen.find(params[:id]).destroy
-    redirect_to citizens_url, notice: "市民の削除が合格しました。"
+    redirect_to citizens_url,
+                notice: t("flash_messages.destroy_success", model: Citizen.model_name.human)
   end
 
   private

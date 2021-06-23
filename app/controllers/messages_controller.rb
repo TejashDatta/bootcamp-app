@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_party, only: :show
-  
+
   def sent
     @message_search_form = MessageSearchForm.new
     @paginator = Paginator.new(current_user.sent_messages, params[:page])
@@ -29,7 +29,8 @@ class MessagesController < ApplicationController
     @message = current_user.sent_messages.new(message_params)
 
     if @message.save
-      redirect_to @message, notice: "メッセージを送りました。"
+      redirect_to @message,
+                  notice: t("flash_messages.message_sent")
     else
       render :new
     end
@@ -55,6 +56,7 @@ class MessagesController < ApplicationController
   def authenticate_party
     return if Message.find(params[:id]).party? current_user
 
-    redirect_back fallback_location: login_path, alert: "このメッセージを見る権限がありません。"
+    redirect_back fallback_location: login_path,
+                  alert: t("flash_messages.authenticate_message_party_failure")
   end
 end

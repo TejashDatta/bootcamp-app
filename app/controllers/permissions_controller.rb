@@ -8,7 +8,7 @@ class PermissionsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @user.permit_actions(params[:actions])
-    flash.notice = "権限更新が合格しました。"
+    flash.notice = t("flash_messages.update_success", model: Permission.model_name.human)
     render :show
   end
 end

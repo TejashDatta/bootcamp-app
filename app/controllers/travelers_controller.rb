@@ -25,7 +25,8 @@ class TravelersController < ApplicationController
 
     if @traveler.save
       session[:traveler_id] = @traveler.id
-      redirect_to @traveler, notice: "国際旅行者の作成が合格しました。"
+      redirect_to @traveler,
+                  notice: t("flash_messages.create_success", model: Traveler.model_name.human)
     else
       render :new
     end
@@ -35,7 +36,8 @@ class TravelersController < ApplicationController
     @traveler = Traveler.find(params[:id])
 
     if @traveler.update(traveler_params)
-      redirect_to @traveler, notice: "国際旅行者の編集が合格しました。"
+      redirect_to @traveler,
+                  notice: t("flash_messages.update_success", model: Traveler.model_name.human)
     else
       render :edit
     end
@@ -43,7 +45,8 @@ class TravelersController < ApplicationController
 
   def destroy
     Traveler.find(params[:id]).destroy
-    redirect_to travelers_url, notice: "国際旅行者の削除が合格しました。"
+    redirect_to travelers_url,
+                notice: t("flash_messages.destroy_success", model: Traveler.model_name.human)
   end
 
   private
