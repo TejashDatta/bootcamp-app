@@ -19,29 +19,29 @@
 
     <% if logged_in? %>
       <div class="navigation">
-        <h3>メニュー</h3>
+        <h3><%= t("menu") %></h3>
         <ul>
           <li>
-            <h4>メッセージ</h4>
+            <h4><%= Message.model_name.human %></h4>
             <ul>
-              <li><%= link_to "受信トレイ", received_messages_path %></li>
-              <li><%= link_to "送信済み", sent_messages_path %></li>
+              <li><%= link_to t("inbox"), received_messages_path %></li>
+              <li><%= link_to t("sent_items"), sent_messages_path %></li>
             </ul>
           </li>
           <br>
-          <li><%= link_to "ユーザー", users_path %></li>
-          <li><%= link_to "旅行者", travelers_path %></li>
-          <li><%= link_to "投資家", investors_path %></li>
-          <li><%= link_to "プロジェクト", projects_path %></li>
-          <li><%= link_to "技術", technologies_path %></li>
-          <li><%= link_to "社員", employees_path %></li>
-          <li><%= link_to "市民", citizens_path %></li>
-          <li><%= link_to "ログ説明", log_path %></li>
-          <li><%= link_to "生成されるSQL", sql_path %></li>
-          <li><%= link_to "データベース正規化", normalization_path %></li>
-          <li><%= link_to "ソースコード検索", source_code_search_path %></li>
-          <li><%= link_to "ログアウト", logout_path, method: :delete, data: { confirm: "ログアウトして宜しいですか?" }  %></li>
-          <li><%= link_to "ピンクモード #{session[:pink_mode] ? "OFF" : "ON"}", toggle_pink_mode_path, method: :post %></li>
+          <li><%= link_to User.model_name.human, users_path %></li>
+          <li><%= link_to Traveler.model_name.human, travelers_path %></li>
+          <li><%= link_to Investor.model_name.human, investors_path %></li>
+          <li><%= link_to Project.model_name.human, projects_path %></li>
+          <li><%= link_to Technology.model_name.human, technologies_path %></li>
+          <li><%= link_to Employee.model_name.human, employees_path %></li>
+          <li><%= link_to Citizen.model_name.human, citizens_path %></li>
+          <li><%= link_to t("log_explanation"), log_path %></li>
+          <li><%= link_to t("generated_sql"), sql_path %></li>
+          <li><%= link_to t("database_normalization"), normalization_path %></li>
+          <li><%= link_to t("search_source_code"), source_code_search_path %></li>
+          <li><%= link_to t("logout"), logout_path, method: :delete, data: { confirm: t("logout_confirmation") }  %></li>
+          <li><%= link_to "#{t("pink_mode")} #{session[:pink_mode] ? "OFF" : "ON"}", toggle_pink_mode_path, method: :post %></li>
         </ul>
       </div>
     <% end %>

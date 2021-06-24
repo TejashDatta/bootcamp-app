@@ -1,14 +1,15 @@
-<h1>投資家</h1>
+<h1><%= Investor.model_name.human %></h1>
+
 <p>
-  <%= link_to "投資家作成", new_investor_path %>
+  <%= link_to t("create_model", model: Investor.model_name.human), new_investor_path %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>アカウントユーザー</th>
-      <th>アカウント番号</th>
-      <th>円で残高</th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= Investor.human_attribute_name(:account_number) %></th>
+      <th><%= Investor.human_attribute_name(:balance_in_yen) %></th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -19,10 +20,10 @@
         <td><%= investor.account_user.email %></td>
         <td><%= investor.account_number %></td>
         <td><%= investor.balance_in_yen %></td>
-        <td><%= link_to "表示", investor %></td>
-        <td><%= link_to "編集", edit_investor_path(investor) %></td>
-        <td><%= link_to "削除", investor, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
-        <td><%= link_to "株式投資", investor_stock_investments_path(investor) %></td>
+        <td><%= link_to t("show"), investor %></td>
+        <td><%= link_to t("edit"), edit_investor_path(investor) %></td>
+        <td><%= link_to t("delete"), investor, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
+        <td><%= link_to StockInvestment.model_name.human, investor_stock_investments_path(investor) %></td>
       </tr>
     <% end %>
   </tbody>

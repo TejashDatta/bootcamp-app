@@ -1,5 +1,5 @@
-<h1>投資家作成</h1>
+<h1><%= t("create_model", model: Investor.model_name.human ) %></h1>
 
 <%= render "form", investor: @investor %>
 
-<%= link_to "戻る", investors_path %>
+<%= link_to t("back"), investors_path %>

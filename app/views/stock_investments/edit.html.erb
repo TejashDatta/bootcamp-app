@@ -1,4 +1,4 @@
-<h1>株式投資編集</h1>
+<h1><%= t("edit_model", model: StockInvestment.model_name.human) %></h1>
 
 <%= 
   render(
@@ -8,5 +8,5 @@
   )
 %>
 
-<%= link_to "表示", investor_stock_investments_path(@stock_investment.investor, @stock_investment) %> |
-<%= link_to "戻る", investor_stock_investments_path %>
+<%= link_to t("show"), investor_stock_investments_path(@stock_investment.investor, @stock_investment) %> |
+<%= link_to t("back"), investor_stock_investments_path %>

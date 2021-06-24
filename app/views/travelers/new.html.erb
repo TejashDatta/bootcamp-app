@@ -1,5 +1,5 @@
-<h1>旅行者作成</h1>
+<h1><%= t("create_model", model: Traveler.model_name.human ) %></h1>
 
 <%= render "form", traveler: @traveler %>
 
-<%= link_to "戻る", travelers_path %>
+<%= link_to t("back"), travelers_path %>

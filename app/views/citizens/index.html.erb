@@ -1,10 +1,10 @@
-<h1>市民</h1>
+<h1><%= Citizen.model_name.human %></h1>
 
 <p>
-  <%= link_to "市民作成", new_citizen_path %>
+  <%= link_to t("create_model", model: Citizen.model_name.human), new_citizen_path %>
 </p>
 
-<h3>強靭な検索</h3>
+<h3><%= t("search_secure") %></h3>
 <%= 
   render(
     "search_form", 
@@ -14,7 +14,7 @@
   )
 %>
 
-<h3>脆弱な検索</h3>
+<h3><%= t("search_insecure") %></h3>
 <%= 
   render(
     "search_form", 
@@ -27,8 +27,8 @@
 <table>
   <thead>
     <tr>
-      <th>名前</th>
-      <th>都市</th>
+      <th><%= Citizen.human_attribute_name(:name) %></th>
+      <th><%= Citizen.human_attribute_name(:city) %></th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -38,11 +38,11 @@
       <tr>
         <td><%= citizen.name %></td>
         <td><%= citizen.city %></td>
-        <td><%= link_to "強靭な表示", citizen %></td>
-        <td><%= link_to "脆弱な表示", show_vulnerable_citizen_path(citizen) %></td>
-        <td><%= link_to "強靭な編集", edit_citizen_path(citizen) %></td>
-        <td><%= link_to "脆弱な編集", edit_vulnerable_citizen_path(citizen) %></td>
-        <td><%= link_to "削除", citizen, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+        <td><%= link_to t("show_secure"), citizen %></td>
+        <td><%= link_to t("show_insecure"), show_vulnerable_citizen_path(citizen) %></td>
+        <td><%= link_to t("edit_secure"), edit_citizen_path(citizen) %></td>
+        <td><%= link_to t("edit_insecure"), edit_vulnerable_citizen_path(citizen) %></td>
+        <td><%= link_to t("delete"), citizen, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
       </tr>
     <% end %>
   </tbody>

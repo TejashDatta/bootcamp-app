@@ -1,16 +1,16 @@
 <p>
-  <strong>国際旅行者:</strong>
+  <strong><%= Traveler.human_attribute_name(:name) %>:</strong>
   <%= link_to @passport.traveler.name, @passport.traveler %>
 </p>
 
 <p>
-  <strong>パスポート番号:</strong>
+  <strong><%= Passport.human_attribute_name(:passport_number) %>:</strong>
   <%= @passport.passport_number %>
 </p>
 
 <p>
-  <strong>国籍:</strong>
+  <strong><%= Passport.human_attribute_name(:nationality) %>:</strong>
   <%= @passport.nationality %>
 </p>
 
-<%= link_to "編集", edit_traveler_passport_path %>
+<%= link_to t("edit"), edit_traveler_passport_path %>

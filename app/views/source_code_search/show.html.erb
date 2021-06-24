@@ -1,24 +1,24 @@
-<h1>ソースコード検索</h1>
+<h1><%= t("search_source_code") %></h1>
 
 <%= form_with(url: source_code_search_path, method: "get", local: true, class: "clearable-form") do |form| %>
   <div class="field">
-    <%= form.label :expression, "検索表現" %>
+    <%= form.label :expression, t("search_expression") %>
     <%= form.text_field :expression, value: @expression, required: "required" %>
   </div>
   <div class="actions">
-    <%= form.submit "検索", name: nil %>
-    <button class="clear-form">リセット</button>
+    <%= form.submit t("search"), name: nil %>
+    <button class="clear-form"><%= t("reset") %></button>
   </div>
 <% end %>
 
 <% if @results %>
-  <h2>検索結果</h2>
+  <h2><%= t("search_results") %></h2>
   <% @results.each do |file, file_results| %>
     <table border='1'>
       <caption><%= file %></caption>
       <tr>
-        <th>行番号</th>
-        <th>行内容</th>
+        <th><%= t("line_number") %></th>
+        <th><%= t("line_content") %></th>
       </tr>
       <% file_results.each do |result| %>
         <tr>

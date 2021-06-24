@@ -1,13 +1,13 @@
-<h1>ユーザー</h1>
+<h1><%= User.model_name.human %></h1>
 <p>
-  <%= link_to "ユーザー作成", new_user_path %>
+  <%= link_to t("create_model", model: User.model_name.human), new_user_path %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>名前</th>
-      <th>メール</th>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -17,10 +17,10 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to "表示", user %></td>
-        <td><%= link_to "編集", edit_user_path(user) %></td>
-        <td><%= link_to "権限", user_permissions_path(user) %></td>
-        <td><%= link_to "削除", user, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+        <td><%= link_to t("show"), user %></td>
+        <td><%= link_to t("edit"), edit_user_path(user) %></td>
+        <td><%= link_to Permission.model_name.human, user_permissions_path(user) %></td>
+        <td><%= link_to t("delete"), user, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
       </tr>
     <% end %>
   </tbody>

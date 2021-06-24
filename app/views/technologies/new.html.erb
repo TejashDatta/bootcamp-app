@@ -1,5 +1,5 @@
-<h1>技術作成</h1>
+<h1><%= t("create_model", model: Technology.model_name.human ) %></h1>
 
 <%= render "form", technology: @technology %>
 
-<%= link_to "戻る", technologies_path %>
+<%= link_to t("back"), technologies_path %>

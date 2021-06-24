@@ -1,17 +1,17 @@
 <p>
-  <strong>名前:</strong>
+  <strong><%= Employee.human_attribute_name(:name) %>:</strong>
   <%= @employee.name %>
 </p>
 
 <p>
-  <strong>入社の日:</strong>
+  <strong><%= Employee.human_attribute_name(:date_of_joining) %>:</strong>
   <%= @employee.date_of_joining %>
 </p>
 
 <p>
-  <strong>部署:</strong>
+  <strong><%= Employee.human_attribute_name(:department) %>:</strong>
   <%= @employee.department %>
 </p>
 
-<%= link_to "編集", edit_employee_path(@employee) %> |
-<%= link_to "戻る", employees_path %>
+<%= link_to t("edit"), edit_employee_path(@employee) %> |
+<%= link_to t("back"), employees_path %>

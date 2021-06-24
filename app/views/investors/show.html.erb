@@ -1,12 +1,12 @@
 <p>
-  <strong>アカウント番号:</strong>
+  <strong><%= Investor.human_attribute_name(:account_number) %>:</strong>
   <%= @investor.account_number %>
 </p>
 
 <p>
-  <strong>円で残高:</strong>
+  <strong><%= Investor.human_attribute_name(:balance_in_yen) %>:</strong>
   <%= @investor.balance_in_yen %>
 </p>
 
-<%= link_to "編集", edit_investor_path(@investor) %> |
-<%= link_to "戻る", investors_path %>
+<%= link_to t("edit"), edit_investor_path(@investor) %> |
+<%= link_to t("back"), investors_path %>

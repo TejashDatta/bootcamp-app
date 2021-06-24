@@ -1,17 +1,17 @@
-<h1>旅行者</h1>
+<h1><%= Traveler.model_name.human %></h1>
 <p>
-  <%= link_to "旅行者作成", new_traveler_path %>
+  <%= link_to t("create_model", model: Traveler.model_name.human), new_traveler_path %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>アカウントユーザー</th>
-      <th>名前</th>
-      <th>出発国</th>
-      <th>到着国</th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= Traveler.human_attribute_name(:name) %></th>
+      <th><%= Traveler.human_attribute_name(:departure_country) %></th>
+      <th><%= Traveler.human_attribute_name(:arrival_country) %></th>
       <th colspan="3"></th>
-      <th colspan="2">パスポート</th>
+      <th colspan="2"><%= Passport.model_name.human %></th>
     </tr>
   </thead>
 
@@ -22,15 +22,15 @@
         <td><%= traveler.name %></td>
         <td><%= traveler.departure_country %></td>
         <td><%= traveler.arrival_country %></td>
-        <td><%= link_to "表示", traveler %></td>
-        <td><%= link_to "編集", edit_traveler_path(traveler) %></td>
-        <td><%= link_to "削除", traveler, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+        <td><%= link_to t("show"), traveler %></td>
+        <td><%= link_to t("edit"), edit_traveler_path(traveler) %></td>
+        <td><%= link_to t("delete"), traveler, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
         <td>
           <% if traveler.passport %>
-            <%= link_to "表示", traveler_passport_path(traveler.id)  %>
-            <%= link_to "削除", traveler_passport_path(traveler.id), method: :delete, data: { confirm: "削除は宜しいですか?" } %>
+            <%= link_to t("show"), traveler_passport_path(traveler.id)  %>
+            <%= link_to t("delete"), traveler_passport_path(traveler.id), method: :delete, data: { confirm: t("delete_confirmation") } %>
           <% else %>
-            <%= link_to "作成", new_traveler_passport_path(traveler.id) %>
+            <%= link_to t("create"), new_traveler_passport_path(traveler.id) %>
           <% end %>
         </td>
       </tr>

@@ -1,9 +1,9 @@
 <p>
-  <strong>技術名:</strong>
+  <strong><%= Technology.human_attribute_name(:name) %>:</strong>
   <%= @technology.name %>
 </p>
 <p>
-  <strong>配置プロジェクト:</strong>
+  <strong><%= t("used_in_projects") %>:</strong>
   <br>
   <% @technology.projects.each do |project| %>
     <%= link_to project.name, project %>
@@ -11,5 +11,5 @@
   <% end %>
 </p>
 
-<%= link_to "編集", edit_technology_path(@technology) %> |
-<%= link_to "戻る", technologies_path %>
+<%= link_to t("edit"), edit_technology_path(@technology) %> |
+<%= link_to t("back"), technologies_path %>

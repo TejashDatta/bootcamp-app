@@ -1,13 +1,13 @@
 <p>
-  <strong>名前:</strong>
+  <strong><%= User.human_attribute_name(:name) %>:</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>メール:</strong>
+  <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>
 </p>
 
-<%= link_to "編集", edit_user_path(@user) %> |
-<%= link_to "権限", user_permissions_path(@user) %> |
-<%= link_to "戻る", users_path %>
+<%= link_to t("edit"), edit_user_path(@user) %> |
+<%= link_to Permission.model_name.human, user_permissions_path(@user) %> |
+<%= link_to t("back"), users_path %>

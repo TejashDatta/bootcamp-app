@@ -1,13 +1,13 @@
-<h1>プロジェクト</h1>
+<h1><%= Project.model_name.human %></h1>
 <p>
-  <%= link_to "プロジェクト作成", new_project_path %>
+  <%= link_to t("create_model", model: Project.model_name.human), new_project_path %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>名前</th>
-      <th>内容</th>
+      <th><%= Project.human_attribute_name(:name) %></th>
+      <th><%= Project.human_attribute_name(:description) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,9 +17,9 @@
       <tr>
         <td><%= project.name %></td>
         <td><%= project.description %></td>
-        <td><%= link_to "表示", project %></td>
-        <td><%= link_to "編集", edit_project_path(project) %></td>
-        <td><%= link_to "削除", project, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+        <td><%= link_to t("show"), project %></td>
+        <td><%= link_to t("edit"), edit_project_path(project) %></td>
+        <td><%= link_to t("delete"), project, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
       </tr>
     <% end %>
   </tbody>
