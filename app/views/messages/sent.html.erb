@@ -1,16 +1,16 @@
-<h1>送信済みのメッセージ</h1>
+<h1><%= t("messages.sent") %></h1>
 
-<h3>メッセージ検索</h3>
+<h3><%= t("search_model", model: Message.model_name.human) %></h3>
 <%= render "message_search_form", message_search_form: @message_search_form %>
 
 <p>
-  <%= link_to "メッセージを送る", new_message_path %>
+  <%= link_to t("messages.send_message"), new_message_path %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>宛先</th>
+      <th><%= Message.human_attribute_name(:receiver) %></th>
       <%= render "common_column_names" %>
     </tr>
   </thead>

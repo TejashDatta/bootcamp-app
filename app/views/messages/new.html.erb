@@ -1,9 +1,9 @@
-<h1>メッセージを送る</h1>
+<h1><%= t("messages.send_message") %></h1>
 
 <%= form_with(model: @message, local: true) do |form| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @message.errors.count %> エラーがあってメッセージ送信が失敗しました。</h2>
+      <h2><%= t("errors_caused_save_failure", error_count: @message.errors.count) %></h2>
     </div>
   <% end %>
 
@@ -26,5 +26,5 @@
   </div>
 <% end %>
 
-<%= link_to "受信トレイメッセージ", received_messages_path %>  | 
-<%= link_to "送信済みメッセージ", sent_messages_path %>
+<%= link_to t("messages.inbox"), received_messages_path %>  | 
+<%= link_to t("messages.sent"), sent_messages_path %>

@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <strong><%= "送信時間" %>：</strong>
+  <strong><%= t("messages.sent_at") %>：</strong>
   <%= format_message_datetime_full @message.created_at %>
 </p>
 
@@ -24,5 +24,5 @@
   <%= @message.content %>
 </p>
 
-<%= link_to "受信トレイメッセージ", received_messages_path %>  | 
-<%= link_to "送信済みメッセージ", sent_messages_path %>
+<%= link_to t("messages.inbox"), received_messages_path %>  | 
+<%= link_to t("messages.sent"), sent_messages_path %>

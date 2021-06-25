@@ -1,14 +1,14 @@
-<h2>非正規化テーブル</h2>
+<h2><%= t("normalization.unnormalized_table") %></h2>
 
 <table border='1'>
-  <caption>サイト訪問者</caption>
+  <caption><%= UnnormalizedSiteVisitor.model_name.human %></caption>
   <tr>
-    <th>ID番号</th>
-    <th>名前</th>
-    <th>国</th>
-    <th>ブラウザ</th>
-    <th>ブラウザ開発者</th>
-    <th>ブラウザプラットホーム</th>
+    <th><%= t("id") %></th>
+    <th><%= UnnormalizedSiteVisitor.human_attribute_name(:name) %></th>
+    <th><%= UnnormalizedSiteVisitor.human_attribute_name(:country) %></th>
+    <th><%= UnnormalizedSiteVisitor.human_attribute_name(:browser) %></th>
+    <th><%= UnnormalizedSiteVisitor.human_attribute_name(:browser_developer) %></th>
+    <th><%= UnnormalizedSiteVisitor.human_attribute_name(:browser_platforms) %></th>
   </tr>
   <% @unnormalized_site_visitors.each do |site_visitor| %>
     <tr>
@@ -22,15 +22,15 @@
   <% end %>
 </table>
 
-<h2>正規化テーブル</h2>
+<h2><%= t("normalization.normalized_table") %></h2>
 
 <table border='1'>
-  <caption>サイト訪問者</caption>
+  <caption><%= SiteVisitor.model_name.human %></caption>
   <tr>
-    <th>ID番号</th>
-    <th>名前</th>
-    <th>国</th>
-    <th>ブラウザID番号</th>
+    <th><%= t("id") %></th>
+    <th><%= SiteVisitor.human_attribute_name(:name) %></th>
+    <th><%= SiteVisitor.human_attribute_name(:country) %></th>
+    <th><%= Browser.model_name.human %></th>
   </tr>
   <% @site_visitors.each do |site_visitor| %>
     <tr>
@@ -45,11 +45,11 @@
 <br>
 
 <table border='1'>
-  <caption>ブラウザ</caption>
+  <caption><%= Browser.model_name.human %></caption>
   <tr>
-    <th>ID番号</th>
-    <th>名前</th>
-    <th>開発者</th>
+    <th><%= t("id") %></th>
+    <th><%= Browser.human_attribute_name(:name) %></th>
+    <th><%= Browser.human_attribute_name(:developer) %></th>
   </tr>
   <% @browsers.each do |browser| %>
     <tr>
@@ -63,10 +63,10 @@
 <br>
 
 <table border='1'>
-  <caption>プラットホーム</caption>
+  <caption><%= Platform.model_name.human %></caption>
   <tr>
-    <th>ID番号</th>
-    <th>名前</th>
+    <th><%= t("id") %></th>
+    <th><%= Platform.human_attribute_name(:name) %></th>
   </tr>
   <% @platforms.each do |platform| %>
     <tr>
@@ -79,10 +79,10 @@
 <br>
 
 <table border='1'>
-  <caption>ブラウザ互換性</caption>
+  <caption><%= BrowserCompatibility.model_name.human %></caption>
   <tr>
-    <th>ブラウザID番号</th>
-    <th>プラットホームID番号</th>
+    <th><%= t("normalization.browser_id") %></th>
+    <th><%= t("normalization.platform_id") %></th>
   </tr>
   <% @browser_compatibilities.each do |compatibility| %>
     <tr>

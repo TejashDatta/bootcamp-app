@@ -24,8 +24,8 @@
           <li>
             <h4><%= Message.model_name.human %></h4>
             <ul>
-              <li><%= link_to t("inbox"), received_messages_path %></li>
-              <li><%= link_to t("sent_items"), sent_messages_path %></li>
+              <li><%= link_to t("messages.inbox"), received_messages_path %></li>
+              <li><%= link_to t("messages.sent"), sent_messages_path %></li>
             </ul>
           </li>
           <br>
@@ -38,7 +38,7 @@
           <li><%= link_to Citizen.model_name.human, citizens_path %></li>
           <li><%= link_to t("log_explanation"), log_path %></li>
           <li><%= link_to t("generated_sql"), sql_path %></li>
-          <li><%= link_to t("database_normalization"), normalization_path %></li>
+          <li><%= link_to t("normalization.database_normalization"), normalization_path %></li>
           <li><%= link_to t("search_source_code"), source_code_search_path %></li>
           <li><%= link_to t("logout"), logout_path, method: :delete, data: { confirm: t("logout_confirmation") }  %></li>
           <li><%= link_to "#{t("pink_mode")} #{session[:pink_mode] ? "OFF" : "ON"}", toggle_pink_mode_path, method: :post %></li>

@@ -1,4 +1,9 @@
 ja:
+  id: ID番号
+  menu: メニュー
+  back: 戻る
+  open: 開く
+  reset: リセット
   first_page: 最初
   previous_page: 前
   next_page: 次
@@ -14,7 +19,6 @@ ja:
   search_source_code: ソースコード検索
   line_number: 行番号
   line_content: 行内容
-  reset: リセット
   login: ログイン"
   logout: ログアウト
   logout_confirmation: ログアウトして宜しいですか?
@@ -31,10 +35,6 @@ ja:
   edit_insecure: 脆弱な編集
   delete: 削除
   delete_confirmation: 削除は宜しいですか?
-  back: 戻る
-  menu: メニュー
-  inbox: 受信トレイ
-  sent_items: 送信済み
   technologies_used: 使用される技術
   used_in_projects: 配置プロジェクト
   check_all: すべてチェック
@@ -42,8 +42,18 @@ ja:
   permissions_of_user: "%{user}の権限"
   log_explanation: ログ説明
   generated_sql: 生成されるSQL
-  database_normalization: データベース正規化
   pink_mode: ピンクモード
+  normalization:
+    database_normalization: データベース正規化
+    unnormalized_table: 非正規化テーブル
+    normalized_table: 正規化テーブル
+    browser_id: ブラウザID番号
+    platform_id: プラットホームID番号
+  messages:
+    inbox: 受信トレイ
+    sent: 送信済み
+    sent_at: 送信時間
+    send_message: メッセージを送る
 
   flash_messages:
     create_success: "%{model}の作成が合格しました。"
