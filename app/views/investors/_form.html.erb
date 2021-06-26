@@ -1,14 +1,1 @@
-<%= form_with(model: investor, local: true) do |form| %>
-  <% if investor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t("errors_caused_save_failure", error_count: investor.errors.count) %></h2>
-    </div>
-  <% end %>
-
-  <%= render "form_item", attribute: :account_number, form: form, errors: investor.errors %>
-  <%= render "form_item", attribute: :balance_in_yen, form: form, errors: investor.errors %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render "model_form", model: investor, attributes: [:account_number, :balance_in_yen] %>
