@@ -16,7 +16,7 @@
       <tr>
         <td><%= technology.name %></td>
         <td><%= link_to t("show"), technology %></td>
-        <td><%= link_to t("edit"), edit_technology_path(technology) %></td>
+        <td><%= link_to t("edit"), [:edit, technology] %></td>
         <td><%= link_to t("delete"), technology, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
       </tr>
     <% end %>

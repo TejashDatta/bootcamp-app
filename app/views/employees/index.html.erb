@@ -39,7 +39,7 @@
             <td><%= employee.date_of_joining %></td>
             <td><%= employee.department %></td>
             <td><%= link_to  t("show"), employee %></td>
-            <td><%= link_to  t("edit"), edit_employee_path(employee) %></td>
+            <td><%= link_to  t("edit"), [:edit, employee] %></td>
             <td><%= link_to  t("delete"), employee, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
           </tr>
         <% end %>

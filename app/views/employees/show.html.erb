@@ -13,5 +13,5 @@
   <%= @employee.department %>
 </p>
 
-<%= link_to t("edit"), edit_employee_path(@employee) %> |
+<%= link_to t("edit"), [:edit, @employee] %> |
 <%= link_to t("back"), employees_path %>

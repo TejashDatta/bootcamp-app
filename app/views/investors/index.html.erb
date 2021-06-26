@@ -1,7 +1,7 @@
 <h1><%= Investor.model_name.human %></h1>
 
 <p>
-  <%= link_to t("create_model", model: Investor.model_name.human), new_investor_path %>
+  <%= link_to t("create_model", model: Investor.model_name.human), [:new, :investor] %>
 </p>
 
 <table>
@@ -21,9 +21,9 @@
         <td><%= investor.account_number %></td>
         <td><%= investor.balance_in_yen %></td>
         <td><%= link_to t("show"), investor %></td>
-        <td><%= link_to t("edit"), edit_investor_path(investor) %></td>
+        <td><%= link_to t("edit"), [:edit, investor] %></td>
         <td><%= link_to t("delete"), investor, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
-        <td><%= link_to StockInvestment.model_name.human, investor_stock_investments_path(investor) %></td>
+        <td><%= link_to StockInvestment.model_name.human, [investor, :stock_investments] %></td>
       </tr>
     <% end %>
   </tbody>

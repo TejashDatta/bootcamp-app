@@ -1,4 +1,5 @@
-<h1><%= @investor.account_number %>の株式投資</h1>
+<h1><%= t("stock_investments_of_investor_account_number", account_number: @investor.account_number) %></h1>
+
 <p>
   <%= link_to t("create_model", model: StockInvestment.model_name.human), new_investor_stock_investment_path %>
 </p>
@@ -17,13 +18,13 @@
       <tr>
         <td><%= stock_investment.stock_name %></td>
         <td><%= stock_investment.shares_owned %></td>
-        <td><%= link_to t("show"), investor_stock_investment_path(@investor, stock_investment) %></td>
-        <td><%= link_to t("edit"), edit_investor_stock_investment_path(@investor, stock_investment) %></td>
+        <td><%= link_to t("show"), [@investor, stock_investment] %></td>
+        <td><%= link_to t("edit"), [:edit, @investor, stock_investment] %></td>
         <td>
           <%= 
             link_to(
               t("delete"), 
-              investor_stock_investment_path(@investor, stock_investment), 
+              [@investor, stock_investment], 
               method: :delete, 
               data: { confirm: t("delete_confirmation") }
             )

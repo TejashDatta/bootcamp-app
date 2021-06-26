@@ -8,6 +8,6 @@
   <%= @user.email %>
 </p>
 
-<%= link_to t("edit"), edit_user_path(@user) %> |
-<%= link_to Permission.model_name.human, user_permissions_path(@user) %> |
+<%= link_to t("edit"), [:edit, @user] %> |
+<%= link_to Permission.model_name.human, [@user, :permissions] %> |
 <%= link_to t("back"), users_path %>

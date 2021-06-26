@@ -39,9 +39,9 @@
         <td><%= citizen.name %></td>
         <td><%= citizen.city %></td>
         <td><%= link_to t("show_secure"), citizen %></td>
-        <td><%= link_to t("show_insecure"), show_vulnerable_citizen_path(citizen) %></td>
-        <td><%= link_to t("edit_secure"), edit_citizen_path(citizen) %></td>
-        <td><%= link_to t("edit_insecure"), edit_vulnerable_citizen_path(citizen) %></td>
+        <td><%= link_to t("show_insecure"), [:show_vulnerable, citizen] %></td>
+        <td><%= link_to t("edit_secure"), [:edit, citizen] %></td>
+        <td><%= link_to t("edit_insecure"), [:edit_vulnerable, citizen] %></td>
         <td><%= link_to t("delete"), citizen, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
       </tr>
     <% end %>

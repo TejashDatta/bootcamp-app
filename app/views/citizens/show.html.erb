@@ -8,5 +8,5 @@
   <%= @citizen.city %>
 </p>
 
-<%= link_to t("edit"), edit_citizen_path(@citizen) %> |
+<%= link_to t("edit"), [:edit, @citizen] %> |
 <%= link_to t("back"), citizens_path %>

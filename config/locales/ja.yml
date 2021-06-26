@@ -25,6 +25,7 @@ ja:
   errors_caused_save_failure: "%{error_count} エラーがありまして保存が失敗しました。"
   errors_caused_search_failure: エラーがありまして検索はできません。
   show: 表示
+  show_model: "%{model}表示"
   show_secure: 強靭な表示
   show_insecure: 脆弱な表示
   create: 作成
@@ -54,6 +55,7 @@ ja:
     sent: 送信済み
     sent_at: 送信時間
     send_message: メッセージを送る
+  stock_investments_of_investor_account_number: "%{account_number}の株式投資"
 
   flash_messages:
     create_success: "%{model}の作成が合格しました。"

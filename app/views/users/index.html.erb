@@ -18,8 +18,8 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= link_to t("show"), user %></td>
-        <td><%= link_to t("edit"), edit_user_path(user) %></td>
-        <td><%= link_to Permission.model_name.human, user_permissions_path(user) %></td>
+        <td><%= link_to t("edit"), [:edit, user] %></td>
+        <td><%= link_to Permission.model_name.human, [user, :permissions] %></td>
         <td><%= link_to t("delete"), user, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
       </tr>
     <% end %>

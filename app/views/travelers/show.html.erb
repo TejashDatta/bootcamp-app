@@ -13,5 +13,5 @@
   <%= @traveler.arrival_country %>
 </p>
 
-<%= link_to t("edit"), edit_traveler_path(@traveler) %> |
+<%= link_to t("edit"), [:edit, @traveler] %> |
 <%= link_to t("back"), travelers_path %>

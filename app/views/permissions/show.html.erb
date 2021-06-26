@@ -1,7 +1,7 @@
 <h1><%= t("permissions_of_user", user: @user.email) %></h1>
 <%= link_to t("show_model", model: User.model_name.human), @user %> |
 <%= link_to t("edit_model", model: User.model_name.human), edit_user_path(@user) %> |
-<%= link_to t("edit_model"), users_path %>
+<%= link_to t("back"), users_path %>
 
 <br>
 <br>

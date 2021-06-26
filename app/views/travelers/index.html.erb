@@ -23,14 +23,14 @@
         <td><%= traveler.departure_country %></td>
         <td><%= traveler.arrival_country %></td>
         <td><%= link_to t("show"), traveler %></td>
-        <td><%= link_to t("edit"), edit_traveler_path(traveler) %></td>
+        <td><%= link_to t("edit"), [:edit, traveler] %></td>
         <td><%= link_to t("delete"), traveler, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
         <td>
           <% if traveler.passport %>
-            <%= link_to t("show"), traveler_passport_path(traveler.id)  %>
-            <%= link_to t("delete"), traveler_passport_path(traveler.id), method: :delete, data: { confirm: t("delete_confirmation") } %>
+            <%= link_to t("show"), [traveler, :passport]  %>
+            <%= link_to t("delete"), [traveler, :passport], method: :delete, data: { confirm: t("delete_confirmation") } %>
           <% else %>
-            <%= link_to t("create"), new_traveler_passport_path(traveler.id) %>
+            <%= link_to t("create"), [:new, traveler, :passport] %>
           <% end %>
         </td>
       </tr>
