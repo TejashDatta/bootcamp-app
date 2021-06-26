@@ -1,15 +1,15 @@
 <p>
-  <strong>プロジェクト名:</strong>
+  <strong><%= Project.human_attribute_name(:name) %>:</strong>
   <%= @project.name %>
 </p>
 
 <p>
-  <strong>内容:</strong>
+  <strong><%= Project.human_attribute_name(:description) %>:</strong>
   <%= @project.description %>
 </p>
 
 <p>
-  <strong>使用される技術:</strong>
+  <strong><%= t("technologies_used") %>:</strong>
   <%  @project.technologies.each_with_index do |technology, index| %>
     <% if index > 0 %> | <% end %>
     <%= link_to technology.name, technology %>
@@ -17,5 +17,5 @@
 </p>
 
 
-<%= link_to "編集", edit_project_path(@project) %> |
-<%= link_to "戻る", projects_path %>
+<%= link_to t("edit"), edit_project_path(@project) %> |
+<%= link_to t("back"), projects_path %>

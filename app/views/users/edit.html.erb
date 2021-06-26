@@ -1,7 +1,7 @@
-<h1>ユーザー編集</h1>
+<h1><%= t("edit_model", model: User.model_name.human) %></h1>
 
 <%= render "form", user: @user %>
 
-<%= link_to "表示", @user %> |
-<%= link_to "権限", user_permissions_path(@user) %> |
-<%= link_to "戻る", users_path %>
+<%= link_to t("show"), @user %> |
+<%= link_to Permission.model_name.human, user_permissions_path(@user) %> |
+<%= link_to t("back"), users_path %>

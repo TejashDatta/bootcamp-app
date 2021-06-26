@@ -1,7 +1,7 @@
 <%= form_with(model: employee, local: true) do |form| %>
   <% if employee.errors.any? %>
     <div id="error_explanation">
-      <h2><%= employee.errors.count %> エラーがあって保存が失敗しました。</h2>
+      <h2><%= t("errors_caused_save_failure", error_count: employee.errors.count) %></h2>
     </div>
   <% end %>
 

@@ -11,13 +11,13 @@ class AuthenticationController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      flash.alert = "ログインが失敗しました。"
+      flash.alert = t("flash_messages.login_failure")
       render :new
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, notice: "ログアウトしました。"
+    redirect_to login_path, notice: t("flash_messages.logout_success")
   end
 end

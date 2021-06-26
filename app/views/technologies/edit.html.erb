@@ -1,6 +1,6 @@
-<h1>技術編集</h1>
+<h1><%= t("edit_model", model: Technology.model_name.human) %></h1>
 
 <%= render "form", technology: @technology %>
 
-<%= link_to "表示", @technology %> |
-<%= link_to "戻る", technologies_path %>
+<%= link_to t("show"), @technology %> |
+<%= link_to t("back"), technologies_path %>

@@ -1,6 +1,6 @@
-<h1>投資家編集</h1>
+<h1><%= t("edit_model", model: Investor.model_name.human) %></h1>
 
 <%= render "form", investor: @investor %>
 
-<%= link_to "表示", @investor %> |
-<%= link_to "戻る", investors_path %>
+<%= link_to t("show"), @investor %> |
+<%= link_to t("back"), investors_path %>

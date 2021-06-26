@@ -9,7 +9,7 @@ class EmployeesController < ApplicationController
     before_query_execution = Time.now
     @employees = @paginator.items.load
     after_query_execution = Time.now
-    
+
     @query_execution_time = (after_query_execution - before_query_execution) * 1000
   end
 
@@ -29,7 +29,8 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
 
     if @employee.save
-      redirect_to @employee, notice: "社員の作成が合格しました。"
+      redirect_to @employee,
+                  notice: t("flash_messages.create_success", model: Employee.model_name.human)
     else
       render :new
     end
@@ -39,7 +40,8 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
 
     if @employee.update(employee_params)
-      redirect_to @employee, notice: "社員の更新が合格しました。"
+      redirect_to @employee,
+                  notice: t("flash_messages.update_success", model: Employee.model_name.human)
     else
       render :edit
     end
@@ -47,7 +49,8 @@ class EmployeesController < ApplicationController
 
   def destroy
     Employee.find(params[:id]).destroy
-    redirect_to employees_url, notice: "社員の削除が合格しました。"
+    redirect_to employees_url,
+                notice: t("flash_messages.destroy_success", model: Employee.model_name.human)
   end
 
   private

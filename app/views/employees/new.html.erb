@@ -1,5 +1,5 @@
-<h1>社員作成</h1>
+<h1><%= t("create_model", model: Employee.model_name.human ) %></h1>
 
 <%= render "form", employee: @employee %>
 
-<%= link_to "戻る", employees_path %>
+<%= link_to t("back"), employees_path %>

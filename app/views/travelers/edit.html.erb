@@ -1,6 +1,6 @@
-<h1>旅行者編集</h1>
+<h1><%= t("edit_model", model: Traveler.model_name.human) %></h1>
 
 <%= render "form", traveler: @traveler %>
 
-<%= link_to "表示", @traveler %> |
-<%= link_to "戻る", travelers_path %>
+<%= link_to t("show"), @traveler %> |
+<%= link_to t("back"), travelers_path %>

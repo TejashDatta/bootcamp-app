@@ -19,7 +19,8 @@ class TechnologiesController < ApplicationController
     @technology = Technology.new(technology_params)
 
     if @technology.save
-      redirect_to @technology, notice: "技術の作成が合格しました。"
+      redirect_to @technology,
+                  notice: t("flash_messages.create_success", model: Technology.model_name.human)
     else
       render :new
     end
@@ -29,7 +30,8 @@ class TechnologiesController < ApplicationController
     @technology = Technology.find(params[:id])
 
     if @technology.update(technology_params)
-      redirect_to @technology, notice: "技術の作成が合格しました。"
+      redirect_to @technology,
+                  notice: t("flash_messages.update_success", model: Technology.model_name.human)
     else
       render :edit
     end
@@ -37,7 +39,8 @@ class TechnologiesController < ApplicationController
 
   def destroy
     Technology.find(params[:id]).destroy
-    redirect_to technologies_url, notice: "技術の作成が合格しました。"
+    redirect_to technologies_url,
+                notice: t("flash_messages.destroy_success", model: Technology.model_name.human)
   end
 
   private

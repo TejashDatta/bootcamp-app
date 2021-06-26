@@ -1,6 +1,6 @@
-<h1>社員編集</h1>
+<h1><%= t("edit_model", model: Employee.model_name.human) %></h1>
 
 <%= render "form", employee: @employee %>
 
-<%= link_to "表示", @employee %> |
-<%= link_to "戻る", employees_path %>
+<%= link_to t("show"), @employee %> |
+<%= link_to t("back"), employees_path %>

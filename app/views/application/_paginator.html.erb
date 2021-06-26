@@ -1,7 +1,7 @@
 <% params ||= {} %>
 <div class="paginator">
-  <%= link_to_if paginator.page > 1, "最初", send(path, **params) %>
-  <%= link_to_if paginator.page > 1,  "前", send(path, page: paginator.page - 1, **params) %>
+  <%= link_to_if paginator.page > 1, t("first_page"), send(path, **params) %>
+  <%= link_to_if paginator.page > 1, t("previous_page"), send(path, page: paginator.page - 1, **params) %>
   <% if paginator.page > 1 %>
     ...
   <% end %>
@@ -11,6 +11,6 @@
   <% if paginator.end_page < paginator.last_page %>
     ...
   <% end %>
-  <%= link_to_if paginator.page < paginator.last_page, "次", send(path, page: paginator.page + 1, **params) %>
-  <%= link_to_if paginator.page < paginator.last_page, "最後", send(path, page: paginator.last_page, **params) %>
+  <%= link_to_if paginator.page < paginator.last_page, t("next_page"), send(path, page: paginator.page + 1, **params) %>
+  <%= link_to_if paginator.page < paginator.last_page, t("last_page"), send(path, page: paginator.last_page, **params) %>
 </div>

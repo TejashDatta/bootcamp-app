@@ -1,28 +1,28 @@
 <p>
-  <strong>送信者:</strong>
+  <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= link_to @message.sender.email, @message.sender %>
 </p>
 
 <p>
-  <strong>宛先:</strong>
+  <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= link_to @message.receiver.email, @message.receiver %>
 </p>
 
 <p>
-  <strong>送信時間：</strong>
+  <strong><%= t("messages.sent_at") %>：</strong>
   <%= format_message_datetime_full @message.created_at %>
 </p>
 
 <p>
-  <strong>件名:</strong>
+  <strong><%= Message.human_attribute_name(:subject) %>:</strong>
   <%= @message.subject %>
 </p>
 
 <p>
-  <strong>内容:</strong> 
+  <strong><%= Message.human_attribute_name(:content) %>:</strong> 
   <br>
   <%= @message.content %>
 </p>
 
-<%= link_to "受信トレイメッセージ", received_messages_path %>  | 
-<%= link_to "送信済みメッセージ", sent_messages_path %>
+<%= link_to t("messages.inbox"), received_messages_path %>  | 
+<%= link_to t("messages.sent"), sent_messages_path %>

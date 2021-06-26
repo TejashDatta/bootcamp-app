@@ -1,5 +1,5 @@
-<h1>パスポート編集</h1>
+<h1><%= t("edit_model", model: Passport.model_name.human) %></h1>
 
 <%= render "form", passport: @passport %>
 
-<%= link_to "表示", traveler_passport_path %>
+<%= link_to t("show"), traveler_passport_path %>

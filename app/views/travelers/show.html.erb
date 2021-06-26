@@ -1,17 +1,17 @@
 <p>
-  <strong>名前:</strong>
+  <strong><%= Traveler.human_attribute_name(:name) %>:</strong>
   <%= @traveler.name %>
 </p>
 
 <p>
-  <strong>出発国:</strong>
+  <strong><%= Traveler.human_attribute_name(:departure_country) %>:</strong>
   <%= @traveler.departure_country %>
 </p>
 
 <p>
-  <strong>到着国:</strong>
+  <strong><%= Traveler.human_attribute_name(:arrival_country) %>:</strong>
   <%= @traveler.arrival_country %>
 </p>
 
-<%= link_to "編集", edit_traveler_path(@traveler) %> |
-<%= link_to "戻る", travelers_path %>
+<%= link_to t("edit"), edit_traveler_path(@traveler) %> |
+<%= link_to t("back"), travelers_path %>

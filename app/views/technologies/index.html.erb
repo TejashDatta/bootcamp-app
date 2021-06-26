@@ -1,12 +1,12 @@
-<h1>技術</h1>
+<h1><%= Technology.model_name.human %></h1>
 <p>
-  <%= link_to "技術作成", new_technology_path %>
+  <%= link_to t("create_model", model: Technology.model_name.human), new_technology_path %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>名前</th>
+      <th><%= Technology.human_attribute_name(:name) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +15,9 @@
     <% @technologies.each do |technology| %>
       <tr>
         <td><%= technology.name %></td>
-        <td><%= link_to "表示", technology %></td>
-        <td><%= link_to "編集", edit_technology_path(technology) %></td>
-        <td><%= link_to "削除", technology, method: :delete, data: { confirm: "削除は宜しいですか?" } %></td>
+        <td><%= link_to t("show"), technology %></td>
+        <td><%= link_to t("edit"), edit_technology_path(technology) %></td>
+        <td><%= link_to t("delete"), technology, method: :delete, data: { confirm: t("delete_confirmation") } %></td>
       </tr>
     <% end %>
   </tbody>

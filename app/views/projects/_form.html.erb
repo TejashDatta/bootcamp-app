@@ -1,14 +1,14 @@
 <%= form_with(model: project, local: true) do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
-      <h2><%= project.errors.count %> エラーがあって保存が失敗しました。</h2>
+      <h2><%= t("errors_caused_save_failure", error_count: project.errors.count) %></h2>
     </div>
   <% end %>
 
   <%= render "form_item", attribute: :name, form: form, errors: project.errors %>
   <%= render "form_item", attribute: :description, form: form, errors: project.errors %>
 
-  <h4>使用される技術:</h4>
+  <h4><%= t("technologies_used") %>:</h4>
 
   <%= form.collection_check_boxes :technology_ids, Technology.all, :id, :name  do |technology| %>
     <%= technology.check_box %>

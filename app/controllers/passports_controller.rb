@@ -1,6 +1,6 @@
 class PassportsController < ApplicationController
   include TravelerAuthentication
-  
+
   before_action -> { authenticate_traveler_account_user params[:traveler_id] }
 
   def show
@@ -19,7 +19,8 @@ class PassportsController < ApplicationController
     @passport = Traveler.find(params[:traveler_id]).build_passport(passport_params)
 
     if @passport.save
-      redirect_to traveler_passport_path, notice: "パスポートの作成が合格しました。"
+      redirect_to traveler_passport_path,
+                  notice: t("flash_messages.create_success", model: Passport.model_name.human)
     else
       render :new
     end
@@ -29,7 +30,8 @@ class PassportsController < ApplicationController
     @passport = Passport.find_by(traveler_id: params[:traveler_id])
 
     if @passport.update(passport_params)
-      redirect_to traveler_passport_path, notice: "パスポートの更新が合格しました。"
+      redirect_to traveler_passport_path,
+                  notice: t("flash_messages.update_success", model: Passport.model_name.human)
     else
       render :edit
     end
@@ -37,7 +39,8 @@ class PassportsController < ApplicationController
 
   def destroy
     Passport.find_by(traveler_id: params[:traveler_id]).destroy
-    redirect_to travelers_path, notice: "パスポートの削除が合格しました。"
+    redirect_to travelers_path,
+                notice: t("flash_messages.destroy_success", model: Passport.model_name.human)
   end
 
   private
