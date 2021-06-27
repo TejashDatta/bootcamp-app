@@ -6,7 +6,6 @@
 <table>
   <thead>
     <tr>
-      <th><%= User.human_attribute_name(:email) %></th>
       <th><%= Traveler.human_attribute_name(:name) %></th>
       <th><%= Traveler.human_attribute_name(:departure_country) %></th>
       <th><%= Traveler.human_attribute_name(:arrival_country) %></th>
@@ -18,7 +17,6 @@
   <tbody>
     <% @travelers.each do |traveler| %>
       <tr>
-        <td><%= traveler.account_user.email %></td>
         <td><%= traveler.name %></td>
         <td><%= traveler.departure_country %></td>
         <td><%= traveler.arrival_country %></td>

@@ -18,7 +18,7 @@ RSpec.describe "/travelers/:traveler_id/passport", type: :request do
     }
   end
 
-  let(:traveler) { create(:traveler, account_user: authorized_user) }
+  let(:traveler) { create(:traveler) }
   let(:passport) { create(:passport, traveler: traveler) }
 
   describe "GET /" do

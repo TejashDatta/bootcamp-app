@@ -1,8 +1,4 @@
 class InvestorsController < ApplicationController
-  include InvestorAuthentication
-  
-  before_action -> { authenticate_investor_account_user params[:id] }, only: %i[show edit update destroy]
-  
   def index
     @investors = Investor.all
   end
@@ -12,7 +8,7 @@ class InvestorsController < ApplicationController
   end
 
   def new
-    @investor = current_user.investor_accounts.build
+    @investor = Investor.new
   end
 
   def edit
@@ -20,10 +16,9 @@ class InvestorsController < ApplicationController
   end
 
   def create
-    @investor = current_user.investor_accounts.build(investor_params)
+    @investor = Investor.new(investor_params)
 
     if @investor.save
-      session[:investor_id] = @investor.id
       redirect_to @investor,
                   notice: t("flash_messages.create_success", model: Investor.model_name.human)
     else

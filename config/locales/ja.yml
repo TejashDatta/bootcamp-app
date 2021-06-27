@@ -36,6 +36,7 @@ ja:
   edit_insecure: 脆弱な編集
   delete: 削除
   delete_confirmation: 削除は宜しいですか?
+  owner_model_does_not_exist: "該当の%{model}は存在していません。"
   technologies_used: 使用される技術
   used_in_projects: 配置プロジェクト
   check_all: すべてチェック
@@ -66,7 +67,6 @@ ja:
     authenticate_failure: このアプリの使用にログインが必要です。
     authenticate_action_failure: この操作を行う権限を持っていません。
     authenticate_same_user_failure: 該当のユーザーのみがこの操作をできます。
-    authenticate_linked_user_failure: アカウント連携のユーザーのみがこの操作をできます。
     message_sent: メッセージを送りました。
     authenticate_message_party_failure: このメッセージを見る権限がありません。
   activerecord:
