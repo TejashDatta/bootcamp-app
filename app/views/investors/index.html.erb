@@ -7,7 +7,6 @@
 <table>
   <thead>
     <tr>
-      <th><%= User.human_attribute_name(:email) %></th>
       <th><%= Investor.human_attribute_name(:account_number) %></th>
       <th><%= Investor.human_attribute_name(:balance_in_yen) %></th>
       <th colspan="4"></th>
@@ -17,7 +16,6 @@
   <tbody>
     <% @investors.each do |investor| %>
       <tr>
-        <td><%= investor.account_user.email %></td>
         <td><%= investor.account_number %></td>
         <td><%= investor.balance_in_yen %></td>
         <td><%= link_to t("show"), investor %></td>

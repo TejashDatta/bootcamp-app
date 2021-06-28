@@ -1,10 +1,8 @@
 class PassportsController < ApplicationController
-  include TravelerAuthentication
-
-  before_action -> { authenticate_traveler_account_user params[:traveler_id] }
-
+  before_action :verify_traveler
+  
   def show
-    @passport = Passport.find_by(traveler_id: params[:traveler_id])
+    @passport = Traveler.find(params[:traveler_id]).passport
   end
 
   def new
@@ -12,7 +10,7 @@ class PassportsController < ApplicationController
   end
 
   def edit
-    @passport = Passport.find_by(traveler_id: params[:traveler_id])
+    @passport = Traveler.find(params[:traveler_id]).passport
   end
 
   def create
@@ -27,7 +25,7 @@ class PassportsController < ApplicationController
   end
 
   def update
-    @passport = Passport.find_by(traveler_id: params[:traveler_id])
+    @passport = Traveler.find(params[:traveler_id]).passport
 
     if @passport.update(passport_params)
       redirect_to traveler_passport_path,
@@ -38,7 +36,7 @@ class PassportsController < ApplicationController
   end
 
   def destroy
-    Passport.find_by(traveler_id: params[:traveler_id]).destroy
+    Traveler.find(params[:traveler_id]).passport.destroy
     redirect_to travelers_path,
                 notice: t("flash_messages.destroy_success", model: Passport.model_name.human)
   end
@@ -47,5 +45,11 @@ class PassportsController < ApplicationController
 
   def passport_params
     params.require(:passport).permit(:passport_number, :nationality)
+  end
+
+  def verify_traveler
+    return if Traveler.find_by(id: params[:traveler_id])
+
+    redirect_to travelers_path, alert: t("owner_model_does_not_exist", model: Traveler.model_name.human)
   end
 end

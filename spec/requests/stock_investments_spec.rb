@@ -4,9 +4,6 @@ RSpec.describe "/investors/:investor_id/stock_investments", type: :request do
   include_context "uses authorized user with permissions"
   let(:permitted_actions_filter) { "stock_investments" }
 
-  let(:investor) { create(:investor) }
-  let(:stock_investment) { create(:stock_investment) }
-
   let(:valid_attributes) do
     {
       investor_id: investor.id,
@@ -23,7 +20,7 @@ RSpec.describe "/investors/:investor_id/stock_investments", type: :request do
     }
   end
 
-  let(:investor) { create(:investor, account_user: authorized_user) }
+  let(:investor) { create(:investor) }
   let(:stock_investment) { create(:stock_investment, investor: investor) }
 
   describe "GET /index" do

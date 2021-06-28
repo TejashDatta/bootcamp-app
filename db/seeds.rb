@@ -7,12 +7,12 @@ user_1, user_2 = FactoryBot.create_list(:user, 75)[0..1]
 
 [user_1, user_2].each do |user|
   assign_permissions(user)
-
-  FactoryBot.create(:traveler, account_user: user)
-  FactoryBot.create(:passport, traveler: FactoryBot.create(:traveler, account_user: user))
-
-  FactoryBot.create(:stock_investment, investor: FactoryBot.create(:investor, account_user: user))
 end
+
+FactoryBot.create(:traveler)
+FactoryBot.create(:passport, traveler: FactoryBot.create(:traveler))
+
+FactoryBot.create(:stock_investment, investor: FactoryBot.create(:investor))
 
 FactoryBot.create_list(:message, 15, sender: user_1)
 FactoryBot.create_list(:message, 15, receiver: user_1)
