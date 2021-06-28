@@ -1,0 +1,22 @@
+<%= form_with(model: model, url: local_assigns.fetch(:url, model), local: true) do |form| %>
+  <% if model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t("errors_caused_save_failure", error_count: model.errors.count) %></h2>
+    </div>
+  <% end %>
+
+  <% attributes.each do |attribute| %>
+    <%= 
+      render(
+        "form_item",
+        attribute: attribute,
+        field: local_assigns.fetch(:custom_fields, {})[attribute] || :text_field,
+        form: form, errors: model.errors 
+      )
+    %>
+  <% end %>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

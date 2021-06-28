@@ -1,14 +1,8 @@
-<%= form_with(model: passport, url: traveler_passport_path, local: true) do |form| %>
-  <% if passport.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t("errors_caused_save_failure", error_count: passport.errors.count) %></h2>
-    </div>
-  <% end %>
-
-  <%= render "form_item", attribute: :passport_number, form: form, errors: passport.errors %>
-  <%= render "form_item", attribute: :nationality, form: form, errors: passport.errors %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%=
+  render(
+    "model_form",
+    model: passport,
+    url: traveler_passport_path,
+    attributes: [:passport_number, :nationality]
+  )
+%>

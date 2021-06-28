@@ -1,15 +1,8 @@
-<%= form_with(model: employee, local: true) do |form| %>
-  <% if employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t("errors_caused_save_failure", error_count: employee.errors.count) %></h2>
-    </div>
-  <% end %>
-
-  <%= render "form_item", attribute: :name, form: form, errors: employee.errors %>
-  <%= render "form_item", attribute: :date_of_joining, field: :date_field, form: form, errors: employee.errors %>
-  <%= render "form_item", attribute: :department, form: form, errors: employee.errors %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= 
+  render(
+    "model_form",
+    model: employee,
+    attributes: [:name, :date_of_joining, :department],
+    custom_fields: { date_of_joining: :date_field } 
+  )
+%>

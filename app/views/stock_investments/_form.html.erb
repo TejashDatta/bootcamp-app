@@ -1,14 +1,1 @@
-<%= form_with(model: stock_investment, url: url, local: true) do |form| %>
-  <% if stock_investment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t("errors_caused_save_failure", error_count: stock_investment.errors.count) %></h2>
-   </div>
-  <% end %>
-
-  <%= render "form_item", attribute: :stock_name, form: form, errors: stock_investment.errors %>
-  <%= render "form_item", attribute: :shares_owned, form: form, errors: stock_investment.errors %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render "model_form", model: stock_investment, url: url, attributes: [:stock_name, :shares_owned] %>
